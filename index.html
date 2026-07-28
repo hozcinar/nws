@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SABAH — 26 Temmuz 2026</title>
+<style>
+  :root{
+    --paper:#fbfbf9; --paper2:#ffffff; --ink:#16191d; --ink-soft:#4e565e; --muted:#8a9099;
+    --rule:#e4e5e2; --rule2:#eceded; --accent:#b0391f; --accent2:#22405c;
+    --hfont:Georgia,'Iowan Old Style','Times New Roman',serif;
+    --sans:'Helvetica Neue',Inter,system-ui,Arial,sans-serif;
+    --up:#1f7a4d; --down:#b23a2e; --amber:#b0832a; --cbg:#f4ecdb;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:var(--paper);color:var(--ink);font-family:var(--hfont);line-height:1.7;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:790px;margin:0 auto;padding:16px 18px 72px}
+  p{margin:.6em 0}
+
+  /* control bar */
+  .ctrl{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+  .ctrl details{flex:1;min-width:170px;border:1px solid var(--rule);border-radius:6px;background:var(--paper2);margin:0}
+  .ctrl summary{font-family:var(--sans);font-size:11.5px;font-weight:600;color:var(--accent2);cursor:pointer;list-style:none;padding:9px 12px;display:flex;align-items:center;gap:7px}
+  .ctrl summary::-webkit-details-marker{display:none}
+  .ctrl summary .cv{color:var(--muted);font-size:10px;transition:transform .2s;margin-left:auto}
+  .ctrl details[open] summary .cv{transform:rotate(90deg)}
+  .ctrl .body{padding:2px 14px 14px;font-size:13.5px;border-top:1px solid var(--rule2)}
+  .ctrl .body h5{font-family:var(--sans);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:12px 0 4px;font-weight:800}
+  .ctrl .body ul{margin:2px 0;padding-left:17px}
+  .ctrl .body li{margin:2px 0;line-height:1.55}
+  .ver{font-family:var(--sans);font-size:10px;background:var(--cbg);color:#8a6614;padding:1px 7px;border-radius:20px;font-weight:700}
+
+  /* feedback form */
+  .fb label{display:block;font-family:var(--sans);font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--accent2);margin:10px 0 3px}
+  .fb select,.fb textarea,.fb input{width:100%;font-family:var(--sans);font-size:13px;padding:7px 9px;border:1px solid var(--rule);border-radius:5px;background:var(--paper);color:var(--ink)}
+  .fb textarea{min-height:70px;resize:vertical;line-height:1.5}
+  .fb button{font-family:var(--sans);font-size:12px;font-weight:600;padding:8px 14px;border:1px solid var(--accent);background:var(--accent);color:#fff;border-radius:5px;cursor:pointer;margin-top:10px}
+  .fb button.sec{background:transparent;color:var(--accent2);border-color:var(--rule)}
+  .fb .out{margin-top:10px;font-family:var(--sans);font-size:12px;background:var(--paper);border:1px dashed var(--rule);border-radius:5px;padding:9px 11px;white-space:pre-wrap;color:var(--ink-soft);display:none}
+  .fb .hint{font-family:var(--sans);font-size:11px;color:var(--muted);margin-top:8px;line-height:1.5}
+
+  .mast{border-bottom:1px solid var(--ink);padding-bottom:10px}
+  .kt{font-family:var(--sans);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);font-weight:700}
+  .mast h1{font-family:var(--hfont);font-size:clamp(42px,13vw,80px);margin:.02em 0 0;letter-spacing:.06em;line-height:.9;font-weight:700}
+  .mast .tag{font-family:var(--sans);font-size:11.5px;color:var(--ink-soft);font-style:italic;margin-top:3px}
+  .mast .sub{font-family:var(--sans);font-size:11.5px;color:var(--ink-soft);display:flex;flex-wrap:wrap;gap:4px 14px;justify-content:space-between;border-top:1px solid var(--rule);margin-top:10px;padding-top:8px}
+  .mast .sub b{color:var(--ink)}
+
+  .index{background:var(--paper2);border:1px solid var(--rule);border-radius:6px;padding:12px 15px;margin:14px 0 4px}
+  .index .h{font-family:var(--sans);font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:7px}
+  .index ol{margin:0;padding-left:19px;font-family:var(--sans);font-size:12.5px;color:var(--ink-soft);line-height:1.9}
+  .index b{color:var(--ink);font-weight:600}
+
+  h2.desk{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);border-bottom:2px solid var(--ink);padding-bottom:5px;margin:34px 0 2px;font-weight:800}
+
+  .story{padding:15px 0 5px;border-bottom:1px solid var(--rule2)}
+  .story:last-of-type{border-bottom:none}
+  .story .kick{font-family:var(--sans);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent2);font-weight:700;display:flex;align-items:center;gap:8px}
+  .hid{font-family:var(--sans);font-size:9.5px;font-weight:800;letter-spacing:.03em;background:var(--accent2);color:#fff;padding:1px 6px;border-radius:3px}
+  .story h3{font-family:var(--hfont);font-size:23px;line-height:1.16;margin:.16em 0 .14em}
+  .story.lead h3{font-size:28px}
+  .byline{font-family:var(--sans);font-size:11px;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;margin-bottom:8px}
+  .conf{font-family:var(--sans);font-size:9.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:var(--cbg);color:#8a6614;padding:1px 8px;border-radius:20px}
+  .lede{font-size:16.5px}
+  .story.lead .lede{font-size:17.5px}
+  .lede .drop{float:left;font-family:var(--hfont);font-size:46px;line-height:.8;padding:7px 9px 0 0;color:var(--accent)}
+
+  .story details{border-top:1px solid var(--rule);margin-top:10px}
+  .story summary{font-family:var(--sans);font-size:12px;font-weight:600;color:var(--ink);cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:10px 2px}
+  .story summary::-webkit-details-marker{display:none}
+  .dot{width:6px;height:6px;border-radius:50%;flex:none;background:var(--accent)}
+  .d-b .dot{background:var(--accent2)}
+  .story summary .lab{flex:1}
+  .story summary .chev{color:var(--muted);transition:transform .2s;font-size:11px}
+  .story details[open] summary .chev{transform:rotate(90deg)}
+  .panel{padding:0 2px 16px 15px;font-size:15.5px}
+  .panel p:first-child{margin-top:0}
+  .ground{background:var(--cbg);border-radius:4px;padding:9px 12px;margin-top:9px;font-size:14.5px}
+  .counter{border-left:3px solid var(--amber);background:var(--paper2);padding:9px 12px;font-size:14.5px;border-radius:0 4px 4px 0;margin-top:9px}
+  .srcline{font-family:var(--sans);font-size:10.5px;color:var(--muted);margin-top:9px;font-style:italic}
+
+  table.mkt{width:100%;border-collapse:collapse;font-size:14px;margin-top:6px}
+  table.mkt th,table.mkt td{padding:6px;border-bottom:1px solid var(--rule2);vertical-align:top}
+  table.mkt th{font-family:var(--sans);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border-bottom:2px solid var(--ink)}
+  table.mkt td.r{text-align:right;font-variant-numeric:tabular-nums}
+  .up{color:var(--up);font-weight:700} .down{color:var(--down);font-weight:700}
+  .asset{font-weight:700}
+
+  .netcard{border:1px solid var(--rule);background:var(--paper2);border-radius:6px;padding:11px;margin-top:8px}
+  .netcard svg{width:100%;height:auto;display:block}
+  .netcard .cap{font-family:var(--sans);font-size:11px;color:var(--ink-soft);margin-top:7px;line-height:1.6}
+
+  .briefs,.radar{border:1px solid var(--rule);border-radius:6px;overflow:hidden;margin-top:6px}
+  .brief,.ri{padding:9px 12px;border-bottom:1px solid var(--rule2);background:var(--paper2);font-size:14.5px}
+  .brief:last-child,.ri:last-child{border-bottom:none}
+  .brief b{font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--accent2);display:block;margin-bottom:1px}
+  .ri b{color:var(--accent2)} .ri span{font-family:var(--sans);font-size:10.5px;color:var(--muted)}
+
+  .inv{border:1px solid var(--rule);border-radius:7px;background:var(--paper2);padding:13px 15px;margin:11px 0}
+  .inv h4{font-family:var(--hfont);font-size:19px;margin:.1em 0 .35em}
+  .inv .st{font-family:var(--sans);font-size:10px;font-weight:700;padding:1px 9px;border-radius:20px}
+  .st-pos{background:#e8f2ec;color:var(--up)} .st-two{background:#e7edf3;color:var(--accent2)} .st-cau{background:var(--cbg);color:#8a6614}
+  .inv p{font-size:15px}
+  .bar{display:flex;height:19px;border-radius:4px;overflow:hidden;font-family:var(--sans);font-size:10px;font-weight:700;color:#fff;margin:6px 0 2px}
+  .bar .u{background:var(--up);display:flex;align-items:center;padding-left:8px}
+  .bar .d{background:var(--down);display:flex;align-items:center;justify-content:flex-end;padding-right:8px}
+  .disc{background:var(--cbg);border:1px solid #e2d3ab;border-left:4px solid var(--amber);border-radius:4px;padding:11px 14px;margin:10px 0;font-size:13px;color:#6b5417}
+
+  .method{background:var(--paper2);border:1px solid var(--rule);border-radius:6px;padding:13px 15px;margin-top:20px}
+  .method p{font-size:13px;color:var(--ink-soft)}
+  .src2{font-size:11px;color:var(--muted);word-break:break-word}
+  .src2 a{color:var(--accent2)}
+  .foot{font-family:var(--sans);font-size:10.5px;color:var(--muted);text-align:center;margin-top:22px;border-top:1px solid var(--rule);padding-top:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ===== KONTROL BARI ===== -->
+  <div class="ctrl">
+    <details>
+      <summary>⚙︎ Künye ve Kurallar <span class="ver">v1.0</span><span class="cv">▸</span></summary>
+      <div class="body">
+        <p style="font-size:12.5px;color:var(--ink-soft);margin-top:8px">Gazetenin yürürlükteki kuralları. Değiştirmek istediğin maddeyi numarasıyla söyle (ör. "K2.2'yi kaldır"), bir sonraki sayıda uygulanır ve sürüm yükselir.</p>
+
+        <h5>K1 · Kapsam</h5>
+        <ul>
+          <li>K1.1 — Her sayıda 8-10 birbirinden farklı haber; hiçbiri diğerinin tekrarı değil.</li>
+          <li>K1.2 — Tek bir tema bütün gazeteyi ele geçiremez; sermaye akışı da Fed de yalnızca birer haberdir.</li>
+          <li>K1.3 — Çoktan fiyatlanmış olan değil, öncü gelişme kovalanır. Sinyal yoksa "net sinyal yok" denir.</li>
+        </ul>
+
+        <h5>K2 · Üslup</h5>
+        <ul>
+          <li>K2.1 — Tam ve akıcı cümleler (Tooze / FT analiz nesri). Parça parça anlatım yasak.</li>
+          <li>K2.2 — Etiket rozeti yok; atıf cümlenin içine dokunur.</li>
+          <li>K2.3 — Jargonun sade Türkçe karşılığı aynı cümlede verilir.</li>
+          <li>K2.4 — Tablo yalnızca sayısal pano için; anlatı tabloya indirgenmez.</li>
+        </ul>
+
+        <h5>K3 · Atıf ve doğruluk</h5>
+        <ul>
+          <li>K3.1 — Dayanağı olmayan cümle girmez.</li>
+          <li>K3.2 — Ölçülen veri, başkasının görüşü ve Claude'un çıkarımı dille ayrılır.</li>
+          <li>K3.3 — Çıkarımın argümanı ve çürütme koşulu açık yazılır.</li>
+          <li>K3.4 — Rakamlar sıfır hatalı; farklı zaman pencereleri eşitmiş gibi sunulmaz.</li>
+          <li>K3.5 — Veri yoksa "yok" denir; yanlış çıkarsa açıkça düzeltilir.</li>
+        </ul>
+
+        <h5>K4 · Yapı ve derinlik</h5>
+        <ul>
+          <li>K4.1 — Eşit ağırlıklı karma: jeopolitik, piyasa, Türkiye.</li>
+          <li>K4.2 — Yüzey kısa, derinlik açılır panellerde.</li>
+          <li>K4.3 — Paneller: anlatı seyri (+güven ve çürütme), perspektifler, sayısal çıpa, Türkiye/sektör, karşı-tez, varlık rotasyonu, ağ. Zorunlu değil, güçlü sinyalde açılır.</li>
+          <li>K4.4 — Başat aktör motivasyon ve kırmızı çizgi düzeyinde çözümlenir; iç siyaset dahil.</li>
+          <li>K4.5 — Ağ gösterimi hem jeopolitik hem ekonomide; ilişkiler doğrudan ve koşullu diye ayrılır.</li>
+        </ul>
+
+        <h5>K5 · Kaynaklar</h5>
+        <ul>
+          <li>K5.1 — On makro bülten: Tooze, Overshoot, Fed Guy, Net Interest, The Diff, Noahpinion, Capital Wars, Doomberg, Citrini, Capital Flows. Sessizleşen kenarda bekler.</li>
+          <li>K5.2 — Küresel medya: Reuters, AP, CNBC, Yahoo, Bloomberg, FT, WSJ, Economist; Money Stuff ve FT Alphaville.</li>
+          <li>K5.3 — Jeopolitikte analitik ağırlık: ICG, Foreign Affairs, War on the Rocks, Al-Monitor.</li>
+          <li>K5.4 — Türkiye: TCMB/EVDS, Dünya, AA, bigpara, Türk ekonomistleri; savunma için SavunmaSanayiST ve DefenceTurk.</li>
+          <li>K5.5 — Fon akışı: BofA anketi, ETF akışları, ICI, TEFAS ve büyük portföy şirketleri.</li>
+          <li>K5.6 — Sosyal: FinTwit ve Reddit (Bright Data bağlanınca gerçek tarama).</li>
+        </ul>
+
+        <h5>K6 · Yatırım değerlendirmesi</h5>
+        <ul>
+          <li>K6.1 — Her sayıda 2-3 enstrüman: ucuzluk, neden, yukarı potansiyel, risk asimetrisi, somut araç.</li>
+          <li>K6.2 — "Tavsiye değildir" çerçevesi zorunlu; olasılıklar öznel.</li>
+          <li>K6.3 — Kullanıcının favorisi olsa bile dürüst davranılır.</li>
+        </ul>
+
+        <h5>Değişiklik günlüğü</h5>
+        <ul>
+          <li><b>v1.0 · 26 Temmuz</b> — İlk sürüm. Kapsam, üslup, atıf, yapı, kaynak ve yatırım kuralları sabitlendi; rozetli atıf kaldırıldı, geri bildirim paneli eklendi.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="fb">
+      <summary>✎ Geri Bildirim <span class="cv">▸</span></summary>
+      <div class="body">
+        <p style="font-size:12.5px;color:var(--ink-soft);margin-top:8px">Formu doldur, "Metni oluştur"a bas, çıkan bloğu sohbete yapıştır. Bir sonraki sayıda uygulanır ve kural olarak künyeye eklenir.</p>
+
+        <label for="fb-h">Hangi bölüm</label>
+        <select id="fb-h">
+          <option>Gazetenin tamamı</option>
+          <option>H1 — İran hattı</option>
+          <option>H2 — ABD gümrükleri</option>
+          <option>H3 — Fed / Warsh</option>
+          <option>H4 — Japonya faizi</option>
+          <option>H5 — Almanya / DAX</option>
+          <option>H6 — Big Tech bilançoları</option>
+          <option>H7 — Sermaye akışı</option>
+          <option>H8 — Türk bankaları</option>
+          <option>H9 — Çelik Kubbe / savunma</option>
+          <option>H10 — Kakao ve kahve</option>
+          <option>H11 — Altın</option>
+          <option>Piyasa panosu</option>
+          <option>Günün ağı</option>
+          <option>Bülten radarı</option>
+          <option>Yatırım değerlendirmesi</option>
+        </select>
+
+        <label for="fb-t">Neyle ilgili</label>
+        <select id="fb-t">
+          <option>Şekil / sunum</option>
+          <option>İçerik / kapsam</option>
+          <option>Dayanak / kaynak</option>
+          <option>Doğruluk / hata</option>
+          <option>Eksik özellik</option>
+          <option>Derinlik az</option>
+          <option>Fazla uzun</option>
+        </select>
+
+        <label for="fb-x">Geri bildirimin</label>
+        <textarea id="fb-x" placeholder="Örnek: H3 fazla teknik kalmış, Türkiye'ye etkisi hiç yok. Ya da: H5'te değerleme iskontosunun kaynağı tek; ikinci bir kaynak istiyorum."></textarea>
+
+        <label for="fb-k">Bu kalıcı kural olsun mu</label>
+        <select id="fb-k">
+          <option>Evet — künyeye kural olarak ekle</option>
+          <option>Hayır — yalnızca bu sayı için</option>
+        </select>
+
+        <button onclick="genFb()">Metni oluştur</button>
+        <button class="sec" onclick="copyFb()">Kopyala</button>
+        <div class="out" id="fb-out"></div>
+        <div class="hint">Not: Bu form doğrudan mesaj gönderemez; oluşturduğu metni sohbete yapıştırman gerekiyor. Kısa yol olarak sohbete doğrudan "H3: dayanak zayıf, ikinci kaynak ekle" yazman da yeterli.</div>
+      </div>
+    </details>
+  </div>
+
+  <header class="mast">
+    <div class="kt">Öngörü Radarı · Fiyatın Önünde Ol</div>
+    <h1>SABAH</h1>
+    <div class="tag">Günlük Finans &amp; Makro Gazetesi — Hüseyin için</div>
+    <div class="sub">
+      <span>Pazar, <b>26 Temmuz 2026</b></span>
+      <span>Kapanış referansı: <b>Cuma 24 Temmuz</b></span>
+      <span>Haftanın olayı: <b>28–29 Temmuz FOMC</b></span>
+    </div>
+  </header>
+
+  <div class="index">
+    <div class="h">Bu sayıda</div>
+    <ol>
+      <li><b>H1 · Washington son anda vurmaktan caydı</b> — İran hattı yeniden masaya kayıyor</li>
+      <li><b>H2 · ABD 60 ticaret ortağına gümrük koydu</b> — Avrupa bu turu ucuz atlattı</li>
+      <li><b>H3 · Warsh'ın ilk gerçek sınavı Çarşamba</b> — tartışma artık indirim değil, artış</li>
+      <li><b>H4 · Japonya faizi 1995'ten beri en yüksekte</b> — ucuz para çağının sessiz sonu</li>
+      <li><b>H5 · Almanya rekora yürüyor</b> — SAP, canlanan PMI ve ucuz değerleme</li>
+      <li><b>H6 · Big Tech'in sınavı harcama değil nakit</b> — Microsoft, Meta, Apple haftası</li>
+      <li><b>H7 · Söylem boğacı, para tedbirli</b> — konumlanma ile akış ayrışıyor</li>
+      <li><b>H8 · Türk bankalarında satış baskısı</b> — indirim beklentisi Eylül'e ertelendi</li>
+      <li><b>H9 · Çelik Kubbe büyürken savunma ayrışıyor</b> — endeks tek hikâye değil</li>
+      <li><b>H10 · Kakao ısındı, kahve soğudu</b> · <b>H11 · altının limanı sönüyor</b></li>
+    </ol>
+  </div>
+
+  <h2 class="desk">Dünya</h2>
+
+  <article class="story lead">
+    <div class="kick"><span class="hid">H1</span> Jeopolitik · İran hattı</div>
+    <h3>Çekiç mi, masa mı: Washington son anda vurmaktan caydı</h3>
+    <div class="byline"><span>Analiz</span><span class="conf">Güven: Orta-Düşük</span><span>Brent 96,78 dolar</span></div>
+    <p class="lede"><span class="drop">B</span>eyaz Saray'ın son anda askeri seçenekten geri adım atıp Çin'in teşvikiyle ve Pakistan'ın taşıyıcılığında yeni bir müzakere hattına yönelmesi, on iki günlük savaşın ardından kırılan ateşkesi yeniden kurmayı deniyor. Masanın etrafında birbiriyle çelişen üç irade var: müzakereye dönen Washington, hiçbir anlaşmanın kendisini bağlamayacağını söyleyen İsrail ve arabuluculuğu kendi mali kurtarma pazarlığına çevirdiği öne sürülen İslamabad. Petrol yüz doların altına çekildi, ama barışın fiyatı henüz çakılmış değil.</p>
+    <details class="d-b"><summary><span class="dot"></span><span class="lab">Başat aktör: ABD neden masada, hangi durumda savaşta</span><span class="chev">▸</span></summary>
+      <div class="panel">
+        <p>Bu tabloyu anlamanın yolu Washington'ın iç siyasetinden geçiyor. Kasım ara seçimleri yaklaşırken yüksek petrol doğrudan benzine, benzin de enflasyona yansıyor; enflasyon ise iktidardaki Cumhuriyetçiler için en ağır seçim yükü. Trump'ın eski Ticaret Bakanı Wilbur Ross bu durumu Fortune'a verdiği değerlendirmede bir Catch-22 olarak tarif ediyor: ya enflasyon öfkesine katlanacaksın ya çekilip zayıf görüneceksin. Petrolü düşüren bir anlaşma tam da bu kıskacı çözdüğü için seçim kozuna dönüşüyor; nitekim Beyaz Saray'ın müzakerelerin verimli geçtiğini söylemesiyle petrol sert biçimde geriledi.</p>
+        <p>Savaşın sürmesi ihtimalinin düğümlendiği yer ise Hürmüz Boğazı. NPR'ın 18 Temmuz'daki değerlendirmesine göre taraflar kırmızı çizgileri çoktan aştı; CNN'in 15 Temmuz'daki aktarımında ABD'nin saldırıları boğazdaki gemileri korumaya dönüktü ve Washington köprüleri ve enerji santrallerini hedef alma tehdidinde bulundu. Yani İran boğazdaki seyrüsefere dokunursa, ara seçim maliyetine rağmen vurmak zorunda kalıyor.</p>
+        <div class="ground">Benim okumam şu: ABD aynı anda hem petrolü düşürmek hem Hürmüz'ü açık tutmak istiyor ve bu iki hedef birbirini yiyor. Boğaza yönelen her tehdit petrolü fırlatıp tam da kaçınmak istediği enflasyonu geri getiriyor. Bu yüzden Washington'ın tercihi bir strateji değil, bir çıkmazın yönetimi.</div>
+        <div class="srcline">Fortune (Ross) · NPR, 18 Temmuz · CNN, 15 Temmuz · Haaretz, 25 Temmuz</div>
+      </div>
+    </details>
+    <details><summary><span class="dot"></span><span class="lab">Anlatının seyri ve ne kadar ciddiye almalı</span><span class="chev">▸</span></summary>
+      <div class="panel">
+        <p>Geriye dönüp bakınca şu zincir görünüyor. Yüz günü aşan çatışmanın ardından Pakistan, Haziran ortasında bir ABD–İran mutabakatına aracılık etmişti. O ateşkes bozuldu, saldırılar yeniden başladı ve şimdi Çin'in teşvikiyle yeni bir görüşme arayışı doğdu. İsrail cephesinde ise Times of Israel'in aktardığı bakan açıklamalarında hiçbir İran anlaşmasının Tel Aviv'i bağlamayacağı söyleniyor; Haaretz ise Washington'ın son anda vurmaktan vazgeçmesinin İsrail'i hazırlıksız yakaladığını yazdı.</p>
+        <p>Benim okumam, yakın vadede kalıcı bir çözümden çok tekrar bozulabilen bir ateşkesin daha olası olduğu yönünde. Dayanağım iki tane: son kırk günde ateşkes bir kez kuruldu bir kez bozuldu, yani taban çizgisinde zaten yüksek bir oynaklık var; üstelik masaya dönüşü sağlayan itki bölgesel bir uzlaşı arzusu değil, dışarıdan gelen ve çıkar temelli bir dürtü. Garantörlerin hiçbirinin İsrail'i durduracak gücü olmaması da bu kırılganlığı besliyor.</p>
+        <div class="ground">Çürütme koşulu: Doğrudan ABD–İran heyet görüşmesi bir tarih alır ve İsrail'den en azından zımni bir onay gelirse kalıcılık ihtimali ciddi biçimde yükselir; o durumda bu değerlendirmeyi değiştiririm.</div>
+      </div>
+    </details>
+  </article>
+
+  <article class="story">
+    <div class="kick"><span class="hid">H2</span> Ticaret</div>
+    <h3>ABD 60 ticaret ortağına gümrük koydu, Avrupa ucuz atlattı</h3>
+    <div class="byline"><span class="conf">Güven: Yüksek</span><span>24 Temmuz</span></div>
+    <p class="lede">Washington, zorla çalıştırma kaynaklı ithalatı engellemekte yetersiz gördüğü altmış ticaret ortağına yüzde 10 ve yüzde 12,5 oranlarında yeni gümrük uyguladı; listede Avrupa Birliği ve Çin de var. Ancak Brüksel bu turdan görece ucuz kurtuldu, çünkü Avrupa Komisyonu'nun açıklamasına göre AB, yeni tarifelerin mevcut vergilerin üzerine binmediği sınırlı grup içindeydi ve mantar ile elmasta muafiyetlerini geri kazandı.</p>
+    <details><summary><span class="dot"></span><span class="lab">Fiyatın önü: kim kazandı, sırada ne var</span><span class="chev">▸</span></summary>
+      <div class="panel">
+        <p>Komisyon sonucu temkinli biçimde olumlu karşıladı ve bunun geçen yıl varılan Turnberry mutabakatıyla uyumlu olduğunu belirtti; o düzenlemede Avrupa sanayi mallarındaki vergileri kaldırmış, ABD ise AB ürünlerinin çoğuna yüzde 15 uygulamıştı. Uçak ve parçaları, jenerik ilaçlar ve etken maddelerdeki muafiyetler korundu.</p>
+        <p>Benim okumam, bu turun Avrupa için bir yük değil neredeyse bir teyit olduğu yönünde. Fiyatlanmamış olan da bu: tarife belirsizliği Avrupa tarafında azalırken Asya tarafında artıyor ve bu öngörülebilirlik, Avrupa hisselerine giden sermayenin gerekçelerinden biri olabilir. İzlenecek şey, muafiyet görüşmelerinin derinleşip derinleşmediği.</p>
+        <div class="counter">Karşı tez olarak şunu eklemek gerekir: gümrükler Alman otomotivi için hâlâ doğrudan bir vergi işlevi görüyor. Volkswagen'in Cuma günü zayıf bilançoyla yüzde 2,4 gerilemesi bunun küçük ama somut bir işareti; yani "Avrupa kazandı" okuması sektörler arasında eşit dağılmıyor.</div>
+        <div class="srcline">Avrupa Komisyonu açıklaması, IndexBox aktarımı · TradingEconomics</div>
+      </div>
+    </details>
+  </article>
+
+  <h2 class="desk">Merkez Bankaları</h2>
+
+  <article class="story lead">
+    <div class="kick"><span class="hid">H3</span> Fed · Çarşamba</div>
+    <h3>Warsh'ın ilk gerçek sınavı: tartışma artık indirim değil, artış</h3>
+    <div class="byline"><span class="conf">Güven: Orta</span><span>Faiz yüzde 3,50–3,75</span></div>
+    <p class="lede">Piyasa Çarşamba günü faizin sabit kalacağından neredeyse emin, ama asıl mesele bu değil. Veri yumuşamayı sürdürürken — Haziran enflasyonu beklentinin altında kaldı, istihdam artışı 57 bine indi, işsizlik yüzde 4,2 — yeni başkan Kevin Warsh Temmuz başındaki ECB Forumu'nda fiyatların hâlâ çok yüksek olduğunu söyledi. Piyasa iki hafta içinde faiz artırımı olasılığını yüzde 18'den yüzde 36'ya çıkardı. Yani sohbetin ekseni indirimden artışa kaydı ve fiyatlanmamış olan da bu tonun kendisi.</p>
+    <details class="d-b"><summary><span class="dot"></span><span class="lab">Neden bu toplantı diğerlerinden farklı</span><span class="chev">▸</span></summary>
+      <div class="panel">
+        <p>Wall Street Journal'dan Nick Timiraos, Fed'in resmî olmayan sözcüsü sayıldığı için ayrıca ağırlık taşıyan değerlendirmesinde toplantıyı yıllardır en belirsizi ve tam bir kıl payı karar olarak tanımlıyor; en büyük bilinmeyenin de Warsh'ın kendisi olduğunu söylüyor. Haziran toplantısının nokta grafiğinde dokuz şahin nokta vardı, buna karşılık kurul içinde Waller ve Miran güvercin kanatta muhalefet ediyor.</p>
+        <p>Benim okumama göre asıl yapısal değişim, Warsh'ın ileriye dönük yönlendirmeyi ve projeksiyonları bilinçli olarak kısması. Bu, Powell dönemine kıyasla bir rejim değişikliği anlamına geliyor: aynı belirsizlik artık daha yüksek bir prim taşımak zorunda. Sonuç olarak asimetri güvercin tarafta değil şahin tarafta duruyor, çünkü piyasa güvercin senaryoya göre konumlanmış durumda ve ters sürprizin bedeli bu yüzden daha ağır olur. İzlenmesi gereken şey kararın kendisi değil, basın toplantısının tonu ve Eylül kapısının açık bırakılıp bırakılmadığı.</p>
+        <p>Bültenler cephesinde de aynı yön görünüyor: The Overshoot'un 20 Temmuz'da yayımladığı "U.S. Inflation Is Not Really Slowing" yazısı, enflasyonun göründüğü kadar yavaşlamadığını savunarak bu şahin okumayı besliyor.</p>
+        <div class="ground">Çürütme koşulu: Warsh basın toplantısında net bir güvercin sinyal verirse ya da iki güvercin muhalefet iletişime damga vurursa bu değerlendirme zayıflar.</div>
+        <div class="srcline">InvestingLive (Timiraos) · CNBC, 1 Temmuz · The Overshoot, 20 Temmuz</div>
+      </div>
+    </details>
+  </article>
+
+  <article class="story">
+    <div class="kick"><span class="hid">H4</span> Japonya</div>
+    <h3>Japonya faizi 1995'ten beri en yüksek seviyede</h3>
+    <div class="byline"><span class="conf">Güven: Yüksek</span><span>Politika faizi yüzde 1</span></div>
+    <p class="lede">Gündemin gölgesinde kalan ama etkisi uzun vadeli bir gelişme: CNBC'nin 16 Haziran'daki haberine göre Japonya Merkez Bankası faizi yüzde 1'e çıkardı ve bu, 1995'ten bu yana görülen en yüksek seviye. Gerekçe hem yenin zayıflığı hem de artık yerleşmiş sayılan enflasyon.</p>
+    <details><summary><span class="dot"></span><span class="lab">Neden önemli: ucuz para çağının sessiz sonu</span><span class="chev">▸</span></summary>
+      <div class="panel">
+        <p>Bu haber tek başına küçük görünür ama zinciri uzundur. Otuz yıldır Japonya dünyanın ucuz fonlama kaynağıydı; yen ile borçlanıp yüksek getirili varlıklara yatırmak, yani carry işlemi, küresel likiditenin sessiz motorlarından biriydi. Faiz yükseldikçe bu motorun maliyeti artıyor.</p>
+        <p>Türkiye açısından bağlantı dolaylı ama gerçek. Küresel carry iştahı daraldığında gelişen ülke varlıkları ve lira carry'si aynı dalgadan payını alır. Güvenim burada orta düzeyde, çünkü etki ani değil kümülatif; izlenmesi gereken şey yenin seyri ve Japon yatırımcıların yurt dışı tahvil pozisyonlarındaki değişim.</p>
+        <div class="srcline">CNBC, 16 Haziran 2026</div>
+      </div>
+    </details>
+  </article>
+
+  <h2 class="desk">Piyasalar</h2>
+
+  <article class="story lead">
+    <div class="kick"><span class="hid">H5</span> Avrupa · Almanya</div>
+    <h3>Almanya rekora yürüyor: ucuz değerleme, güçlü bilanço, dönen sermaye</h3>
+    <div class="byline"><span class="conf">Güven: Orta</span><span>DAX 25.099</span></div>
+    <p class="lede">TradingEconomics verilerine göre DAX Cuma günü yüzde 1,36 yükselerek 25.099 puana çıktı ve Temmuz içinde gördüğü 25.927'lik zirvenin yaklaşık yüzde üç altında kaldı. Yükselişi taşıyan iki şey vardı: SAP'nin bulut sipariş birikimiyle gelen beklenti üstü çeyreği ve yüzde onluk sıçraması, bir de Euro Bölgesi'nde iş faaliyetinin Temmuz'da yeniden büyümeye dönmesi. Tablo yine de tekdüze değil; Volkswagen zayıf bilançoyla yüzde 2,4 geriledi.</p>
+    <details class="d-b"><summary><span class="dot"></span><span class="lab">Ucuzluk gerçek mi, rakamlar ne diyor</span><span class="chev">▸</span></summary>
+      <div class="panel">
+        <p>FXEmpire'ın derlediği değerleme verilerine göre DAX, S&amp;P 500'e kıyasla ileri fiyat kazanç oranında yüzde 36, Shiller ölçütünde ise yüzde 47 iskontolu işlem görüyor. Temettü verimi yüzde 3,30'a karşı yüzde 1,35, yani 195 baz puanlık bir prim söz konusu. Arka planda Almanya'nın 500 milyar avroluk altyapı programı ve Siemens Energy'nin 154 milyar avroluk sipariş birikimi duruyor; Goldman Sachs ise Almanya için yüzde 1,1 büyüme ve yüzde 2 civarında istikrarlı enflasyon öngörüyor.</p>
+        <p>Benim okumam, ucuzluk, mali teşvik ve sermaye akışının aynı yöne bakması nedeniyle bunun bugünün en kanıtlı fikri olduğu yönünde. Yine de dürüst olmak gerekirse endeks rekora yakın; yani burası ucuz giriş değil, değerleme desteği olan bir momentum girişi.</p>
+        <div class="counter">Karşı tez: ABD gümrükleri Alman otomotivi için doğrudan bir yük oluşturuyor, geçen yılın sonunda şirket iflasları yüzde 8,7 arttı ve Orta Doğu kaynaklı bir petrol şoku enerji yoğun Alman sanayisini ilk vuracak şeylerden biri olur.</div>
+        <div class="srcline">TradingEconomics, 24 Temmuz · FXEmpire · STOXX</div>
+      </div>
+    </details>
+  </article>
+
+  <article class="story">
+    <div class="kick"><span class="hid">H6</span> Teknoloji</div>
+    <h3>Big Tech'in sınavı harcamanın büyüklüğü değil, nakdin yeterliliği</h3>
+    <div class="byline"><span class="conf">Güven: Orta-Düşük</span><span>Nasdaq yüzde 1,2 geriledi</span></div>
+    <p class="lede">Microsoft, Meta ve Apple bu hafta bilanço açıklıyor ve sorunun şekli değişmiş durumda. Yapay zekâ harcamasının devasa olduğunu piyasa zaten biliyor; artık merak edilen, serbest nakit akışının bu harcamayı karşılayıp karşılamadığı ve amortisman takviminin kârı ne ölçüde süslediği. Cuma günkü çip satışı ve yarı iletkenlerden bulut devlerine doğru başlayan rotasyon, anlatının içeriden çatladığını gösteriyor.</p>
+    <details><summary><span class="dot"></span><span class="lab">Kalabalık kapı sorunu</span><span class="chev">▸</span></summary>
+      <div class="panel">
+        <p>BofA'nın 2-9 Temmuz'da 210 fon yöneticisiyle yaptığı ankette en kalabalık işlem rekor bir oranla, yüzde 82 ile küresel yarı iletkende uzun pozisyon çıktı. Aynı ankette en büyük kuyruk riski ise yüzde 45 ile yapay zekâ balonu olarak işaretlendi. Bank of America stratejistlerinin hesabına göre "AI Big 10" olarak anılan grup S&amp;P 500'ün yüzde 41'ini oluşturuyor ve bu, dot-com dönemine denk bir yoğunlaşma. Wedbush'tan Dan Ives bu harcamayı bir silahlanma yarışı olarak savunurken, ayı kanadı 2026'nın giderek 1999'a benzediğini öne sürüyor.</p>
+        <p>Benim okumama göre asıl kırılganlık şurada: kalabalık, tam da en çok korktuğu şeyde uzun pozisyonda. Bu yapı, küçük bir kötü sürprizin bile neden orantısız bir hareket yaratabileceğini açıklıyor, çünkü çıkış kapısı tek ve dar. İzlenmesi gereken kombinasyon, harcama rehberliğinin yukarı revize edilmesiyle amortisman ömrünün uzatılmasının aynı bilançoda buluşması.</p>
+        <div class="ground">Çürütme koşulu: Microsoft ve Meta güçlü serbest nakit akışıyla harcamayı rahat karşıladığını gösterirse bu değerlendirme zayıflar.</div>
+        <div class="srcline">BofA Global Fund Manager Survey, 2-9 Temmuz · Yahoo Finance</div>
+      </div>
+    </details>
+  </article>
+
+  <article class="story">
+    <div class="kick"><span class="hid">H7</span> Sermaye akışı</div>
+    <h3>Söylem boğacı, para tedbirli</h3>
+    <div class="byline"><span class="conf">Güven: Orta</span></div>
+    <p class="lede">Haftanın en öğretici çelişkisi konumlanma ile gerçek para arasında duruyor. BofA anketine göre fon yöneticileri sözde boğacı: nakit oranı yüzde 3,6 ile Şubat'tan bu yana en düşük seviyede ve küresel hissede net yüzde 42 fazla ağırlık var. Ama haftalık ETF verileri başka bir şey söylüyor; ABD hisse fonlarından 26,6 milyar dolar çıkarken tahvile 15,3, uluslararası hisseye 6,2 milyar dolar girdi. Üstüne Investing.com'un aktardığı verilere göre para piyasası fonları yaklaşık 8 trilyon dolarla rekor seviyede duruyor.</p>
+    <details><summary><span class="dot"></span><span class="lab">Bağımsız akışlar birbirini doğruluyor mu</span><span class="chev">▸</span></summary>
+      <div class="panel">
+        <p>Bu sonucu tek bir veriye değil, birbirinden bağımsız akışların aynı yöne bakmasına dayandırıyorum. Konsantre ABD hissesinden çıkış, Avrupa fonlarına giren yapısal para, enerji sektörüne akan milyarlar ve IndexBox'ın aktardığı üzere küresel hisse fonlarındaki dokuz haftalık giriş serisi — dördü de aynı rotasyonu anlatıyor. Buna karşılık rekor para piyasası bakiyesi, altındaki yatırımcı çıkışı ve kripto ETF'lerindeki yönsüz salınım tümüyle bir risk iştahı olmadığını gösteriyor.</p>
+        <p>Birleşik okumam şu: rotasyon güçlü ama iştah tedbirli. Para pahalı ve konsantre ABD hissesinden ucuz ya da çeşitlendirilmiş alanlara kayıyor, ancak sistemde hâlâ büyük bir nakit yastığı duruyor. Bir dürüstlük notu da eklemeliyim: anket 2-9 Temmuz konumlanmasını, ETF verisi ise belirli bir kısa haftayı ölçüyor; pencereler birebir aynı değil ve bu çelişkiyi bir ölçüm eşitliği gibi sunmuyorum.</p>
+        <div class="srcline">BofA FMS · Yahoo Finance ve ETF Trends · Investing.com · IndexBox</div>
+      </div>
+    </details>
+  </article>
+
+  <h2 class="desk">Türkiye</h2>
+
+  <article class="story lead">
+    <div class="kick"><span class="hid">H8</span> Bankacılık</div>
+    <h3>Banka hisselerinde satış baskısı: indirim beklentisi Eylül'e kaydı</h3>
+    <div class="byline"><span class="conf">Güven: Orta</span><span>Dolar/TL 47,33</span></div>
+    <p class="lede">BIST'in yükselişini bir süredir frenleyen şey bankalar. Türk piyasa kaynaklarının aktardığına göre yatırımcılar Temmuz toplantısında faiz indirimi gelmeyeceğini fiyatladı ve beklentiyi 10 Eylül'e erteledi. Haziran enflasyonunun yıllık yüzde 32,11'de kalması ve gıda fiyatlarındaki beklenmedik yükseliş bu ertelemeyi besledi. Sektörde kârlılıktaki ivme kaybı, düşük fiyat kazanç oranlarına rağmen satışı sürdürüyor.</p>
+    <details class="d-b"><summary><span class="dot"></span><span class="lab">Karşı akım: yerli satarken yabancı alıyor</span><span class="chev">▸</span></summary>
+      <div class="panel">
+        <p>Olumsuz havaya rağmen yabancı yatırımcılar son iki haftada toplam 1,5 milyar dolarlık hisse ve tahvil alımı yaptı. TradingEconomics verilerine göre politika faizi gecelik borç vermede yüzde 37'de dördüncü kez sabit tutuldu ve lira 47,33 ile rekor bölgesinde bulunuyor; merkez bankası kontrollü ve yavaş bir devir sürdürüyor.</p>
+        <p>Benim okumam, buradaki iki ters sinyalin aslında bir çelişki değil bir vade farkı olduğu yönünde. Yerli fiyatlama bankalarda kısa vadeli kâr marjı kaybını satıyor, yabancı ise taşınabilir reel getiriyi ve disinflasyon patikasını alıyor. Asıl kırılma noktası Eylül olacak: indirim gelirse bankalarda değerleme yeniden açılır, gelmezse ivme kaybı derinleşir.</p>
+        <div class="counter">Türkiye'nin asıl kırılganlığı yurt içinden değil dışarıdan geliyor. Şahin bir Fed ve güçlü dolar, gelişen ülke tahsisi zaten düşerken lira carry'sini oynaklığa duyarlı kılıyor; BofA anketinde küresel yöneticilerin gelişen ülke ağırlığı bir ayda net yüzde 42'den 32'ye indi.</div>
+        <div class="srcline">Son Havadis ve CNN Türk · TradingEconomics · BofA FMS</div>
+      </div>
+    </details>
+  </article>
+
+  <article class="story">
+    <div class="kick"><span class="hid">H9</span> Savunma sanayii</div>
+    <h3>Çelik Kubbe bütçesi büyürken savunma hisseleri ayrışıyor</h3>
+    <div class="byline"><span class="conf">Güven: Orta</span></div>
+    <p class="lede">Aynı jeopolitik dalga BIST'te iki sektörü ters yönde etkiliyor. Bankalar sıkı para ve zayıf lirayla baskı altındayken, bölgesel füze tehdidi Türkiye'nin hava savunma programını meşrulaştırıyor. Türk savunma sanayii kaynaklarının aktardığına göre Erdoğan NATO zirvesinde programa 24 milyar dolarlık ek bütçeden söz etti, ASELSAN ise 780 milyon avroyu aşan sözleşmeler imzaladı.</p>
+    <details><summary><span class="dot"></span><span class="lab">Endeks tek bir hikâye değil</span><span class="chev">▸</span></summary>
+      <div class="panel">
+        <p>Buradan çıkan pratik sonuç, BIST'i tek bir makro anlatı üzerinden okumanın yanıltıcı olduğu. Aynı haber akışı bankada çarpanı daraltırken savunmada genişletiyor; dolayısıyla endeks yatay görünürken altta ciddi bir ıraksama olabilir. Asıl bilgi endeks seviyesinde değil, sektörler arasındaki farkta duruyor.</p>
+        <p>İzlenmesi gereken şey, jeopolitik yatıştıkça savunma priminin ne kadarını geri verdiği. Bütçe taahhüdü çok yıllı ve kalıcıysa prim tamamen sönmez; yalnızca haber akışına bağlı bir primse hızla erir.</p>
+        <div class="srcline">SavunmaSanayiST ve DefenceTurk</div>
+      </div>
+    </details>
+  </article>
+
+  <h2 class="desk">Emtia</h2>
+
+  <article class="story">
+    <div class="kick"><span class="hid">H10</span> Yumuşak emtia</div>
+    <h3>Kakao yeniden ısındı, kahve soğudu</h3>
+    <div class="byline"><span class="conf">Güven: Orta</span></div>
+    <p class="lede">Yakından takip ettiğin iki üründe yönler ayrıştı. StoneX'in 24 Temmuz tarihli günlük kahve raporuna göre Eylül vadeli arabika haftayı 690 puan düşüşle ve üst üste ikinci kez negatif kapattı; New York'ta işlem hacmi 26 Mayıs'tan bu yana en düşük seviyedeydi. Kakao ise otuz günde yaklaşık yüzde 18 yükselerek ton başına 5.367 dolara döndü.</p>
+    <details><summary><span class="dot"></span><span class="lab">Fiyatın önü: pozisyon ve hastalık</span><span class="chev">▸</span></summary>
+      <div class="panel">
+        <p>Kahvede Eylül kontratında açık pozisyon 60.754 lot ve endeks fonlarının roll dönemi 7 Ağustos'ta başlıyor. Kakaoda ise 52 haftalık aralık 2.798 ile 8.793 dolar arasında; piyasa verilerinde sürücüler arz tarafında toplanıyor: şişkin sürgün virüsü, siyah kabuk hastalığı, yaşlanan ağaçlar ve düşük stoklar.</p>
+        <p>Benim okumam, kahvedeki zayıflığın bir talep hikâyesinden çok pozisyon temizliği olduğu yönünde; roll öncesi teknik baskı fiyatı aşağı çekiyor ve yönü asıl netleştirecek olan COT verisi. Kakaoda ise arzın Fildişi ve Gana'da yoğunlaşması, tek bir hava ya da hastalık şokunun bütün piyasayı vurmasına yol açıyor.</p>
+        <div class="srcline">StoneX günlük kahve raporu, 24 Temmuz · kakao piyasa verileri</div>
+      </div>
+    </details>
+  </article>
+
+  <article class="story">
+    <div class="kick"><span class="hid">H11</span> Değerli metal</div>
+    <h3>Altının limanı sönüyor: zirveden yüzde 26 aşağıda</h3>
+    <div class="byline"><span class="conf">Güven: Orta</span><span>Ons ~4.140 dolar</span></div>
+    <p class="lede">Altını güvenli liman diye anmaya alıştık ama bu yıl tablo tersine döndü. Temmuz başındaki piyasa görünümlerine göre ons, Ocak'ta gördüğü 5.598 dolarlık zirveden yaklaşık yüzde 26 aşağıda, 4.140 dolar civarında işlem görüyor. Karşı rüzgârların çoğu aynı anda esiyor: Fed'in faiz artırma ihtimali, güçlü dolar, İran'da müzakere ihtimaliyle sönen risk primi ve yatırımcı çıkışı.</p>
+    <details><summary><span class="dot"></span><span class="lab">İki karşıt kuvvet</span><span class="chev">▸</span></summary>
+      <div class="panel">
+        <p>Altın ETF'lerinde 90 günlük akış eksi 5 ile eksi 10 milyar dolar bandına indi; buna karşılık merkez bankaları yılın ilk çeyreğinde 244 ton alarak beş yıllık ortalamanın üzerinde kaldı. Teknik senaryolarda aşağı hedef 2.575 ile 2.750 dolar aralığı, yukarı toparlanma ise 4.900 dolar yönünde konuşuluyor.</p>
+        <p>Benim okumam, altının çatışmayla ilişkisinin petrolünki gibi doğrudan değil koşullu ve çift yönlü olduğu. Bir yanda jeopolitik liman talebi fiyatı yukarı çekiyor, öbür yanda aynı jeopolitik petrol üzerinden enflasyonu ve şahin Fed'i besleyip reel faizi yükselterek altını aşağı itiyor. Bu yüzden altını al ya da sat diye değil, Fed'in dönüşünü bekleyen bir varlık olarak okuyorum.</p>
+        <div class="srcline">Temmuz altın görünümü derlemeleri · Dünya Altın Konseyi verileri</div>
+      </div>
+    </details>
+  </article>
+
+  <h2 class="desk">Piyasa Panosu</h2>
+  <table class="mkt">
+    <thead><tr><th>Varlık</th><th class="r">Değer</th><th class="r">Gün</th><th>Not</th></tr></thead>
+    <tbody>
+      <tr><td class="asset">S&amp;P 500</td><td class="r">7.411,98</td><td class="r up">+0,1%</td><td>üst üste ikinci düşük hafta</td></tr>
+      <tr><td class="asset">Nasdaq 100</td><td class="r">28.128,34</td><td class="r down">−1,2%</td><td>çip satışı</td></tr>
+      <tr><td class="asset">Dow</td><td class="r">51.947,25</td><td class="r up">+0,5%</td><td>defansifler güçlü</td></tr>
+      <tr><td class="asset">DAX</td><td class="r">25.099</td><td class="r up">+1,4%</td><td>rekor 25.927</td></tr>
+      <tr><td class="asset">ABD 10 yıllık</td><td class="r">%4,69</td><td class="r">—</td><td>2 yıllık %4,33</td></tr>
+      <tr><td class="asset">Dolar endeksi</td><td class="r">101,47</td><td class="r">—</td><td>15 ay zirvesine yakın</td></tr>
+      <tr><td class="asset">Brent</td><td class="r">96,78 $</td><td class="r">—</td><td>hafta yaklaşık −%4</td></tr>
+      <tr><td class="asset">Altın</td><td class="r">~4.140 $</td><td class="r">—</td><td>Ocak zirvesinden −%26</td></tr>
+      <tr><td class="asset">Bitcoin</td><td class="r">64.092 $</td><td class="r down">−1,5%</td><td>yönsüz</td></tr>
+      <tr><td class="asset">VIX</td><td class="r">18,6</td><td class="r">—</td><td>FOMC öncesi sakin</td></tr>
+      <tr><td class="asset">Dolar/TL</td><td class="r">47,33</td><td class="r">—</td><td>rekor ~47,4</td></tr>
+      <tr><td class="asset">BIST 100</td><td class="r">~14.139</td><td class="r">—</td><td>22 Temmuz</td></tr>
+      <tr><td class="asset">Kakao</td><td class="r">5.367 $</td><td class="r up">+18% / 30g</td><td>arz endişesi</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="desk">Günün Ağı</h2>
+  <div class="netcard">
+    <svg viewBox="0 0 380 300" xmlns="http://www.w3.org/2000/svg" font-family="var(--sans)">
+      <defs><marker id="ar" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+      <polyline points="190,150 145,110 100,70" fill="none" stroke="var(--accent)" stroke-width="2" marker-mid="url(#ar)"/>
+      <polyline points="100,70 190,58 280,46" fill="none" stroke="var(--accent)" stroke-width="2" marker-mid="url(#ar)"/>
+      <polyline points="280,46 310,95 340,144" fill="none" stroke="var(--accent)" stroke-width="2" marker-mid="url(#ar)"/>
+      <polyline points="340,144 265,147 190,150" fill="none" stroke="var(--accent)" stroke-width="2" marker-mid="url(#ar)"/>
+      <polyline points="190,150 130,165 70,180" fill="none" stroke="var(--ink)" stroke-width="1.6" marker-mid="url(#ar)"/>
+      <polyline points="280,46 250,140 220,235" fill="none" stroke="var(--muted)" stroke-width="1.4" stroke-dasharray="5 4" marker-mid="url(#ar)"/>
+      <polyline points="220,235 175,248 130,262" fill="none" stroke="var(--muted)" stroke-width="1.4" stroke-dasharray="5 4" marker-mid="url(#ar)"/>
+      <polyline points="190,150 165,205 140,262" fill="none" stroke="var(--muted)" stroke-width="1.4" stroke-dasharray="5 4" marker-mid="url(#ar)"/>
+      <text x="140" y="104" font-size="12" fill="var(--up)" text-anchor="middle">+</text>
+      <text x="190" y="52" font-size="12" fill="var(--up)" text-anchor="middle">+</text>
+      <text x="318" y="96" font-size="12" fill="var(--down)" text-anchor="middle">−</text>
+      <text x="265" y="138" font-size="12" fill="var(--down)" text-anchor="middle">−</text>
+      <text x="122" y="158" font-size="12" fill="var(--up)" text-anchor="middle">+</text>
+      <text x="245" y="200" font-size="9.5" fill="var(--muted)" text-anchor="middle">koşullu</text>
+      <text x="168" y="255" font-size="12" fill="var(--down)" text-anchor="middle">−</text>
+      <circle cx="190" cy="150" r="11" fill="var(--accent)"/>
+      <circle cx="100" cy="70" r="6" fill="var(--paper2)" stroke="var(--ink-soft)" stroke-width="1.2"/>
+      <circle cx="280" cy="46" r="6" fill="var(--paper2)" stroke="var(--ink-soft)" stroke-width="1.2"/>
+      <circle cx="340" cy="144" r="6" fill="var(--paper2)" stroke="var(--accent)" stroke-width="1.5"/>
+      <circle cx="70" cy="180" r="6" fill="var(--paper2)" stroke="var(--ink-soft)" stroke-width="1.2"/>
+      <circle cx="220" cy="235" r="6" fill="var(--paper2)" stroke="var(--ink-soft)" stroke-width="1.2"/>
+      <circle cx="130" cy="262" r="6" fill="var(--paper2)" stroke="var(--ink-soft)" stroke-width="1.2"/>
+      <text x="190" y="134" font-size="11.5" font-weight="700" fill="var(--accent)" text-anchor="middle">İran</text>
+      <text x="100" y="58" font-size="11.5" fill="var(--ink)" text-anchor="middle">Petrol</text>
+      <text x="280" y="34" font-size="11.5" fill="var(--ink)" text-anchor="middle">Enflasyon</text>
+      <text x="340" y="132" font-size="11.5" fill="var(--ink)" text-anchor="middle">Ara seçim</text>
+      <text x="66" y="196" font-size="11.5" fill="var(--ink)" text-anchor="middle">ASELSAN</text>
+      <text x="230" y="252" font-size="11.5" fill="var(--ink)" text-anchor="middle">Fed · reel faiz</text>
+      <text x="122" y="278" font-size="11.5" fill="var(--ink)" text-anchor="middle">Altın · Lira</text>
+      <line x1="14" y1="292" x2="34" y2="292" stroke="var(--accent)" stroke-width="2"/><text x="40" y="296" font-size="10" fill="var(--ink-soft)">seçim döngüsü</text>
+      <line x1="130" y1="292" x2="150" y2="292" stroke="var(--ink)" stroke-width="1.6"/><text x="156" y="296" font-size="10" fill="var(--ink-soft)">doğrudan</text>
+      <line x1="230" y1="292" x2="250" y2="292" stroke="var(--muted)" stroke-width="1.4" stroke-dasharray="5 4"/><text x="256" y="296" font-size="10" fill="var(--ink-soft)">koşullu</text>
+    </svg>
+    <div class="cap">Ağı bugün açıyoruz, çünkü tek bir düğüm dört masayı birden bağlıyor: İran petrolü, petrol enflasyonu, enflasyon ara seçim baskısını, o baskı da yeniden İran politikasını belirliyor. Savunma bağı doğrudan; altın ve lira ise koşullu ve çift yönlü.</div>
+  </div>
+
+  <h2 class="desk">Kısa Kısa</h2>
+  <div class="briefs">
+    <div class="brief"><b>Tahvil</b>ABD on yıllığı yüzde 4,69, iki yıllığı yüzde 4,33; eğri normal görünüyor ama Warsh sürprizi ön ucu oynatabilir.</div>
+    <div class="brief"><b>Enerji</b>XLE 2026'da yüzde 21,6 yükseldi; bu ralli petrol primine bağlı olduğu için doğrudan İran sonucuna duyarlı.</div>
+    <div class="brief"><b>Kripto</b>Spot Bitcoin ETF akışı yönsüz seyrediyor: 13 Temmuz'da 424,7 milyon dolar çıkış, başka günlerde yüz milyonlarca dolar giriş oldu.</div>
+    <div class="brief"><b>Türkiye risk primi</b>Beş yıllık CDS 200 ile 225 baz puan bandında; Fed sonrası dolar hareketiyle izlenmeli.</div>
+  </div>
+
+  <h2 class="desk">Bülten Radarı</h2>
+  <div class="radar">
+    <div class="ri"><b>The Overshoot</b> — "U.S. Inflation Is Not Really Slowing", enflasyonun göründüğü kadar yavaşlamadığını savunuyor ve H3'teki şahin okumayı besliyor. <span>20 Temmuz</span></div>
+    <div class="ri"><b>Doomberg</b> — "Artificial Bloom", yapay zekâ harcama döngüsünü ele alıyor; H6 ile bağlantılı. <span>14 Temmuz</span></div>
+    <div class="ri"><b>Chartbook / Adam Tooze</b> — "Chartbook 455: The AI boom, China's walled-in-wealth". <span>1 Temmuz</span></div>
+    <div class="ri"><b>Fed Guy</b> — Şubat'tan beri yeni yazı yok; kaynak kenarda bekletiliyor. <span>son: 23 Şubat</span></div>
+  </div>
+
+  <h2 class="desk">Yatırım Değerlendirmesi</h2>
+  <div class="disc">Yatırım danışmanı değilim ve bunlar alım satım tavsiyesi değil; kararını kendin verirken kullanacağın kanıtlı bir değerlendirme. Rakamlar kaynaklıdır, ama aşağıdaki yüzdelik olasılıklar hesaplanmış değil, benim öznel değerlendirmemdir.</div>
+
+  <div class="inv">
+    <h4>Avrupa ve Almanya borsası <span class="st st-pos">olumluya eğik</span></h4>
+    <p>DAX, S&amp;P 500'e göre ileri fiyat kazançta yüzde 36, Shiller ölçütünde yüzde 47 iskontolu ve temettü verimi yüzde 3,30'a karşı yüzde 1,35. Ucuz değerleme, 500 milyar avroluk mali paket ve Avrupa'ya dönen sermaye aynı yöne baktığı için bugünün en kanıtlı fikri bu. Yukarı tarafta 25.099'dan rekor 25.927'ye yaklaşık yüzde üçlük bir alan var; ötesi değerleme boşluğunun kapanmasına bağlı ve kaynaklarda net bir fiyat hedefi bulunmadığı için uydurmuyorum.</p>
+    <div class="bar"><div class="u" style="width:60%">Yukarı 60</div><div class="d" style="width:40%">40</div></div>
+    <p>Bu asimetriyi çevirebilecek şeyler: gümrüklerin Alman otomotivine baskısı, petrol şoku ve artan iflaslar. Endeks rekora yakın olduğu için burası ucuz giriş değil momentum girişi. Araç olarak tek hisse yerine sepet mantıklı: bir DAX fonu ya da daha geniş EURO STOXX 50 veya STOXX Europe 600 borsa yatırım fonu.</p>
+  </div>
+
+  <div class="inv">
+    <h4>Enerji (XLE) <span class="st st-two">nötr, jeopolitik hedge</span></h4>
+    <p>Fon 59,62 dolardan işlem görüyor, fiyat kazanç oranı 19,3 ve temettü verimi yüzde 2,55; 2026 getirisi fiyat bazında yüzde 21,6, temettü dahil yüzde 41,6. Yani ucuz değil, çoktan ralli yapmış durumda ve primi tamamen İran sonucuna bağlı.</p>
+    <div class="bar"><div class="u" style="width:50%">Yukarı 50</div><div class="d" style="width:50%">50</div></div>
+    <p>Doğrudan bir olayın sonucuna bağlı olduğu için asimetri simetrik. Bu yüzden onu bir yön bahsinden çok, portföyün geri kalanına karşı petrol ve jeopolitik hedge'i olarak görüyorum. Fon içinde ExxonMobil yüzde 20,8, Chevron yüzde 15,1 ağırlıkta; gider oranı yüzde 0,08.</p>
+  </div>
+
+  <div class="inv">
+    <h4>Altın <span class="st st-cau">şimdilik bekle</span></h4>
+    <p>Ons 4.140 dolar civarında ve Ocak zirvesinden yüzde 26 aşağıda. Düşmüş olması fundamental bir ucuzluk değil momentum kaybı; karşı rüzgârların çoğu hâlâ yerinde ve tek gerçek destek merkez bankası alımı.</p>
+    <div class="bar"><div class="u" style="width:42%">Yukarı 42</div><div class="d" style="width:58%">58</div></div>
+    <p>Şu an hafif aşağı eğik görüyorum. Bunu çevirecek tetikleyici Fed'in net biçimde güvercin dönmesi olur. Senin favorin olduğunu biliyorum ama veri şu an beklemeyi söylüyor.</p>
+  </div>
+
+  <div class="method">
+    <p>Bu sayı on bir ayrı haber üzerine kuruludur; her biri kendi kaynağıyla durur ve hiçbiri diğerinin tekrarı değildir. Ölçülen veri, başkasının görüşü ve benim çıkarımım cümlenin içinde birbirinden ayrılır; çıkarımların argümanı ve çürütme koşulu açıkça yazılır. Elde edilemeyen veri için "yok" denir. Kurallar üstteki künye panelinde görünür ve geri bildiriminle değişir.</p>
+    <p class="src2">Kaynaklar:
+      <a href="https://fortune.com/2026/07/23/trump-catch-22-iran-oil-inflation-withdraw-midterms/">Fortune</a> ·
+      <a href="https://www.npr.org/2026/07/18/nx-s1-5898916/us-iran-escalate-strikes">NPR</a> ·
+      <a href="https://www.cnn.com/2026/07/15/world/live-news/iran-war-trump">CNN</a> ·
+      <a href="https://www.indexbox.io/blog/eu-cautiously-welcomes-new-us-tariffs-cites-trade-deal-alignment/">IndexBox</a> ·
+      <a href="https://investinglive.com/central-banks/wsj-timiraos-fed-is-heading-into-one-of-the-most-unpredictable-meetings">InvestingLive</a> ·
+      <a href="https://www.cnbc.com/2026/06/16/boj-rate-hike-historic-inflation.html">CNBC</a> ·
+      <a href="https://tradingeconomics.com/germany/stock-market">TradingEconomics</a> ·
+      <a href="https://www.fxempire.com/forecasts/article/dax-2026-outlook-why-germanys-market-could-outperform-the-sp-500-again-1599842">FXEmpire</a> ·
+      <a href="https://macenews.com/bofa-global-research-fund-manager-survey-fund-managers-reduce-cash-holdings-move-into-stocks-and-bonds-in-july/">BofA FMS</a> ·
+      <a href="https://finance.yahoo.com/markets/stocks/articles/investors-pull-3-7b-etfs-210034853.html">Yahoo Finance</a> ·
+      <a href="https://www.sonhavadis.com/borsa-istanbulda-banka-hisseleri-baski-altinda-bist100de-temkinli-seyir/124946">Son Havadis</a> ·
+      <a href="https://www.stonex.com/en/insights/daily-coffee-report-7-23-26-2026-07-24/">StoneX</a> ·
+      <a href="https://stockanalysis.com/etf/xle/">stockanalysis</a>
+    </p>
+  </div>
+
+  <div class="foot">SABAH · Öngörü Radarı — 26 Temmuz 2026 · künye v1.0 · on bir haber<br><a href="arsiv/" style="color:var(--accent2)">Geçmiş sayılar →</a></div>
+
+</div>
+
+<script>
+  function genFb(){
+    var h=document.getElementById('fb-h').value;
+    var t=document.getElementById('fb-t').value;
+    var x=document.getElementById('fb-x').value.trim();
+    var k=document.getElementById('fb-k').value;
+    var kalici = k.indexOf('Evet')===0 ? 'Evet, künyeye kural olarak ekle ve sürümü yükselt' : 'Hayır, yalnızca bu sayı için';
+    var s = 'SABAH geri bildirim — 26 Temmuz 2026 (künye v1.0)\n'
+          + 'Bölüm: ' + h + '\n'
+          + 'Konu: ' + t + '\n'
+          + 'Geri bildirim: ' + (x || '(boş)') + '\n'
+          + 'Kalıcı kural: ' + kalici;
+    var o=document.getElementById('fb-out');
+    o.textContent=s; o.style.display='block';
+  }
+  function copyFb(){
+    var o=document.getElementById('fb-out');
+    if(o.style.display==='none'||!o.textContent){ genFb(); }
+    var txt=o.textContent;
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(function(){
+        o.textContent = txt + '\n\n✓ Kopyalandı — sohbete yapıştırabilirsin.';
+      }).catch(function(){});
+    }
+  }
+</script>
+</body>
+</html>
