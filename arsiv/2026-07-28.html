@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SABAH — 28 Temmuz 2026</title>
+<style>
+  :root{
+    --paper:#fbfbf9; --paper2:#ffffff; --ink:#16191d; --ink-soft:#4e565e; --muted:#8a9099;
+    --rule:#e4e5e2; --rule2:#eceded; --accent:#b0391f; --accent2:#22405c;
+    --hfont:Georgia,'Iowan Old Style','Times New Roman',serif;
+    --sans:'Helvetica Neue',Inter,system-ui,Arial,sans-serif;
+    --up:#1f7a4d; --down:#b23a2e; --amber:#b0832a; --cbg:#f4ecdb;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:var(--paper);color:var(--ink);font-family:var(--hfont);line-height:1.7;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:790px;margin:0 auto;padding:16px 18px 72px}
+  p{margin:.6em 0}
+
+  /* control bar */
+  .ctrl{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+  .ctrl details{flex:1;min-width:170px;border:1px solid var(--rule);border-radius:6px;background:var(--paper2);margin:0}
+  .ctrl summary{font-family:var(--sans);font-size:11.5px;font-weight:600;color:var(--accent2);cursor:pointer;list-style:none;padding:9px 12px;display:flex;align-items:center;gap:7px}
+  .ctrl summary::-webkit-details-marker{display:none}
+  .ctrl summary .cv{color:var(--muted);font-size:10px;transition:transform .2s;margin-left:auto}
+  .ctrl details[open] summary .cv{transform:rotate(90deg)}
+  .ctrl .body{padding:2px 14px 14px;font-size:13.5px;border-top:1px solid var(--rule2)}
+  .ctrl .body h5{font-family:var(--sans);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:12px 0 4px;font-weight:800}
+  .ctrl .body ul{margin:2px 0;padding-left:17px}
+  .ctrl .body li{margin:2px 0;line-height:1.55}
+  .ver{font-family:var(--sans);font-size:10px;background:var(--cbg);color:#8a6614;padding:1px 7px;border-radius:20px;font-weight:700}
+
+  /* feedback form */
+  .fb label{display:block;font-family:var(--sans);font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--accent2);margin:10px 0 3px}
+  .fb select,.fb textarea,.fb input{width:100%;font-family:var(--sans);font-size:13px;padding:7px 9px;border:1px solid var(--rule);border-radius:5px;background:var(--paper);color:var(--ink)}
+  .fb textarea{min-height:70px;resize:vertical;line-height:1.5}
+  .fb button{font-family:var(--sans);font-size:12px;font-weight:600;padding:8px 14px;border:1px solid var(--accent);background:var(--accent);color:#fff;border-radius:5px;cursor:pointer;margin-top:10px}
+  .fb button.sec{background:transparent;color:var(--accent2);border-color:var(--rule)}
+  .fb .out{margin-top:10px;font-family:var(--sans);font-size:12px;background:var(--paper);border:1px dashed var(--rule);border-radius:5px;padding:9px 11px;white-space:pre-wrap;color:var(--ink-soft);display:none}
+  .fb .hint{font-family:var(--sans);font-size:11px;color:var(--muted);margin-top:8px;line-height:1.5}
+
+  .mast{border-bottom:1px solid var(--ink);padding-bottom:10px}
+  .kt{font-family:var(--sans);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);font-weight:700}
+  .mast h1{font-family:var(--hfont);font-size:clamp(42px,13vw,80px);margin:.02em 0 0;letter-spacing:.06em;line-height:.9;font-weight:700}
+  .mast .tag{font-family:var(--sans);font-size:11.5px;color:var(--ink-soft);font-style:italic;margin-top:3px}
+  .mast .sub{font-family:var(--sans);font-size:11.5px;color:var(--ink-soft);display:flex;flex-wrap:wrap;gap:4px 14px;justify-content:space-between;border-top:1px solid var(--rule);margin-top:10px;padding-top:8px}
+  .mast .sub b{color:var(--ink)}
+
+  .index{background:var(--paper2);border:1px solid var(--rule);border-radius:6px;padding:12px 15px;margin:14px 0 4px}
+  .index .h{font-family:var(--sans);font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:7px}
+  .index ol{margin:0;padding-left:19px;font-family:var(--sans);font-size:12.5px;color:var(--ink-soft);line-height:1.9}
+  .index b{color:var(--ink);font-weight:600}
+
+  h2.desk{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);border-bottom:2px solid var(--ink);padding-bottom:5px;margin:34px 0 2px;font-weight:800}
+
+  .story{padding:15px 0 5px;border-bottom:1px solid var(--rule2)}
+  .story:last-of-type{border-bottom:none}
+  .story .kick{font-family:var(--sans);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent2);font-weight:700;display:flex;align-items:center;gap:8px}
+  .hid{font-family:var(--sans);font-size:9.5px;font-weight:800;letter-spacing:.03em;background:var(--accent2);color:#fff;padding:1px 6px;border-radius:3px}
+  .story h3{font-family:var(--hfont);font-size:23px;line-height:1.16;margin:.16em 0 .14em}
+  .story.lead h3{font-size:28px}
+  .byline{font-family:var(--sans);font-size:11px;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;margin-bottom:8px}
+  .conf{font-family:var(--sans);font-size:9.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:var(--cbg);color:#8a6614;padding:1px 8px;border-radius:20px}
+  .lede{font-size:16.5px}
+  .story.lead .lede{font-size:17.5px}
+  .lede .drop{float:left;font-family:var(--hfont);font-size:46px;line-height:.8;padding:7px 9px 0 0;color:var(--accent)}
+
+  .story details{border-top:1px solid var(--rule);margin-top:10px}
+  .story summary{font-family:var(--sans);font-size:12px;font-weight:600;color:var(--ink);cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:10px 2px}
+  .story summary::-webkit-details-marker{display:none}
+  .dot{width:6px;height:6px;border-radius:50%;flex:none;background:var(--accent)}
+  .d-b .dot{background:var(--accent2)}
+  .story summary .lab{flex:1}
+  .story summary .chev{color:var(--muted);transition:transform .2s;font-size:11px}
+  .story details[open] summary .chev{transform:rotate(90deg)}
+  .panel{padding:0 2px 16px 15px;font-size:15.5px}
+  .panel p:first-child{margin-top:0}
+  .ground{background:var(--cbg);border-radius:4px;padding:9px 12px;margin-top:9px;font-size:14.5px}
+  .counter{border-left:3px solid var(--amber);background:var(--paper2);padding:9px 12px;font-size:14.5px;border-radius:0 4px 4px 0;margin-top:9px}
+  .srcline{font-family:var(--sans);font-size:10.5px;color:var(--muted);margin-top:9px;font-style:italic}
+
+  table.mkt{width:100%;border-collapse:collapse;font-size:14px;margin-top:6px}
+  table.mkt th,table.mkt td{padding:6px;border-bottom:1px solid var(--rule2);vertical-align:top}
+  table.mkt th{font-family:var(--sans);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border-bottom:2px solid var(--ink)}
+  table.mkt td.r{text-align:right;font-variant-numeric:tabular-nums}
+  .up{color:var(--up);font-weight:700} .down{color:var(--down);font-weight:700}
+  .asset{font-weight:700}
+
+  .netcard{border:1px solid var(--rule);background:var(--paper2);border-radius:6px;padding:11px;margin-top:8px}
+  .netcard svg{width:100%;height:auto;display:block}
+  .netcard .cap{font-family:var(--sans);font-size:11px;color:var(--ink-soft);margin-top:7px;line-height:1.6}
+
+  .briefs,.radar{border:1px solid var(--rule);border-radius:6px;overflow:hidden;margin-top:6px}
+  .brief,.ri{padding:9px 12px;border-bottom:1px solid var(--rule2);background:var(--paper2);font-size:14.5px}
+  .brief:last-child,.ri:last-child{border-bottom:none}
+  .brief b{font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--accent2);display:block;margin-bottom:1px}
+  .ri b{color:var(--accent2)} .ri span{font-family:var(--sans);font-size:10.5px;color:var(--muted)}
+
+  .inv{border:1px solid var(--rule);border-radius:7px;background:var(--paper2);padding:13px 15px;margin:11px 0}
+  .inv h4{font-family:var(--hfont);font-size:19px;margin:.1em 0 .35em}
+  .inv .st{font-family:var(--sans);font-size:10px;font-weight:700;padding:1px 9px;border-radius:20px}
+  .st-pos{background:#e8f2ec;color:var(--up)} .st-two{background:#e7edf3;color:var(--accent2)} .st-cau{background:var(--cbg);color:#8a6614}
+  .inv p{font-size:15px}
+  .bar{display:flex;height:19px;border-radius:4px;overflow:hidden;font-family:var(--sans);font-size:10px;font-weight:700;color:#fff;margin:6px 0 2px}
+  .bar .u{background:var(--up);display:flex;align-items:center;padding-left:8px}
+  .bar .d{background:var(--down);display:flex;align-items:center;justify-content:flex-end;padding-right:8px}
+  .disc{background:var(--cbg);border:1px solid #e2d3ab;border-left:4px solid var(--amber);border-radius:4px;padding:11px 14px;margin:10px 0;font-size:13px;color:#6b5417}
+
+  .method{background:var(--paper2);border:1px solid var(--rule);border-radius:6px;padding:13px 15px;margin-top:20px}
+  .method p{font-size:13px;color:var(--ink-soft)}
+  .src2{font-size:11px;color:var(--muted);word-break:break-word}
+  .src2 a{color:var(--accent2)}
+  .foot{font-family:var(--sans);font-size:10.5px;color:var(--muted);text-align:center;margin-top:22px;border-top:1px solid var(--rule);padding-top:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ===== KONTROL BARI ===== -->
+  <div class="ctrl">
+    <details>
+      <summary>⚙︎ Künye ve Kurallar <span class="ver">v1.0</span><span class="cv">▸</span></summary>
+      <div class="body">
+        <p style="font-size:12.5px;color:var(--ink-soft);margin-top:8px">Gazetenin yürürlükteki kuralları. Değiştirmek istediğin maddeyi numarasıyla söyle (ör. "K2.2'yi kaldır"), bir sonraki sayıda uygulanır ve sürüm yükselir.</p>
+
+        <h5>K1 · Kapsam</h5>
+        <ul>
+          <li>K1.1 — Her sayıda 8-10 birbirinden farklı haber; hiçbiri diğerinin tekrarı değil.</li>
+          <li>K1.2 — Tek bir tema bütün gazeteyi ele geçiremez; sermaye akışı da Fed de yalnızca birer haberdir.</li>
+          <li>K1.3 — Çoktan fiyatlanmış olan değil, öncü gelişme kovalanır. Sinyal yoksa "net sinyal yok" denir.</li>
+        </ul>
+
+        <h5>K2 · Üslup</h5>
+        <ul>
+          <li>K2.1 — Tam ve akıcı cümleler (Tooze / FT analiz nesri). Parça parça anlatım yasak.</li>
+          <li>K2.2 — Etiket rozeti yok; atıf cümlenin içine dokunur.</li>
+          <li>K2.3 — Jargonun sade Türkçe karşılığı aynı cümlede verilir.</li>
+          <li>K2.4 — Tablo yalnızca sayısal pano için; anlatı tabloya indirgenmez.</li>
+        </ul>
+
+        <h5>K3 · Atıf ve doğruluk</h5>
+        <ul>
+          <li>K3.1 — Dayanağı olmayan cümle girmez.</li>
+          <li>K3.2 — Ölçülen veri, başkasının görüşü ve Claude'un çıkarımı dille ayrılır.</li>
+          <li>K3.3 — Çıkarımın argümanı ve çürütme koşulu açık yazılır.</li>
+          <li>K3.4 — Rakamlar sıfır hatalı; farklı zaman pencereleri eşitmiş gibi sunulmaz.</li>
+          <li>K3.5 — Veri yoksa "yok" denir; yanlış çıkarsa açıkça düzeltilir.</li>
+        </ul>
+
+        <h5>K4 · Yapı ve derinlik</h5>
+        <ul>
+          <li>K4.1 — Eşit ağırlıklı karma: jeopolitik, piyasa, Türkiye.</li>
+          <li>K4.2 — Yüzey kısa, derinlik açılır panellerde.</li>
+          <li>K4.3 — Paneller: anlatı seyri (+güven ve çürütme), perspektifler, sayısal çıpa, Türkiye/sektör, karşı-tez, varlık rotasyonu, ağ. Zorunlu değil, güçlü sinyalde açılır.</li>
+          <li>K4.4 — Başat aktör motivasyon ve kırmızı çizgi düzeyinde çözümlenir; iç siyaset dahil.</li>
+          <li>K4.5 — Ağ gösterimi hem jeopolitik hem ekonomide; ilişkiler doğrudan ve koşullu diye ayrılır.</li>
+        </ul>
+
+        <h5>K5 · Kaynaklar</h5>
+        <ul>
+          <li>K5.1 — On makro bülten: Tooze, Overshoot, Fed Guy, Net Interest, The Diff, Noahpinion, Capital Wars, Doomberg, Citrini, Capital Flows. Sessizleşen kenarda bekler.</li>
+          <li>K5.2 — Küresel medya: Reuters, AP, CNBC, Yahoo, Bloomberg, FT, WSJ, Economist; Money Stuff ve FT Alphaville.</li>
+          <li>K5.3 — Jeopolitikte analitik ağırlık: ICG, Foreign Affairs, War on the Rocks, Al-Monitor.</li>
+          <li>K5.4 — Türkiye: TCMB/EVDS, Dünya, AA, bigpara, Türk ekonomistleri; savunma için SavunmaSanayiST ve DefenceTurk.</li>
+          <li>K5.5 — Fon akışı: BofA anketi, ETF akışları, ICI, TEFAS ve büyük portföy şirketleri.</li>
+          <li>K5.6 — Sosyal: FinTwit ve Reddit (Bright Data bağlanınca gerçek tarama).</li>
+        </ul>
+
+        <h5>K6 · Yatırım değerlendirmesi</h5>
+        <ul>
+          <li>K6.1 — Her sayıda 2-3 enstrüman: ucuzluk, neden, yukarı potansiyel, risk asimetrisi, somut araç.</li>
+          <li>K6.2 — "Tavsiye değildir" çerçevesi zorunlu; olasılıklar öznel.</li>
+          <li>K6.3 — Kullanıcının favorisi olsa bile dürüst davranılır.</li>
+        </ul>
+
+        <h5>Değişiklik günlüğü</h5>
+        <ul>
+          <li><b>v1.0 · 26 Temmuz</b> — İlk sürüm. Kapsam, üslup, atıf, yapı, kaynak ve yatırım kuralları sabitlendi; rozetli atıf kaldırıldı, geri bildirim paneli eklendi.</li>
+          <li><b>28 Temmuz</b> — Yayın altyapısı tamamlandı: gazete artık GitHub Pages'te (hozcinar.github.io/nws) otomatik yayınlanıyor ve önceki sayı arşive kaydediliyor. Kural değişikliği yok, sürüm v1.0'da sabit.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="fb">
+      <summary>✎ Geri Bildirim <span class="cv">▸</span></summary>
+      <div class="body">
+        <p style="font-size:12.5px;color:var(--ink-soft);margin-top:8px">Formu doldur, "Metni oluştur"a bas, çıkan bloğu sohbete yapıştır. Bir sonraki sayıda uygulanır ve kural olarak künyeye eklenir.</p>
+
+        <label for="fb-h">Hangi bölüm</label>
+        <select id="fb-h">
+          <option>Gazetenin tamamı</option>
+          <option>H1 — Nvidia / OpenAI finansmanı</option>
+          <option>H2 — Fed toplantısı</option>
+          <option>H3 — İran / Ukrayna / Hazar</option>
+          <option>H4 — ABD gümrükleri</option>
+          <option>H5 — Dolar/TL ve TCMB</option>
+          <option>H6 — Türk savunma ihracatı</option>
+          <option>H7 — DAX ve Avrupa savunma</option>
+          <option>H8 — BofA fon yöneticisi anketi</option>
+          <option>H9 — Altın</option>
+          <option>H10 — Kakao</option>
+          <option>Piyasa panosu</option>
+          <option>Günün ağı</option>
+          <option>Bülten radarı</option>
+          <option>Yatırım değerlendirmesi</option>
+        </select>
+
+        <label for="fb-t">Neyle ilgili</label>
+        <select id="fb-t">
+          <option>Şekil / sunum</option>
+          <option>İçerik / kapsam</option>
+          <option>Dayanak / kaynak</option>
+          <option>Doğruluk / hata</option>
+          <option>Eksik özellik</option>
+          <option>Derinlik az</option>
+          <option>Fazla uzun</option>
+        </select>
+
+        <label for="fb-x">Geri bildirimin</label>
+        <textarea id="fb-x" placeholder="Örnek: H3 fazla teknik kalmış, Türkiye'ye etkisi hiç yok. Ya da: H5'te değerleme iskontosunun kaynağı tek; ikinci bir kaynak istiyorum."></textarea>
+
+        <label for="fb-k">Bu kalıcı kural olsun mu</label>
+        <select id="fb-k">
+          <option>Evet — künyeye kural olarak ekle</option>
+          <option>Hayır — yalnızca bu sayı için</option>
+        </select>
+
+        <button onclick="genFb()">Metni oluştur</button>
+        <button class="sec" onclick="copyFb()">Kopyala</button>
+        <div class="out" id="fb-out"></div>
+        <div class="hint">Not: Bu form doğrudan mesaj gönderemez; oluşturduğu metni sohbete yapıştırman gerekiyor. Kısa yol olarak sohbete doğrudan "H3: dayanak zayıf, ikinci kaynak ekle" yazman da yeterli.</div>
+      </div>
+    </details>
+  </div>
+
+  <header class="mast">
+    <div class="kt">Öngörü Radarı · Fiyatın Önünde Ol</div>
+    <h1>SABAH</h1>
+    <div class="tag">Günlük Finans &amp; Makro Gazetesi — Hüseyin için</div>
+    <div class="sub">
+      <span>Salı, <b>28 Temmuz 2026</b></span>
+      <span>Kapanış referansı: <b>Pazartesi 27 Temmuz</b></span>
+      <span>Yarın: <b>Fed kararı, Çarşamba</b></span>
+    </div>
+  </header>
+
+  <div class="index">
+    <div class="h">Bu sayıda</div>
+    <ol>
+      <li><b>H1 · Nvidia'nın 250 milyar dolarlık OpenAI garantisi</b> — dairesel finansman korkusu çip piyasasını vurdu</li>
+      <li><b>H2 · Fed toplantısı başladı</b> — soru artık indirim değil artırım ihtimali</li>
+      <li><b>H3 · Ukrayna Hazar'da İran gemisini vurdu</b> — kırılgan ateşkes yeni bir cepheden tehdit altında</li>
+      <li><b>H4 · Washington 60 ortağa yeni gümrük getirdi</b> — bu kez Anayasa Mahkemesi'ni atlatan yoldan</li>
+      <li><b>H5 · Dolar/TL 47,38'e tırmandı</b> — TCMB dördüncü kez sabit kaldı</li>
+      <li><b>H6 · Türk savunma ihracatı 6,8 milyar dolara ulaştı</b> — ARCA sektör şampiyonu</li>
+      <li><b>H7 · DAX yeniden rekorda</b> — bu kez savunma hisseleri sürüklüyor</li>
+      <li><b>H8 · BofA anketi</b> — nakit rekor düşükte, en kalabalık bahis tam da çöken yarı iletkenlerde</li>
+      <li><b>H9 · Altın</b> Fed öncesi kritik destekte sınanıyor · <b>H10 · Kakao</b> ucuzladı ama Fildişi Sahili'nde yeni tehdit birikiyor</li>
+    </ol>
+  </div>
+
+  <h2 class="desk">Dünya</h2>
+
+  <article class="story lead">
+    <div class="kick"><span class="hid">H3</span> Jeopolitik · Hazar Denizi</div>
+    <h3>Ukrayna'nın İran gemisini vurması, kırılgan ateşkesi yeni bir cepheden tehdit ediyor</h3>
+    <div class="byline"><span class="conf">Güven: Orta</span><span>Brent 85,08 dolar</span><span>25-27 Temmuz</span></div>
+    <p class="lede"><span class="drop">C</span>umartesi günü Ukrayna'nın Hazar Denizi'nde bir İran ticaret gemisini vurması — Al Jazeera'nın aktardığına göre gemi patladı, bir denizci öldü, birkaç kişi yaralandı — İran-ABD cephesinde bir hafta önce kurulan kırılgan ateşkesi, kimsenin öngörmediği üçüncü bir aktör üzerinden yeniden tehdit ediyor. Kiev, hedefinin bir Rus savaş gemisi ve "İran bağlantılı askeri kargo" taşıyan tekneler olduğunu söylüyor; Tahran ise bunu BM Şartı'nın açık ihlali sayıyor ve İran Dışişleri Bakanı Abbas Araghchi saldırının "cevapsız kalamayacağını" söylüyor.</p>
+    <details class="d-b"><summary><span class="dot"></span><span class="lab">Başat aktörler: Ukrayna neden vurdu, İran'ın kırmızı çizgisi ne</span><span class="chev">▸</span></summary>
+      <div class="panel">
+        <p>Kiev'in gerekçesi Al Jazeera'nın aktardığına göre şu: Ukrayna, Rusya'nın İran yapımı Şahed insansız hava araçlarıyla sürdürdüğü saldırılarda İran'ın uydu gözetleme desteği sağladığını iddia ediyor ve Orta Doğu'ya gönderdiği askeri personelin bu tedarik zincirini kesmeye çalıştığını söylüyor. Yani Ukrayna için kırmızı çizgi, kendi topraklarını vuran silahların üretim ve destek zincirine erişebildiği her nokta; İran'ın bu zincirin bir parçası olduğu iddiası doğruysa, Hazar bile Ukrayna açısından meşru bir hedef sayılıyor.</p>
+        <p>İran tarafında ise kırmızı çizgi farklı işliyor. Bir ay süren ABD-İsrail savaşının ardından Tahran, ikinci bir cepheyi göze alamayacak durumda; ama parlamentodaki bir üst düzey yetkilinin Al Jazeera'ya verdiği demeç, Ukrayna'nın "cevapsız kalmayacak bir eylemi öğreneceğini" söylüyor. Benim okumam şu: İran'ın tehdidi caydırıcılık için gerekli, ama fiilen karşılık verirse zaten yorgun düştüğü ABD cephesini de yeniden tetikleme riski taşıyor; bu da tehdidin sözde kalma ihtimalini yükseltiyor.</p>
+        <div class="ground">Çürütme koşulu: İran, Ukrayna'ya yönelik somut bir misilleme (Karadeniz'de bir Ukrayna gemisine saldırı gibi) gerçekleştirirse ya da Rusya bu olayı kendi lehine kullanıp doğrudan araya girerse, bu değerlendirmeyi "sözde tehdit" kategorisinden çıkarırım.</div>
+        <div class="srcline">Al Jazeera, 25-27 Temmuz · Defense News · Tasnim News Agency</div>
+      </div>
+    </details>
+    <details><summary><span class="dot"></span><span class="lab">Anlatının seyri: ateşkes nasıl tutuyor, petrol ne diyor</span><span class="chev">▸</span></summary>
+      <div class="panel">
+        <p>Geriye dönüp bakınca zincir şöyle: Trump'ın Cuma günü Axios'a "kütlesel bir saldırı" değerlendirdiği söylenmişti, ancak New York Times'ın aktardığına göre ABD cephaneliğindeki azalma endişesi nedeniyle bu plan rafa kalktı; Trump uçakta gazetecilere cephanenin "bol" olduğunu söyleyerek bunu reddetse de ateşkes o günden bu yana tutuyor. CNBC'nin 28 Temmuz sabahı verdiği habere göre bu duraklama sürüyor ve İran ile Umman arasında Hürmüz Boğazı'ndan güvenli geçiş için teknik düzeyde görüşmeler bile başladı.</p>
+        <p>Petrol bu yumuşamayı hızla fiyatladı: Brent Eylül vadeli sözleşmesi yüzde 3,71 gerileyerek 85,08 dolara, WTI ise yaklaşık yüzde 3 düşüşle 80,11 dolara indi. Commonwealth Bank of Australia'nın notunda "sivil ve enerji altyapısına yönelik büyük çaplı saldırı beklentisinin zayıfladığı" ama Hürmüz'deki anlaşmazlıkların "çatışmayı yeniden alevlendirebileceği" belirtiliyor; Goldman Sachs ise Hürmüz tam açılırsa yıl sonunda Brent'in 80 dolara ineceğini ama Kızıldeniz'deki aksaklıkların yeni bir yukarı risk oluşturabileceğini yazıyor.</p>
+        <div class="counter">Karşı tez ve somut bir kısıt: Teknik görüşmelere rağmen İran, boğaza yerleştirdiği bazı deniz mayınlarının yerini kaybetmiş durumda — bu da CBA'nın uyardığı gibi "tam açılışı" fiilen imkânsız kılıyor. Yani ateşkes kağıt üzerinde ilerlerken, sahada hâlâ kontrolsüz bir risk kalıntısı duruyor; Ukrayna-İran hattındaki yeni gerilim tam da bu kırılgan zemine ekleniyor.</div>
+        <div class="srcline">CNBC, 27-28 Temmuz · Techtimes · Axios/NYT aktarımı</div>
+      </div>
+    </details>
+  </article>
+
+  <article class="story">
+    <div class="kick"><span class="hid">H4</span> Ticaret</div>
+    <h3>Washington 60 ticaret ortağına yeni gümrük getirdi — bu kez Anayasa Mahkemesi'ni atlatan yoldan</h3>
+    <div class="byline"><span class="conf">Güven: Yüksek</span><span>%10-12,5</span><span>24 Temmuz</span></div>
+    <p class="lede">ABD Ticaret Temsilciliği, süresi dolan yüzde 10'luk geçici tarifenin yerine altmış ticaret ortağına yüzde 10 ile yüzde 12,5 arasında yeni gümrük vergisi getirdi; NBC News'in aktardığına göre yeni oranlar Cuma gece yarısından (ET) itibaren yürürlüğe girdi. Kanada, Meksika, Hindistan ve Birleşik Krallık yüzde 10 öderken, Tayvan ve AB — von der Leyen ile geçen yıl mutabık kalınan yüzde 15'lik tavanın altında kalarak — yüzde 12,5'e tabi oldu.</p>
+    <details><summary><span class="dot"></span><span class="lab">Neden bu kez farklı: Anayasa Mahkemesi'ni atlatan hukuki yol</span><span class="chev">▸</span></summary>
+      <div class="panel">
+        <p>Bu turun asıl önemi oranlarda değil, dayandığı hukuki zeminde. NBC'nin hatırlattığı gibi ABD Yüksek Mahkemesi Şubat ayında Trump'ın IEEPA (Uluslararası Acil Ekonomik Yetkiler Yasası) kapsamında uyguladığı tarifelerin çoğunu iptal etmiş ve yönetimin yetkisini aştığına hükmetmişti. Bu kez idare 1974 Ticaret Yasası'nın 301. maddesine, yani farklı ve mahkemenin daha önce dokunmadığı bir dayanağa geçti; gerekçe olarak altmış ekonominin zorla çalıştırmayla üretilen malların ithalatını yasaklamakta "yetersiz" kaldığı öne sürülüyor. AB Dış İlişkiler Yüksek Temsilcisi Kaja Kallas bu gerekçeyi Reuters'a "AB için bunu söyleyemezsiniz" diyerek reddetti ve Birliğin çalışma koşullarının ABD'den daha ileride olduğunu savundu.</p>
+        <p>Benim okumam şu: bir önceki tur (26 Temmuz sayımızda ele aldığımız Turnberry mutabakatı kapsamındaki tarifeler) IEEPA'ya dayanıyordu ve mahkeme kararıyla kırılganlaşmıştı; 301. madde ise onlarca yıldır mahkeme sınavından geçmiş, çok daha sağlam bir zemin. Yani bu tarife dalgasının bir öncekinden farkı büyüklüğü değil, kalıcılığı — geri alınması çok daha zor. Gübre ve bazı yakıtlar (İran savaşı nedeniyle zaten fiyatı yükselen kalemler), belirli gıdalar, otomotiv, metal ve ilaç muaf tutuldu; jenerik ilaçlara ise iki yıl boyunca sıfır tarife sözü verildi.</p>
+        <div class="ground">Veri notu: Kaynaklarımda Türkiye'nin bu altmışlı listede yer alıp almadığına dair somut bir teyit yok; bu nedenle Türkiye'ye doğrudan etkisini şu aşamada iddia etmiyorum, netleşince bu satırı güncellerim.</div>
+        <div class="srcline">NBC News, 23-24 Temmuz · USTR fact sheet</div>
+      </div>
+    </details>
+  </article>
+
+  <h2 class="desk">Merkez Bankaları</h2>
+
+  <article class="story lead">
+    <div class="kick"><span class="hid">H2</span> Fed · İki günlük toplantı</div>
+    <h3>Fed toplantısı bugün açıldı: soru artık indirim değil, artırım ihtimali</h3>
+    <div class="byline"><span class="conf">Güven: Orta</span><span>Artırım ihtimali %38</span><span>Karar: yarın</span></div>
+    <p class="lede">İki gün önceki sayımızda "tartışma artık indirim değil artış" diye yazdığımız FOMC haftası bugün fiilen başladı: Fed iki günlük toplantısına girdi, karar yarın açıklanacak. FX Leaders'ın 28 Temmuz verilerine göre piyasa faizin sabit kalma ihtimalini yüzde 62, 25 baz puanlık bir artırım ihtimalini ise yüzde 38 olarak fiyatlıyor — 26 Temmuz'da aktardığımız yüzde 36'lık artırım ihtimalinden hafif bir yukarı revizyon. Eylül toplantısında bir artırım ihtimali ise yüzde 81'e kadar çıkmış durumda.</p>
+    <details><summary><span class="dot"></span><span class="lab">Sayısal çıpa: iki gün önceki tahminden bugüne ne değişti</span><span class="chev">▸</span></summary>
+      <div class="panel">
+        <p>26 Temmuz sayımızda Warsh başkanlığındaki Fed'in Haziran nokta grafiğinde dokuz şahin nokta bulunduğunu, Waller ve Miran'ın ise güvercin kanatta muhalefet ettiğini, WSJ'den Timiraos'un toplantıyı "yılların en belirsizi" diye tanımladığını yazmıştık. O günden bugüne artırım ihtimali yüzde 36'dan yüzde 38'e, Eylül için ise daha da belirgin biçimde yükseldi; yön aynı, sadece eğim netleşti.</p>
+        <p>Benim okumam, bu küçük ama tutarlı yukarı kaymanın tesadüf olmadığı yönünde: aynı hafta içinde hem 60 ülkeye yeni gümrük geldi (H4) hem de Hürmüz kaynaklı petrol oynaklığı sürüyor (H3) — ikisi de enflasyon üzerinde yukarı yönlü baskı yaratan, birbirinden bağımsız iki kanal. Asimetri hâlâ şahin tarafta duruyor, çünkü piyasa yumuşak senaryoya göre konumlanmışken ters sürpriz daha pahalıya mal olur.</p>
+        <div class="ground">Çürütme koşulu: Yarın Warsh net bir güvercin ton takınırsa ya da karar metninde tarife kaynaklı enflasyonun "geçici" olarak nitelendiği vurgulanırsa, bu yukarı eğilim tersine döner.</div>
+        <div class="srcline">FX Leaders, 28 Temmuz · SABAH, 26 Temmuz sayısı</div>
+      </div>
+    </details>
+  </article>
+
+  <h2 class="desk">Piyasalar</h2>
+
+  <article class="story lead">
+    <div class="kick"><span class="hid">H1</span> Teknoloji · Yapay zekâ finansmanı</div>
+    <h3>Nvidia'nın 250 milyar dolarlık OpenAI garantisi dairesel finansman korkusunu yeniden alevlendirdi</h3>
+    <div class="byline"><span class="conf">Güven: Yüksek</span><span>SOX Temmuz'da −%17</span><span>NVDA 200 doların altında</span></div>
+    <p class="lede"><span class="drop">B</span>loomberg, Axios ve CNBC'nin 27 Temmuz'da aktardığına göre Nvidia, OpenAI'ın güney Ohio'daki dev veri merkezi projesi için 250 milyar dolara kadar finansman garantisi vermeyi görüşüyor — bu garanti OpenAI'ın kendi başına alamayacağı, daha uygun kredi koşulları elde etmesini sağlayacak. Şirket ayrıca OpenAI'ın kendisinden yapacağı 350 milyar dolarlık çip alımını finanse etmeyi de değerlendiriyor. Sonuç: Nvidia hem satıcı hem finansör konumuna geçiyor ve "dairesel finansman" endişesi — yani bir tarafın sorunu diğerine doğrudan sıçrar hale gelmesi — yeniden gündemde; NVDA hissesi 200 doların altına indi.</p>
+    <details class="d-b"><summary><span class="dot"></span><span class="lab">Başat aktör: Nvidia neden kendi müşterisini finanse ediyor</span><span class="chev">▸</span></summary>
+      <div class="panel">
+        <p>Nvidia ve OpenAI temsilcileri CNBC'nin talebine hemen yanıt vermedi; Jensen Huang'ın konuya dair kayda geçmiş bir açıklaması yok, bu yüzden burada onun ağzından bir motivasyon uydurmuyorum. Ama yapının kendisi bir motivasyon ortaya koyuyor: Nvidia'nın gelir büyümesi anlatısı, OpenAI gibi müşterilerin çip alımını sürdürebilmesine bağlı; OpenAI'ın finansman bulamaması, Nvidia'nın kendi sonuçlarını doğrudan vuruyor. Yani Nvidia'yı kendi müşterisini garantilemeye iten şey bir cömertlik değil, kendi büyüme hikâyesinin sürekliliğini koruma zorunluluğu — kırmızı çizgisi, OpenAI'ın çip alımlarının yavaşlaması.</p>
+        <p>Piyasanın tepkisi bunu doğruluyor: makaleye göre Nvidia tahvillerinin kredi risk sigortası (CDS) günlük bazda gördüğü en sert yükselişi kaydetti. Ünlü kısa satıcı Michael Burry X'te "Yine dönüp dolaşıp aynı yere geldik. Nvidia, ChatGPT'nin kendi çiplerine harcayacağı 200 milyar doları garanti ediyor" diye yazdı ve aynı gün Nvidia'daki kısa pozisyonunu 210,28 dolar seviyesinden artırdı.</p>
+        <div class="srcline">CNBC, Axios, Bloomberg — 27 Temmuz · Yahoo Finance (Burry)</div>
+      </div>
+    </details>
+    <details><summary><span class="dot"></span><span class="lab">Sayısal çıpa: satışın büyüklüğü nereye kadar yayıldı</span><span class="chev">▸</span></summary>
+      <div class="panel">
+        <p>Contagion Asya'ya hızla sıçradı: Yahoo Finance'in 28 Temmuz verilerine göre Güney Kore borsası Kospi yüzde 10,84 düştü, bellek çip üreticileri SK Hynix yüzde 14'ten, Samsung Electronics ise yüzde 13'ten fazla geriledi. X üzerindeki piyasa yorumcularının aktardığına göre Philadelphia Yarı İletken Endeksi (SOX) Haziran'da gördüğü rekor 14.655 puanlık zirveden Temmuz'da yaklaşık yüzde 17 geriledi — bu, Haziran 2022'den bu yana en kötü ayı olma yolunda. ABD tarafında ise vadeli işlemler S&amp;P 500'de yüzde 0,2, Nasdaq 100'de yüzde 0,9 geriliyor.</p>
+        <p>Arka planda duran bir rakam da Büyük Teknoloji'nin harcama planı: piyasa yorumcularının aktardığına göre Alphabet, Microsoft, Amazon ve Meta'nın toplam sermaye harcaması 2026'da yaklaşık 724 milyar, 2027'de ise 950 milyar dolara ulaşması bekleniyor — bunu tek bir resmi kaynaktan doğrulayamadığım için X'teki piyasa yorumu olarak işaretliyorum, resmi bilanço rakamı değil.</p>
+        <div class="srcline">Yahoo Finance · X/piyasa yorumcuları (doğrulanmamış tahmin olarak işaretli)</div>
+      </div>
+    </details>
+    <details><summary><span class="dot"></span><span class="lab">Karşı tez: fiziksel talep gerçek, düşen sadece hisseler</span><span class="chev">▸</span></summary>
+      <div class="panel">
+        <p>Morningstar'ın değerlendirmesi, dairesel finansman korkusunu kabul etmekle birlikte Nvidia hissesinin "hâlâ değerinin altında" işlem gördüğünü savunuyor. Buradaki ayrım önemli: bellek çipi fiyatları (DRAM/NAND) piyasa yorumlarına göre yüzde 300'e varan oranda yükseliyor, çünkü yapay zekâ veri merkezlerinin fiziksel talebi gerçek. Yani düşen şey talebin kendisi değil, bu talebi finanse eden yapının güvenilirliğine duyulan güven.</p>
+        <p>Benim okumam şu: kırılganlık, BofA'nın anketinde (H8) üç aydır en kalabalık bahis olarak işaretlenen "küresel yarı iletkende uzun pozisyon"un tam da bu haberle sınanması. Kalabalık bir kapıdan aynı anda çıkmaya çalışan pozisyon, küçük bir kötü haberi bile orantısız büyütür — nitekim bugün olan da tam olarak bu.</p>
+        <div class="counter">Çürütme koşulu: Nvidia ve OpenAI finansman koşullarını netleştirip garanti mekanizmasının bilanço riskini sınırladığını gösterirse, ya da üçüncü çeyrek bilançolarında serbest nakit akışı harcamayı rahatça karşılarsa, bu satış dalgası bir düzeltmeden öteye geçmez.</div>
+        <div class="srcline">Morningstar · piyasa fiyatlama verileri</div>
+      </div>
+    </details>
+  </article>
+
+  <article class="story">
+    <div class="kick"><span class="hid">H7</span> Avrupa · Savunma</div>
+    <h3>DAX yeniden rekorda: bu kez savunma hisseleri sürüklüyor</h3>
+    <div class="byline"><span class="conf">Güven: Orta-Yüksek</span><span>DAX 25.841</span><span>Pazartesi kapanışı</span></div>
+    <p class="lede">DAX Pazartesi günü yüzde 0,24 yükselerek 25.841 puanla tazeledi rekorunu — Cuma günü ilk kez gördüğü 25.800 eşiğinin de üzerine çıktı. Bu kez yükselişin lokomotifi 26 Temmuz sayımızda değerleme iskontosuyla öne çıkardığımız geniş endeks değil, doğrudan savunma hisseleri: Rheinmetall yüzde 2,5 ile DAX'ın en güçlü performansını sergilerken, MDAX'taki TKMS yüzde 4,5, Renk yüzde 3,1, Hensoldt ise yüzde 1,9 yükseldi. Yükselişi tetikleyen somut haber, Fransız savunma şirketi Thales'in Exail Technologies'i hisse başına 134 avrodan satın alması oldu.</p>
+    <details><summary><span class="dot"></span><span class="lab">Karşı tez: rekor kırılırken altta çatlak var</span><span class="chev">▸</span></summary>
+      <div class="panel">
+        <p>Teknik analist Christoph Geyer piyasanın artık "aşırı alım bölgesinde" olduğu uyarısını yaptı; Consorsbank'tan Jochen Stanzl ise "görece zayıf işlem hacimlerinin" rekorun sürdürülebilirliğini sorgulattığını söyledi. Aynı gün Infineon yüzde 3,3 ile DAX'ın en zayıf hissesi oldu — yani bugünkü çip satışının (H1) etkisi Avrupa'ya da sıçradı ve endeksin kendisi rekor kırarken bileşenleri arasında ciddi bir ıraksama var.</p>
+        <p>Benim okumam, DAX rekorunu "endeks güçlü" diye tek cümlede özetlemenin yanıltıcı olduğu yönünde: rekoru taşıyan dar bir savunma-sanayii kümesi, aynı anda başka bir küme (yarı iletken bağlantılı Infineon) küresel satıştan pay alıyor. SAP ise Cuma'nın kayıplarından yüzde 1,9 toparlandı, Continental ContiTech birimi satışı öncesi yüzde 1,9 geriledi, Delivery Hero ise Uber'in olası satın alma haberiyle yüzde 0,9 yükseldi — tablo tekdüze değil.</p>
+        <div class="srcline">Midas, 27-28 Temmuz</div>
+      </div>
+    </details>
+  </article>
+
+  <article class="story">
+    <div class="kick"><span class="hid">H8</span> Fon akışı</div>
+    <h3>BofA anketi: nakit rekor düşükte, en kalabalık bahis tam da çöken yarı iletkenlerde</h3>
+    <div class="byline"><span class="conf">Güven: Yüksek</span><span>Nakit %3,6</span><span>2-9 Temmuz anketi</span></div>
+    <p class="lede">BofA'nın 2-9 Temmuz'da topladığı ve 14 Temmuz'da yayımlanan Global Fon Yöneticisi Anketi'ne göre nakit oranı Haziran'daki yüzde 4,1'den yüzde 3,6'ya geriledi — BofA'nın kendi çerçevesinde bunu bir "aşırı ısınma" ve ters yönlü satış sinyali sayacak kadar düşük bir seviye. ABD hissesindeki fazla ağırlık Aralık 2024'ten bu yana en yükseğine çıkarken, anketin en kalabalık işlemi üçüncü ay üst üste "küresel yarı iletkende uzun pozisyon" oldu — katılımcıların yüzde 82'si tarafından işaretlendi.</p>
+    <details><summary><span class="dot"></span><span class="lab">Anlatının seyri: iki gün önce uyardığımız risk bugün gerçekleşti</span><span class="chev">▸</span></summary>
+      <div class="panel">
+        <p>26 Temmuz sayımızın "Kalabalık kapı sorunu" panelinde şunu yazmıştık: "kalabalık, tam da en çok korktuğu şeyde uzun pozisyonda... küçük bir kötü sürprizin bile neden orantısız bir hareket yaratabileceğini açıklıyor." Bugünkü Nvidia-OpenAI haberi (H1) ve ardından gelen SOX/Kospi satışı, tam olarak bu senaryonun kendisi — anket verisi iki hafta önceden toplanmış olsa da, işaret ettiği kırılganlık bugün fiyatlandı.</p>
+        <p>Benim okumam, bunun anketin "yanlış" olduğu anlamına gelmediği yönünde; tam tersine, konumlanmanın ne kadar tek yönlü olduğunu doğru tespit etmişti. Asıl soru şimdi şu: yüzde 82'lik kalabalık pozisyon bugünkü düşüşle ne kadarını tasfiye etti. Bu, gelecek ayki ankette görülecek ve bir sonraki sayıda takip edeceğim bir veri noktası.</p>
+        <div class="ground">Dürüstlük notu: Anket 2-9 Temmuz konumlanmasını ölçüyor, bugünkü fiyat hareketi ise 27-28 Temmuz'a ait; bu iki pencereyi birebir eşitmiş gibi sunmuyorum, yalnızca anketin işaret ettiği kırılganlığın sonradan doğrulandığını not ediyorum.</div>
+        <div class="srcline">BofA Global Fund Manager Survey, 2-9 Temmuz · SABAH, 26 Temmuz sayısı</div>
+      </div>
+    </details>
+  </article>
+
+  <h2 class="desk">Türkiye</h2>
+
+  <article class="story lead">
+    <div class="kick"><span class="hid">H5</span> Kur ve para politikası</div>
+    <h3>Dolar/TL 47,38'e tırmandı, TCMB dördüncü kez sabit kaldı</h3>
+    <div class="byline"><span class="conf">Güven: Yüksek</span><span>Politika faizi %37</span><span>BIST 100: 13.786</span></div>
+    <p class="lede">Dolar/TL 20 Temmuz'da ilk kez 47 lira sınırını aşıp tarihi rekor kırdıktan sonra bugün 47,38 seviyesinde işlem görüyor; euro da yaklaşık 54 lirayla kendi rekorunu tazeledi. TCMB ise 24 Temmuz'da politika faizini yüzde 37'de dördüncü kez üst üste sabit tuttu ve "dezenflasyon sürecinin sürdürülmesi için gerekli parasal sıkılığın korunduğunu" vurguladı; piyasa katılımcıları ilk indirimin en erken dördüncü çeyrekte ya da Eylül toplantısında gelebileceğini öngörüyor.</p>
+    <details class="d-b"><summary><span class="dot"></span><span class="lab">Başat aktör: TCMB neden sıkı kalıyor, hangi durumda gevşer</span><span class="chev">▸</span></summary>
+      <div class="panel">
+        <p>TCMB'nin kırmızı çizgisi net: enflasyon yüzde 30'ların üzerinde kaldığı sürece indirim gündeme gelmiyor. Ama burada gerçek bir bulmaca var — nominal politika faizi yüzde 37 ile enflasyonun üzerinde, yani reel faiz pozitif; buna rağmen lira zayıflamaya devam ediyor. Bunun nedeni yurt içi değil yurt dışı kaynaklı: 18-20 Temmuz'da tırmanan ABD-İran krizi küresel risk iştahını kırdı, dolar endeksi yaklaşık 100,7 bandına güçlenirken Hürmüz kaynaklı petrol oynaklığı enerji faturasını ağırlaştırdı.</p>
+        <p>Benim okumam şu: TCMB'nin sıkı duruşu doğru şeyi yapıyor olsa da, kurun asıl belirleyicisi şu anda yurt içi para politikası değil küresel risk döngüsü. Bu da faiz indirimi gelse bile kurun otomatik olarak sakinleşmeyebileceği, tersine İran cephesi yumuşarsa (H3) TCMB hiçbir şey yapmadan da liranın nefes alabileceği anlamına geliyor.</p>
+        <div class="ground">Çürütme koşulu: Eğer TCMB Eylül'den önce sürpriz bir indirime giderse ya da küresel risk büyük ölçüde sakinleşmesine rağmen lira zayıflamaya devam ederse, bu "dış kaynaklı" okumayı gözden geçiririm.</div>
+        <div class="srcline">Investing.com, 24 Temmuz · Kamu1, 20 Temmuz · ensondakika, 28 Temmuz</div>
+      </div>
+    </details>
+    <details><summary><span class="dot"></span><span class="lab">Sayısal çıpa: BIST bugün nasıl açtı</span><span class="chev">▸</span></summary>
+      <div class="panel">
+        <p>BIST 100 bugün 13.786,47 puandan, yüzde 0,08 (11,71 puan) yükselişle açtı; önceki kapanış 13.774,77 idi. Bilişim sektörü yüzde 0,60 ile en çok kazandıran, inşaat yüzde 0,79 ile en çok kaybettiren sektör oldu; bankacılık endeksi ise yalnızca yüzde 0,05 ile sınırlı bir yükseliş kaydetti. Teknik olarak 13.900 ve 14.000 direnç, 13.700 ve 13.600 destek olarak izleniyor. Türkiye'nin 5 yıllık CDS'i son izlediğimiz aralıkta (200-225 baz puan) seyrediyor; bugüne dair daha taze bir rakam elimde yok.</p>
+        <div class="srcline">24saatgazetesi, 28 Temmuz</div>
+      </div>
+    </details>
+  </article>
+
+  <article class="story">
+    <div class="kick"><span class="hid">H6</span> Savunma sanayii</div>
+    <h3>Türk savunma ihracatı 6,8 milyar dolara ulaştı: ARCA sektör şampiyonu</h3>
+    <div class="byline"><span class="conf">Güven: Yüksek</span><span>İSO 500, 2025 verisi</span></div>
+    <p class="lede">Anadolu Ajansı'nın İstanbul Sanayi Odası'nın (İSO) "Türkiye'nin 500 Büyük Sanayi Kuruluşu" araştırmasından aktardığına göre, ihracat verisi paylaşılan 11 savunma ve havacılık şirketinin toplam ihracatı 2025'te 6 milyar 773 milyon dolara ulaştı. Bunun yaklaşık yarısını tek başına ARCA Savunma karşıladı: 2 milyar 916 milyon dolarlık ihracatla hem sektör lideri hem de İSO 500 genelinde ihracatta 5'inci sırada yer aldı ve "2025 İhracat Şampiyonu" unvanını kazandı.</p>
+    <details><summary><span class="dot"></span><span class="lab">Türkiye/sektör: sıralama ve 26 Temmuz'daki ASELSAN bağlantısı</span><span class="chev">▸</span></summary>
+      <div class="panel">
+        <p>ARCA'nın ardından Türk Havacılık ve Uzay Sanayii (TUSAŞ) 1 milyar 34 milyon dolarla 14'üncü, Otokar 892 milyon dolarla 17'nci, ROKETSAN 734 milyon dolarla 22'nci sırada yer aldı. 26 Temmuz sayımızda NATO zirvesinde 780 milyon avroyu aşan sözleşmeler imzaladığını yazdığımız ASELSAN ise 492 milyon dolarlık ihracatla genel sıralamada 29'uncu oldu — yani o gün aktardığımız sözleşme haberinin ihracat tablosundaki karşılığı bu. Listeye Alp Havacılık, Nurol Makina, Samsun Yurt Savunma, MKE, HAVELSAN ve BMC Otomotiv de daha küçük ölçeklerle girdi.</p>
+        <p>Benim okumam, Türk savunma ihracatının ölçek olarak Rheinmetall gibi tek bir Alman devinin piyasa değerinin bile gerisinde kaldığı, ama büyüme hızı ve şirket çeşitliliği açısından (13 şirket, mühimmattan yazılıma geniş bir ekosistem) DAX'taki savunma rallisiyle (H7) aynı küresel talep dalgasından beslendiği yönünde. İkisi aynı ölçekte değil ama aynı rüzgârdan yararlanıyor.</p>
+        <div class="srcline">Anadolu Ajansı, 23 Haziran (İSO 500 2025 verisi)</div>
+      </div>
+    </details>
+  </article>
+
+  <h2 class="desk">Emtia</h2>
+
+  <article class="story lead">
+    <div class="kick"><span class="hid">H9</span> Değerli metal</div>
+    <h3>Altın Fed öncesi kritik destekte sınanıyor</h3>
+    <div class="byline"><span class="conf">Güven: Orta</span><span>Ons 4.045,89 $</span><span>Destek: 4.021 $</span></div>
+    <p class="lede">Altın bugün 4.045,89 dolar/ons seviyesinde işlem görüyor ve FX Leaders'ın teknik okumasına göre kritik destek olan 4.021 doları sınıyor; ikincil destek 3.964 dolarda, direnç ise 4.070 ve 4.077 dolarda duruyor. Fiyatı aşağı çeken şey güçlü dolar ve Fed'in şahin durabileceği beklentisi (H2); yukarı çeken ise Asya'daki fiziksel talep.</p>
+    <details><summary><span class="dot"></span><span class="lab">İki karşıt kuvvet: Fed kararı asıl kırılma noktası</span><span class="chev">▸</span></summary>
+      <div class="panel">
+        <p>Bu, altının hem İran hem Fed hem de dolar üzerinden aynı anda çekiştirildiği bir an. Piyasanın yarınki karara dair fiyatlaması (yüzde 62 sabit, yüzde 38 artırım) aynı zamanda altının yönünü de belirleyecek: bir artırım sürprizi reel faizi yukarı iter ve destek muhtemelen 3.964 ile 3.914 dolar bandına doğru kırılır; buna karşılık Fed sabit kalıp güvercin bir ton takınırsa toparlanma 4.133-4.220 dolar bandına açılabilir.</p>
+        <p>Benim okumam, altının bu noktada yön bahsi için elverişli olmadığı, çünkü asıl belirleyici yarın açıklanacak ve bugünden pozisyon almak yarının sonucuna bahis anlamına geliyor. Aynı zamanda H3'teki Hazar geriliminin tırmanması altına yeniden güvenli liman talebi getirebilir; yani altının bugünkü fiyatı iki ayrı, birbirini iptal edebilecek riski aynı anda taşıyor.</p>
+        <div class="srcline">FX Leaders, 28 Temmuz</div>
+      </div>
+    </details>
+  </article>
+
+  <article class="story">
+    <div class="kick"><span class="hid">H10</span> Yumuşak emtia</div>
+    <h3>Kakao ucuzladı ama Fildişi Sahili'nde yeni bir tehdit birikiyor</h3>
+    <div class="byline"><span class="conf">Güven: Orta</span><span>5.330 $/ton</span></div>
+    <p class="lede">Kakao 24 Temmuz'da 5.330,38 dolar/ton seviyesinde işlem gördü — günlük yüzde 0,55, aylık yüzde 1,59 yükseldi ama geçen yılki zirveye göre hâlâ yüzde 36 aşağıda. TradingEconomics'in verilerine göre Temmuz içinde 6.455 dolarlık sekiz aylık bir zirve de görüldü; yani fiyat bu ay içinde kendi içinde oynak bir bant çizdi.</p>
+    <details><summary><span class="dot"></span><span class="lab">Anlatının seyri: bugünün boluğu, yarının kıtlığı</span><span class="chev">▸</span></summary>
+      <div class="panel">
+        <p>Barchart'ın haberlerinin gösterdiği örüntü şu: fiyatlardaki son gerileme Fildişi Sahili'nden gelen bol arzın sonucu — birkaç ayrı Barchart başlığı bu boluğu doğruluyor. Ama CNBC Africa'nın aktardığına göre Fildişi Sahili'nin 2026/27 sezonu hasadının, aşırı yağış ve hastalık nedeniyle yüzde 10'dan fazla küçülmesi bekleniyor.</p>
+        <p>Benim okumam, bu iki haberin çelişmediği, aynı zincirin farklı uçları olduğu yönünde: bugünkü bolluk geçen sezonun ürünü, gelecek sezonun tehdidi ise henüz fiyata girmemiş bir öncü sinyal. Güven düzeyimi orta tutuyorum çünkü hasat tahminleri mevsim ilerledikçe değişebiliyor; izlenmesi gereken şey Eylül-Ekim'de gelecek daha kesin hasat verileri.</p>
+        <div class="ground">Çürütme koşulu: Sonbahar yağış verileri toparlanma gösterirse ya da alternatif üretici Gana'dan telafi edici bir rekolte haberi gelirse, bu "gelecek kıtlık" okumasını geri çekerim.</div>
+        <div class="srcline">TradingEconomics, 24 Temmuz · Barchart · CNBC Africa</div>
+      </div>
+    </details>
+  </article>
+
+  <h2 class="desk">Piyasa Panosu</h2>
+  <table class="mkt">
+    <thead><tr><th>Varlık</th><th class="r">Değer</th><th class="r">Gün</th><th>Not</th></tr></thead>
+    <tbody>
+      <tr><td class="asset">S&amp;P 500 (vadeli)</td><td class="r">—</td><td class="r down">−0,2%</td><td>açılış öncesi</td></tr>
+      <tr><td class="asset">Nasdaq 100 (vadeli)</td><td class="r">—</td><td class="r down">−0,9%</td><td>çip satışı sürüyor</td></tr>
+      <tr><td class="asset">Dow (vadeli)</td><td class="r">—</td><td class="r up">+0,1%</td><td>defansifler dirençli</td></tr>
+      <tr><td class="asset">DAX</td><td class="r">25.841</td><td class="r up">+0,24%</td><td>Pazartesi kapanışı, rekor</td></tr>
+      <tr><td class="asset">SOX (yarı iletken)</td><td class="r">—</td><td class="r down">Temmuz −%17</td><td>Haziran zirvesi 14.655</td></tr>
+      <tr><td class="asset">Kospi</td><td class="r">—</td><td class="r down">−10,84%</td><td>28 Temmuz</td></tr>
+      <tr><td class="asset">ABD 10 yıllık</td><td class="r">%4,66</td><td class="r">—</td><td>27 Temmuz</td></tr>
+      <tr><td class="asset">Dolar endeksi (DXY)</td><td class="r">~100,7</td><td class="r">—</td><td>20 Temmuz verisi, güncel değil</td></tr>
+      <tr><td class="asset">Brent</td><td class="r">85,08 $</td><td class="r down">−3,71%</td><td>Eylül vadeli</td></tr>
+      <tr><td class="asset">WTI</td><td class="r">80,11 $</td><td class="r down">−3%</td><td>Eylül vadeli</td></tr>
+      <tr><td class="asset">Altın</td><td class="r">4.045,89 $</td><td class="r">—</td><td>destek 4.021 $</td></tr>
+      <tr><td class="asset">VIX</td><td class="r">18,6</td><td class="r">—</td><td>24 Temmuz verisi, güncel değil</td></tr>
+      <tr><td class="asset">Dolar/TL</td><td class="r">47,38</td><td class="r">—</td><td>rekor bölgesi</td></tr>
+      <tr><td class="asset">BIST 100</td><td class="r">13.786</td><td class="r up">+0,08%</td><td>açılış, 28 Temmuz</td></tr>
+      <tr><td class="asset">TR 5Y CDS</td><td class="r">200-225 bp</td><td class="r">—</td><td>izlenen bant</td></tr>
+      <tr><td class="asset">Kakao</td><td class="r">5.330 $</td><td class="r up">+0,55% / gün</td><td>−%36 yıllık</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="desk">Günün Ağı</h2>
+  <div class="netcard">
+    <svg viewBox="0 0 380 300" xmlns="http://www.w3.org/2000/svg" font-family="var(--sans)">
+      <defs><marker id="ar" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+      <polyline points="190,150 145,110 100,70" fill="none" stroke="var(--accent)" stroke-width="2" marker-mid="url(#ar)"/>
+      <polyline points="100,70 190,58 280,46" fill="none" stroke="var(--accent)" stroke-width="2" marker-mid="url(#ar)"/>
+      <polyline points="280,46 310,95 340,144" fill="none" stroke="var(--accent)" stroke-width="2" marker-mid="url(#ar)"/>
+      <polyline points="340,144 265,147 190,150" fill="none" stroke="var(--accent)" stroke-width="2" marker-mid="url(#ar)"/>
+      <polyline points="190,150 130,165 70,180" fill="none" stroke="var(--muted)" stroke-width="1.6" stroke-dasharray="5 4" marker-mid="url(#ar)"/>
+      <polyline points="280,46 250,140 220,235" fill="none" stroke="var(--muted)" stroke-width="1.4" stroke-dasharray="5 4" marker-mid="url(#ar)"/>
+      <polyline points="220,235 175,248 130,262" fill="none" stroke="var(--muted)" stroke-width="1.4" stroke-dasharray="5 4" marker-mid="url(#ar)"/>
+      <polyline points="190,150 165,205 140,262" fill="none" stroke="var(--muted)" stroke-width="1.4" stroke-dasharray="5 4" marker-mid="url(#ar)"/>
+      <text x="140" y="104" font-size="12" fill="var(--up)" text-anchor="middle">+</text>
+      <text x="190" y="52" font-size="12" fill="var(--up)" text-anchor="middle">+</text>
+      <text x="318" y="96" font-size="12" fill="var(--down)" text-anchor="middle">−</text>
+      <text x="265" y="138" font-size="12" fill="var(--down)" text-anchor="middle">−</text>
+      <text x="122" y="158" font-size="12" fill="var(--down)" text-anchor="middle">−</text>
+      <text x="245" y="200" font-size="9.5" fill="var(--muted)" text-anchor="middle">koşullu</text>
+      <text x="168" y="255" font-size="12" fill="var(--down)" text-anchor="middle">−</text>
+      <circle cx="190" cy="150" r="11" fill="var(--accent)"/>
+      <circle cx="100" cy="70" r="6" fill="var(--paper2)" stroke="var(--ink-soft)" stroke-width="1.2"/>
+      <circle cx="280" cy="46" r="6" fill="var(--paper2)" stroke="var(--ink-soft)" stroke-width="1.2"/>
+      <circle cx="340" cy="144" r="6" fill="var(--paper2)" stroke="var(--accent)" stroke-width="1.5"/>
+      <circle cx="70" cy="180" r="6" fill="var(--paper2)" stroke="var(--ink-soft)" stroke-width="1.2"/>
+      <circle cx="220" cy="235" r="6" fill="var(--paper2)" stroke="var(--ink-soft)" stroke-width="1.2"/>
+      <circle cx="130" cy="262" r="6" fill="var(--paper2)" stroke="var(--ink-soft)" stroke-width="1.2"/>
+      <text x="190" y="134" font-size="11.5" font-weight="700" fill="var(--accent)" text-anchor="middle">Nvidia</text>
+      <text x="100" y="58" font-size="11.5" fill="var(--ink)" text-anchor="middle">OpenAI</text>
+      <text x="280" y="34" font-size="11" fill="var(--ink)" text-anchor="middle">Veri merkezi finansmanı</text>
+      <text x="340" y="132" font-size="11.5" fill="var(--ink)" text-anchor="middle">Nvidia CDS</text>
+      <text x="66" y="196" font-size="10.5" fill="var(--ink)" text-anchor="middle">Bellek üreticileri</text>
+      <text x="230" y="252" font-size="11.5" fill="var(--ink)" text-anchor="middle">Fed kararı</text>
+      <text x="122" y="278" font-size="10" fill="var(--ink)" text-anchor="middle">BofA'nın kalabalık işlemi</text>
+      <line x1="14" y1="292" x2="34" y2="292" stroke="var(--accent)" stroke-width="2"/><text x="40" y="296" font-size="10" fill="var(--ink-soft)">iç döngü</text>
+      <line x1="110" y1="292" x2="130" y2="292" stroke="var(--muted)" stroke-width="1.6" stroke-dasharray="5 4"/><text x="136" y="296" font-size="10" fill="var(--ink-soft)">dolaylı</text>
+      <line x1="230" y1="292" x2="250" y2="292" stroke="var(--muted)" stroke-width="1.4" stroke-dasharray="5 4"/><text x="256" y="296" font-size="10" fill="var(--ink-soft)">koşullu</text>
+    </svg>
+    <div class="cap">Ağı bugün açıyoruz çünkü tek bir karar dört ayrı masayı aynı anda hareket ettiriyor: Nvidia'nın OpenAI'a verdiği finansman garantisi kendi kredi risk sigortasını (CDS) yukarı taşıyor, bu da piyasanın üç aydır en kalabalık bahsi olan küresel yarı iletken pozisyonunu (H8) tedirginleştiriyor. Bellek üreticilerindeki çöküş bu zincirin doğrudan bir parçası değil — dolaylı bir güven kaybının sonucu. Fed'in yarınki kararı (H2) bütün bu yapının finansman maliyetini belirleyecek; iç döngü (Nvidia-OpenAI-finansman-CDS) doğrudan ve kendini besleyen bir yapı, dış bağlar ise koşullu ve tek yönlü değil.</div>
+  </div>
+
+  <h2 class="desk">Kısa Kısa</h2>
+  <div class="briefs">
+    <div class="brief"><b>Doğal gaz</b>Doomberg'in 26 Temmuz'daki "Demand Push" yazısı, ABD'de yakın vadede doğal gaz kıtlığı riskinin doğup doğmayacağını soruyor; H1'deki veri merkezi elektrik talebiyle dolaylı bağlantılı.</div>
+    <div class="brief"><b>İran'ın enerji kaybı</b>Anadolu Ajansı'nın aktardığına göre İran, savaş boyunca 230 milyon metreküp doğal gaz üretim kapasitesi kaybetti — H3'teki gerilimin sahadaki somut maliyetlerinden biri.</div>
+    <div class="brief"><b>Tahvil</b>ABD 10 yıllığı yüzde 4,66 (27 Temmuz); Fed kararı öncesi ön uç daha oynak olabilir.</div>
+    <div class="brief"><b>Türkiye risk primi</b>5 yıllık CDS izlediğimiz 200-225 baz puan bandında; bugüne dair daha taze bir okuma elimde yok, Fed sonrası güncellenecek.</div>
+  </div>
+
+  <h2 class="desk">Bülten Radarı</h2>
+  <div class="radar">
+    <div class="ri"><b>Doomberg</b> — "Demand Push", ABD doğal gaz arzını ele alıyor; H1'deki veri merkezi elektrik talebiyle bağlantılı. <span>26 Temmuz</span></div>
+    <div class="ri"><b>Chartbook / Adam Tooze</b> — "Chartbook 455: The AI boom, China's walled-in-wealth" — H1'in arka planındaki büyük resmi çiziyor. <span>1 Temmuz</span></div>
+    <div class="ri"><b>The Overshoot</b> — 20 Temmuz'dan bu yana yeni yazı yok; kaynak kenarda bekletiliyor. <span>son: 20 Temmuz</span></div>
+    <div class="ri"><b>Fed Guy</b> — Şubat'tan beri yeni yazı yok; kaynak kenarda bekletiliyor. <span>son: 23 Şubat</span></div>
+  </div>
+
+  <h2 class="desk">Yatırım Değerlendirmesi</h2>
+  <div class="disc">Yatırım danışmanı değilim ve bunlar alım satım tavsiyesi değil; kararını kendin verirken kullanacağın kanıtlı bir değerlendirme. Rakamlar kaynaklıdır, ama aşağıdaki yüzdelik olasılıklar hesaplanmış değil, benim öznel değerlendirmemdir.</div>
+
+  <div class="inv">
+    <h4>Altın <span class="st st-two">Fed'e bağlı, iki yönlü</span></h4>
+    <p>Ons 4.045,89 dolar ve kritik destek olan 4.021 dolara yakın işlem görüyor. Bu seviye yarınki Fed kararına o kadar bağlı ki, bugünden bir yön bahsi büyük ölçüde yarının sonucuna bahis anlamına geliyor — bu yüzden 26 Temmuz'daki "şimdilik bekle" değerlendirmemi büyük ölçüde koruyorum, ama artık nötr bir bekleyişten çok, net bir katalizör (Fed) önündeki bekleyiş.</p>
+    <div class="bar"><div class="u" style="width:45%">Yukarı 45</div><div class="d" style="width:55%">55</div></div>
+    <p>Fed 25 baz puan artırırsa destek muhtemelen kırılır ve 3.964-3.914 dolar bandı görülebilir; Fed sabit kalıp güvercin bir ton takınırsa toparlanma 4.133-4.220 dolara açılabilir. Hazar gerginliği (H3) tırmanırsa güvenli liman talebi bu hesaba üçüncü bir değişken olarak girer. Araç olarak fiziksel yerine bir altın ETF'i (ör. GLD ya da yerel bir altın fonu) pozisyon büyüklüğünü esnek tutmak için daha kullanışlı.</p>
+  </div>
+
+  <div class="inv">
+    <h4>Avrupa savunma sektörü <span class="st st-cau">momentum güçlü, teknik olarak gergin</span></h4>
+    <p>Rheinmetall, TKMS, Renk ve Hensoldt'un taşıdığı rally gerçek bir talep artışına (Thales-Exail anlaşması, NATO bütçe taahhütleri) dayanıyor, ama Geyer'in "aşırı alım" ve Stanzl'ın "zayıf hacim" uyarıları ciddiye alınmalı. 26 Temmuz'da genel DAX için önerdiğim "ucuz + momentum" okumasını bu kez daraltıyorum: savunma alt sektörü artık ucuz değil, sadece güçlü.</p>
+    <div class="bar"><div class="u" style="width:52%">Yukarı 52</div><div class="d" style="width:48%">48</div></div>
+    <p>Asimetriyi çevirebilecek şey, İran cephesinin kalıcı biçimde sakinleşmesi — bu durumda savunma primi hızla erir. Tek hisseden çok bir Avrupa savunma sepeti (ör. bir savunma/havacılık temalı borsa yatırım fonu) yoğunlaşma riskini azaltır.</p>
+  </div>
+
+  <div class="inv">
+    <h4>Türk savunma ihracatçıları <span class="st st-pos">yapısal olarak olumlu, kur riskiyle birlikte</span></h4>
+    <p>ARCA, TUSAŞ, ROKETSAN ve ASELSAN'ın oluşturduğu ihracat tablosu (H6) yıldan yıla büyüyen, dolar bazlı ve çeşitlenmiş bir gelir tabanı gösteriyor; bu da hem küresel savunma talebinden hem de zayıflayan liradan (H5) dolar geliri açısından çift yönde faydalanan nadir bir Türk sektörü. Halka açık isimlerden ASELSAN bu tabloya en doğrudan erişim sağlıyor.</p>
+    <div class="bar"><div class="u" style="width:58%">Yukarı 58</div><div class="d" style="width:42%">42</div></div>
+    <p>Riskler somut: ihracat kontrol rejimlerindeki olası sıkılaşma, tedarik zinciri kısıtları ve BIST'in genelinde bugün gördüğümüz gibi bankacılık kaynaklı zayıf ivme (H5) tüm endeksi aşağı çekebilir. Kaynaklarımda ASELSAN için somut bir fiyat hedefi yok, bu yüzden uydurmuyorum; burada asıl tez sektörün yapısal büyümesi, kısa vadeli fiyat hedefi değil.</p>
+  </div>
+
+  <div class="method">
+    <p>Bu sayı on ayrı haber üzerine kuruludur; her biri kendi kaynağıyla durur ve hiçbiri diğerinin tekrarı değildir. Ölçülen veri, başkasının görüşü ve benim çıkarımım cümlenin içinde birbirinden ayrılır; çıkarımların argümanı ve çürütme koşulu açıkça yazılır. Elde edilemeyen veri için "yok" ya da "güncel değil" denir. Kurallar üstteki künye panelinde görünür ve geri bildiriminle değişir.</p>
+    <p class="src2">Kaynaklar:
+      <a href="https://www.aljazeera.com/news/2026/7/27/iran-warns-ukraine-of-retaliation-after-deadly-caspian-sea-strike">Al Jazeera</a> ·
+      <a href="https://www.defensenews.com/global/mideast-africa/2026/07/26/iran-says-ukrainian-attack-on-vessel-in-caspian-sea-killed-sailor/">Defense News</a> ·
+      <a href="https://www.cnbc.com/2026/07/28/oil-price-today-wti-brent-us-iran-hormuz.html">CNBC (petrol)</a> ·
+      <a href="https://www.techtimes.com/articles/321730/20260727/oil-sinks-7-us-iran-pause-hormuz-shipping-talks-ahead-fed-decision.htm">Techtimes</a> ·
+      <a href="https://www.nbcnews.com/business/economy/trump-tariffs-60-countries-forced-labor-rcna588972">NBC News</a> ·
+      <a href="https://www.fxleaders.com/news/2026/07/28/gold-price-forecast-today-xauusd-tests-dollar4020-support-ahead-of-fed-decision-july-28/">FX Leaders</a> ·
+      <a href="https://www.cnbc.com/2026/07/27/nvidia-and-openai-in-talks-for-up-to-250-billion-dollar-ai-backstop.html">CNBC (Nvidia/OpenAI)</a> ·
+      <a href="https://www.axios.com/2026/07/27/nvidia-openai-financing-ai-jensen-huang-ssi">Axios</a> ·
+      <a href="https://www.bloomberg.com/news/articles/2026-07-27/nvidia-s-750-billion-deals-revive-fear-of-ai-circular-financing">Bloomberg</a> ·
+      <a href="https://finance.yahoo.com/technology/ai/articles/nvidia-reportedly-moves-backstop-250-015059079.html">Yahoo Finance (Burry)</a> ·
+      <a href="https://www.morningstar.com/stocks/nvidia-reported-openai-deal-raises-circular-deal-fears-we-think-stock-is-undervalued">Morningstar</a> ·
+      <a href="https://finance.yahoo.com/markets/live/stock-market-today-tuesday-july-28-dow-sp-500-nasdaq-082832371.html">Yahoo Finance (piyasalar)</a> ·
+      <a href="https://www.getmidas.com/midasin-kulaklari/dax-rekor-kirmayi-surdurdu-savunma-hisseleri-one-cikti-p-580507">Midas</a> ·
+      <a href="https://finance.yahoo.com/news/global-investors-turn-most-bullish-073023142.html">BofA FMS (Yahoo aktarımı)</a> ·
+      <a href="https://tr.investing.com/news/economic-indicators/tcmb-faizi-dorduncu-kez-ust-uste-yuzde-37de-sabit-tuttu-3993988">Investing.com (TCMB)</a> ·
+      <a href="https://www.kamu1.net/dolar-tarihi-rekor-kirdi-47-lira-siniri-asildi">Kamu1</a> ·
+      <a href="https://www.ensondakika.com.tr/dolar-tl-47-38-seviyesinden-islem-goruyor-28-temmuz-2026/679536/">ensondakika</a> ·
+      <a href="https://www.24saatgazetesi.com/borsa-istanbulda-bist-100-acilis-rakamlari-belli-oldu-hangi-hisse-ve-sektor-kazandirdi-28-temmuz-2026">24saatgazetesi</a> ·
+      <a href="https://www.aa.com.tr/tr/ekonomi/turk-savunma-sanayisi-ulke-ihracatina-guc-katiyor/3975213">Anadolu Ajansı</a> ·
+      <a href="https://tradingeconomics.com/commodity/cocoa">TradingEconomics (kakao)</a>
+    </p>
+  </div>
+
+  <div class="foot">SABAH · Öngörü Radarı — 28 Temmuz 2026 · künye v1.0 · on haber<br><a href="arsiv/" style="color:var(--accent2)">Geçmiş sayılar →</a></div>
+
+</div>
+
+<script>
+  function genFb(){
+    var h=document.getElementById('fb-h').value;
+    var t=document.getElementById('fb-t').value;
+    var x=document.getElementById('fb-x').value.trim();
+    var k=document.getElementById('fb-k').value;
+    var kalici = k.indexOf('Evet')===0 ? 'Evet, künyeye kural olarak ekle ve sürümü yükselt' : 'Hayır, yalnızca bu sayı için';
+    var s = 'SABAH geri bildirim — 28 Temmuz 2026 (künye v1.0)\n'
+          + 'Bölüm: ' + h + '\n'
+          + 'Konu: ' + t + '\n'
+          + 'Geri bildirim: ' + (x || '(boş)') + '\n'
+          + 'Kalıcı kural: ' + kalici;
+    var o=document.getElementById('fb-out');
+    o.textContent=s; o.style.display='block';
+  }
+  function copyFb(){
+    var o=document.getElementById('fb-out');
+    if(o.style.display==='none'||!o.textContent){ genFb(); }
+    var txt=o.textContent;
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(function(){
+        o.textContent = txt + '\n\n✓ Kopyalandı — sohbete yapıştırabilirsin.';
+      }).catch(function(){});
+    }
+  }
+</script>
+</body>
+</html>
