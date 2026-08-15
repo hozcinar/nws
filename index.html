@@ -114,7 +114,7 @@ font-size:12px;color:var(--muted);text-align:center}
 
 <div class="ctrl sans">
   <details class="bar">
-    <summary>⚙ Künye ve Kurallar <span class="badge">sürüm 1.4</span></summary>
+    <summary>⚙ Künye ve Kurallar <span class="badge">sürüm 1.5</span></summary>
     <div class="barbody sans">
       <div class="rulerow"><span class="rk">K1</span><b>Kapsam.</b> 8–10 birbirinden farklı haber; hiçbiri diğerinin tekrarı değil. Tek tema bütün gazeteyi ele geçirmez. Çoktan fiyatlanmış değil öncü gelişme kovalanır; sinyal yoksa açıkça "net sinyal yok" denir.</div>
       <div class="rulerow"><span class="rk">K2</span><b>Üslup.</b> Tam ve akıcı cümleler (FT/Adam Tooze analiz nesri). Etiket rozeti yok; atıf cümlenin içine dokunur. Jargonun sade Türkçesi aynı cümlede verilir. Tablo yalnızca sayısal pano için.</div>
@@ -122,9 +122,11 @@ font-size:12px;color:var(--muted);text-align:center}
       <div class="rulerow"><span class="rk">K4</span><b>Yapı.</b> Jeopolitik + piyasa + Türkiye eşit ağırlıkta. Yüzey kısa, derinlik açılır panellerde. Başat aktör motivasyon + kırmızı çizgi düzeyinde çözümlenir.</div>
       <div class="rulerow"><span class="rk">K5</span><b>Kaynaklar.</b> Bültenler (Tooze, Overshoot, FedGuy, Doomberg, Citrini…), küresel medya (Reuters/AP/CNBC/Bloomberg/FT), jeopolitik analiz, TCMB/Türkiye, piyasa+akış verisi, sosyal sinyal.</div>
       <div class="rulerow"><span class="rk">K6</span><b>Yatırım.</b> 2–3 enstrüman; değerleme, neden, yukarı potansiyel, risk asimetrisi (öznel yüzde + neyin çevireceği), somut araç. "Yatırım tavsiyesi değildir" çerçevesi zorunlu.</div>
+      <div class="rulerow"><span class="rk">K7</span><b>Okur odağı — BIST 100 &amp; takip emtiaları.</b> Hüseyin BIST 100 içinden hisse seçen aktif bir yatırımcıdır; her sayıda "BIST 100 Hisse Radarı" bölümü zorunludur: sektör rotasyonu (BIST içi göreli güç), yabancı takas/para akışı, bilanço/kazanç takibi ve şirket haberi/katalizör dört başlığıyla. Yatırım Değerlendirmesi ağırlıklı olarak tekil BIST 100 hisselerine odaklanır. Ayrıca bakır, altın ve kahve her sayıda emtia köşesinde ayrıca izlenir. Küresel makro/jeopolitik bu odağı besleyen bağlam olarak kalır, onu bastırmaz.</div>
       <div class="chlog">
         <b>Değişiklik günlüğü.</b><br>
-        • <b>15 Ağu 2026 (v1.4)</b> — Hafıza sunucusuna (<code>/areas/sabah-finans-gazetesi.md</code> künyesi) bu oturumda erişilemedi; sürüm ve günlük, bir önceki (13 Ağu, v1.3) sayının kendi künyesinden devralınarak sürdürüldü. Kurallar yüklü SKILL.md özetinden uygulandı. Hafıza yeniden bağlandığında sürüm gerçek künyeyle uyumlanacak.<br>
+        • <b>15 Ağu 2026 (v1.5)</b> — Kullanıcı geri bildirimi: gazete daha çok BIST 100 hisse seçicisini ilgilendirecek şirket/sektör haberlerine yöneltildi. Kalıcı kural K7 eklendi; "BIST 100 Hisse Radarı" bölümü açıldı, Yatırım Değerlendirmesi BIST hisselerine ağırlıklandırıldı, emtia köşesine bakır/altın/kahve yerleştirildi.<br>
+        • <b>15 Ağu 2026 (v1.4)</b> — Hafıza sunucusuna (<code>/areas/sabah-finans-gazetesi.md</code> künyesi) bu oturumda erişilemedi; sürüm ve günlük, bir önceki (13 Ağu, v1.3) sayının kendi künyesinden devralınarak sürdürüldü.<br>
         • v1.3 — Ağ grafiğinde doğrudan/dolaylı ilişki ayrımı, yön oku ve +/− işareti.<br>
         • v1.2 — H-rozetli nokta-atışı geri bildirim formu eklendi.<br>
         • v1.1 — Kontrol barı ve künye paneli.
@@ -146,6 +148,7 @@ font-size:12px;color:var(--muted);text-align:center}
         <option>H8 · Çin deflasyonu</option>
         <option>H9 · Kaybolan volatilite / BTC</option>
         <option>H10 · Yumuşak emtia</option>
+        <option>BIST 100 Hisse Radarı</option><option>Emtia köşesi (bakır/altın/kahve)</option>
         <option>Piyasa panosu</option><option>Günün ağı</option><option>Bülten radarı</option>
         <option>Yatırım değerlendirmesi</option><option>Genel / biçim</option>
       </select>
@@ -175,7 +178,7 @@ font-size:12px;color:var(--muted);text-align:center}
     <div class="line">
       <span>15 Ağustos 2026, Cumartesi · İstanbul</span>
       <span>Referans: 14 Ağustos Cuma kapanışı</span>
-      <span>Hafta sonu baskısı · Sürüm 1.4</span>
+      <span>Hafta sonu baskısı · Sürüm 1.5</span>
     </div>
   </div>
 
@@ -195,6 +198,7 @@ font-size:12px;color:var(--muted);text-align:center}
       <li><a href="#h9"><span class="hno">H9</span>Volatilite ekrandan silindi: sükûnet mi, kayıtsızlık mı?<span class="tag">Piyasalar</span></a></li>
       <li><a href="#h10"><span class="hno">H10</span>Kakao bir yılda üçte bir eridi: emtia krizi normalleşiyor<span class="tag">Emtia</span></a></li>
     </ol>
+    <p style="margin:10px 0 0;font-size:14px;font-family:-apple-system,sans-serif;color:var(--muted)">Ayrıca: <a href="#hisse" style="color:var(--accent)"><b>BIST 100 Hisse Radarı</b></a> (sektör rotasyonu · yabancı akış · bilanço · şirket katalizörleri) · <a href="#emtia" style="color:var(--accent)">Emtia köşesi</a> (bakır · altın · kahve) · <a href="#yatirim" style="color:var(--accent)">Yatırım Değerlendirmesi</a> (BIST ağırlıklı).</p>
   </div>
 
   <!-- ============ DÜNYA ============ -->
@@ -341,6 +345,48 @@ font-size:12px;color:var(--muted);text-align:center}
     </div>
   </div>
 
+  <!-- ============ BIST 100 HİSSE RADARI ============ -->
+  <div class="sec" id="hisse">
+    <h2>BIST 100 Hisse Radarı</h2>
+    <p class="src">Bu bölüm, BIST 100 içinden hisse seçen okur için dört pencereden bakıyor: sektör rotasyonu, yabancı para akışı, bilanço takvimi ve tekil şirket katalizörleri. Aşağıdakiler haber ve bağlamdır; alım-satım önerisi değildir.</p>
+
+    <div class="art">
+      <h3>Sektör rotasyonu: para bankadan holding ve teknolojiye kayıyor</h3>
+      <p>11 Ağustos verilerine göre BIST'te sektörler arası ayrışma belirginleşti: bankacılık endeksi yüzde 1,28 gerilerken holding endeksi yüzde 0,54 yükseldi; günün en güçlü performansını yüzde 4,05'le bilişim sergiledi, kimya ve teknoloji de pozitif ayrıştı. İşin Detayı'nın aktardığı teknik okumaya göre BIST 100'de 13.900 direnç olarak öne çıkıyor ve yükselişin önündeki başlıca yük bankacılıktaki satış baskısı. Yani endeks rekor bölgesine yakınken (14 Ağustos kapanışı 14.172) liderlik el değiştiriyor: klasik banka ağırlıklı ralli yerini holding ve teknoloji öncülüğüne bırakıyor.</p>
+      <div class="mine">
+        <span class="tag">Benim okumam</span>
+        <p>Bankacılığın geri kalması tek başına olumsuz değil; TCMB'nin Eylül'de indirime dönmesi beklentisi (H6) tipik olarak önce holding ve büyüme temalı hisseleri, sonra bankaları besler. Rotasyonun bilişim/teknolojiye kayması, düşen faiz beklentisinin "uzun vadeli nakit akışı" hisselerini öne çıkarmasıyla tutarlı. <b>Çürütme koşulu:</b> Enerji şoku (H2) enflasyonu yeniden kışkırtıp indirim takvimini bozarsa, bu rotasyon tersine döner ve savunmacı/banka dışı temalar zayıflar.</p>
+      </div>
+    </div>
+
+    <div class="art">
+      <h3>Yabancı akışı: yıl başından beri 1,4 milyar dolar net alım, ama takas dip seviyede</h3>
+      <p>TCMB'nin 7 Ağustos haftası verilerine göre yurt dışı yerleşikler hisse piyasasında haftalık 1,5 milyon dolar net alım yaptı; yıl başından bu yana kümülatif net alım 1 milyar 404 milyon dolara ulaştı ve yabancının hisse stoku 39,56 milyar dolardan 40,78 milyar dolara çıktı. Buna karşın Ekonomim'in aktardığı gibi genel yabancı takas oranı tarihsel olarak dip bölgede — yani yabancı toplam sahiplik payı hâlâ düşük, bu da hem "giriş potansiyeli" hem de "henüz güçlü inanç yok" biçiminde iki yönlü okunabilir. Haftalık takasta yabancı payını en çok artırdığı hisse yüzde 38,56 ile Galatasaray (GSRAY) oldu; onu CWENE, PASEU, PAHOL ve TRALT izledi — ki bunlar geniş bir sektör temasından çok hisseye özgü hikâyelere işaret ediyor. Bankacılıkta yabancının en sevdiği isim olan Akbank'ın (AKBNK) yabancı payı yüzde 44,36.</p>
+      <div class="mine">
+        <span class="tag">Benim okumam</span>
+        <p>Düşük takas + pozitif kümülatif akış birleşimi, boğa için sessiz bir argüman: yabancı henüz "hafif" konumlu, dönüş hızlanırsa alım tabanı geniş. Ama haftalık liderlerin (GSRAY vb.) spekülatif hisseler olması, akışın şu an geniş tabanlı bir "Türkiye al" temasından çok seçici olduğunu gösteriyor. <b>Çürütme koşulu:</b> Küresel şahin dolar teması (H1/H3) güçlenip gelişen ülkelerden çıkış başlarsa, düşük takas hızlı satışa değil ama zayıf desteğe dönüşür.</p>
+      </div>
+    </div>
+
+    <div class="art">
+      <h3>Bilanço takvimi: 3–19 Ağustos'ta yoğunlaşma, ağırlık BIST 100'ün lokomotiflerinde</h3>
+      <p>İkinci çeyrek bilanço sezonu tam gaz: Para Ajansı'nın aktardığına göre Ağustos'ta 37 şirket KAP'ta finansallarını açıklayacak ve en yoğun dönem 3–19 Ağustos aralığında. Sezon 3 Ağustos'ta Çimsa, Türk Traktör ve İş Bankası ile başladı; takvimde Tüpraş, Aselsan, Ford Otosan, Türk Hava Yolları, Koç Holding, Coca-Cola İçecek, Anadolu Efes, Migros, Pegasus, Sabancı Holding, Şok, Ülker ve BİM gibi BIST 100'ün ağır topları var. Solo bilançolar için son bildirim 10 Ağustos'tu; konsolide sonuçlar bu hafta ve gelecek hafta akmaya devam edecek.</p>
+      <div class="mine">
+        <span class="tag">Benim okumam</span>
+        <p>Bilanço sezonunun ikinci yarısında (bu hafta) fiyat hareketleri artık "beklenti" değil "gerçekleşme–tepki" ekseninde olur; sürprizin yönü kadar guidance (yıl sonu beklentisi) belirleyici. Enflasyon muhasebesinin marjları bulanıklaştırdığı bir ortamda, nakit akışı ve borçluluk kalemleri net kârdan daha güvenilir sinyal veriyor. Perakende (Migros/BİM/Şok) ve havacılık (THY/Pegasus) sonuçları, iç talebin gücü hakkında en okunaklı termometreler.</p>
+      </div>
+    </div>
+
+    <div class="art">
+      <h3>Şirket katalizörleri: THY'ye hedef güncellemesi yağdı, ASELSAN hacimle sıçradı</h3>
+      <p>Tekil hikâyelerde iki isim öne çıktı. Türk Hava Yolları (THYAO) 5 Ağustos'ta ikinci çeyrek finansallarını açıkladı; sonuçların ardından dokuz aracı kurum hedef fiyatını güncelledi. Örneğin Deniz Yatırım hedefini 404,90 TL, Garanti BBVA Yatırım ise "endeks üstü getiri" tavsiyesiyle 456,00 TL olarak açıkladı; hisse 6 Ağustos'ta 311,25 TL dolayındaydı — yani kurumların hedefleri o günkü fiyatın belirgin üzerinde. Savunma tarafında ASELSAN (ASELS) 12 Ağustos'ta yüzde 6,95 yükselişle 381,00 TL'den kapandı ve 21,30 milyar TL'lik işlem hacmiyle günün en çok işlem gören hisselerinden biri oldu; şirketin ikinci çeyrek bilançosu da Ağustos takviminde.</p>
+      <div class="mine">
+        <span class="tag">Benim okumam</span>
+        <p>THY'de dikkat çeken, sonuç sonrası hedeflerin fiyatın üstüne çekilmesi — yani kurumlar bilançoyu "beklentiyi doğrulayan" okudu; ama hedef fiyat bir vaat değil, gerçekleşme kur, yakıt ve doluluk oranına bağlı. ASELSAN'ın yüksek hacimli sıçraması, H9'daki savunma ihracatı rekoruyla ve küresel yeniden silahlanma temasıyla aynı damardan besleniyor; katalizör gerçek ama momentum hisselerinde giriş zamanlaması riski yüksektir. <b>Çürütme koşulu:</b> Bilanço guidance'ları hayal kırıklığı yaratırsa, hedef güncellemeleri hızla geri alınır.</p>
+      </div>
+    </div>
+  </div>
+
   <!-- ============ EMTİA ============ -->
   <div class="sec" id="emtia">
     <h2>Emtia</h2>
@@ -354,6 +400,18 @@ font-size:12px;color:var(--muted);text-align:center}
         <p>Kakao ve kahve, 2024–25 emtia şokunun "arz esnekliği" dersini veriyor: yeterince yüksek fiyat, yeterince arz getirir. Bu, petrolden (H2) ayrışan bir hikâye — orada darboğaz jeopolitik, burada ise hava ve tarım döngüsü. Emtia sepetinin bu iki ucunun aynı anda zıt yönlerde hareket etmesi, "tek bir emtia teması" kurmanın neden yanıltıcı olduğunu gösteriyor.</p>
       </div>
     </div>
+
+    <div class="art">
+      <h3>Bakır: erken Ağustos'ta rekor, ortada Çin ile Batı'nın bölünmesi</h3>
+      <p class="dek">Takip emtialarından biri olan bakır, arz korkusuyla tüm zamanların zirvesini gördü; ama Batılı ve Çinli yatırımcılar taban tabana zıt konumlanmış durumda.</p>
+      <p>Takip listenizdeki üç emtiadan biri olan bakır, Ağustos'a sert bir yükselişle girdi. COMEX vadelileri 5–6 Ağustos'ta yeni bir tüm zamanların rekoru kurarak libre başına 6,70–6,90 dolar bandına, Londra Metal Borsası'nda (LME) üç aylık bakır ise ton başına 14.000 doları aşıp 14.300–14.370 dolar aralığını test etti — Ocak rekoruna yakın seviyeler. Yükselişin arkasında üç kuvvet vardı: Demokratik Kongo'daki arz korkusu, ABD'de tarife kaynaklı stoklama ve elektrifikasyon-şebeke yatırımına bağlı yapısal talep. LME stokları 31 Temmuz'dan bu yana yüzde 14 azalarak 214.550 tona indi, geri (backwardation) eğrisi genişledi. Ancak tabloda çarpıcı bir bölünme var: LME tarafı 2024'ten bu yana en boğa konumdayken, Şanghay vadeli borsasındaki Çinli yatırımcılar 2021'den bu yana en geniş net kısa pozisyonda — yani Batı arz sıkışıklığına, Çin ise talep zayıflığına bakıyor. Nitekim ay ortasında bakır, zayıf Çin talebi sinyalleriyle bir miktar geri çekildi (H3'teki DAX seansında not edildiği gibi).</p>
+      <div class="mine">
+        <span class="tag">Benim okumam</span>
+        <p>Bakır şu an saf bir "arz mı talep mi" bahsi: fiyatı Kongo ve ABD tarife stoku yukarı çekiyor, Çin talebi aşağı bastırıyor. Bu ikili, bakırı bir Çin-büyüme göstergesinden çok bir arz-zinciri stresi göstergesine dönüştürüyor. Elektrifikasyon talebi yapısal olarak sağlam olsa da, kısa vadede fiyatı belirleyen stok ve tarife hikâyesi; bu da rekor sonrası geri çekilmeleri normalleştiriyor. <b>Çürütme koşulu:</b> Çin somut bir talep teşviki açıklarsa (H8), Doğu-Batı bölünmesi kapanır ve bakır rekoru zorlar; tersine ABD stoklaması doyarsa fiyat hızla düzeltebilir.</p>
+      </div>
+    </div>
+
+    <p class="src"><b>Takip emtiaları özet:</b> Altın rekor bölgesinde, çift motorlu (enflasyon + jeopolitik) güvenli liman (H5). Bakır rekor sonrası Doğu-Batı bölünmesinde, arz-stres göstergesi. Kahve libre başına 2,50–3 dolar bandına istikrar bekliyor (kakaoyla birlikte arz normalleşmesi). Üçü aynı yönde hareket etmiyor — altın makro korkuyla, bakır arz zinciriyle, kahve tarım döngüsüyle sürülüyor.</p>
   </div>
 
   <!-- ============ PİYASA PANOSU ============ -->
@@ -379,7 +437,10 @@ font-size:12px;color:var(--muted);text-align:center}
         <tr><td>WTI petrol</td><td>veri bu turda net değil</td><td>Brent referans alındı</td></tr>
         <tr><td>Altın (spot)</td><td>4.000+ $/ons</td><td>3 Ağu: 4.038 · vadeli 4.400 (10 Ağu)</td></tr>
         <tr><td>Bitcoin</td><td>~63–65 bin $</td><td>Ekim 2025 zirvesinin ~%50 altı</td></tr>
+        <tr><td>Bakır (COMEX)</td><td>~6,70–6,90 $/lb</td><td class="up">Erken Ağustos rekoru; ortada geri çekilme</td></tr>
+        <tr><td>Bakır (LME 3A)</td><td>~14.000+ $/ton</td><td>Ocak rekoruna yakın · stoklar −%14</td></tr>
         <tr><td>ABD kakao vadeli</td><td>~5.702</td><td class="down">Yıllık −%31</td></tr>
+        <tr><td>Kahve (yeşil, beklenti)</td><td>2,50–3 $/lb</td><td>Illy yönetimi istikrar bekliyor</td></tr>
         <tr class="grp"><td colspan="3">Volatilite ve konumlanma</td></tr>
         <tr><td>VIX</td><td>Ocak'tan beri en düşük</td><td>Kesin kapanış bu turda elimde yok</td></tr>
         <tr><td>Bitcoin BVIV</td><td>~%36</td><td>2026 dibi</td></tr>
@@ -476,25 +537,34 @@ font-size:12px;color:var(--muted);text-align:center}
     <div class="inv">
       <p style="font-size:15px;margin-top:12px"><b>Çerçeve:</b> Aşağıdaki değerlendirmeler yatırım tavsiyesi değildir; ben lisanslı bir yatırım danışmanı değilim. Verilen yukarı/aşağı olasılıkları tümüyle özneldir ve tartışmaya açıktır. Amaç, kendi kararınızı verebilmeniz için argümanı ve karşı-argümanı açıkça sermek.</p>
 
+      <p style="font-size:14px;margin:2px 0 10px;color:var(--gold)"><b>Odak:</b> Bu sayıda değerlendirme, isteğiniz doğrultusunda ağırlıklı olarak BIST 100 hisseleridir; sonda takip emtialarınız için kısa bir köşe var. Hiçbiri "al" çağrısı değildir.</p>
+
       <div class="card">
-        <div class="meta">1 · Altın (güvenli liman, çift motor)</div>
-        <h4>Neden: reel faiz belirsizliği + jeopolitik prim</h4>
-        <p>Altın 4.000 dolar üzerinde ve 2026 ortalama beklentisi rekor 4.920 dolar. Cazibesi, H1'deki "indirim mi artırım mı" ikileminin her iki kolunda da işe yaraması: indirim reel faizi düşürür, artırım ise politika-hatası korkusunu besler. Somut araç: fiziki altın, ya da ABD'de <b>GLD</b>/<b>IAU</b>, Türkiye'de altın fonları/ziynet.</p>
-        <div class="asym"><b>Risk asimetrisi (öznel):</b> Yukarı ~%15–20 (jeopolitik tırmanış + zayıf dolar). Aşağı ~%10–12. <b>Neyin çevireceği:</b> Reel faizlerin kalıcı yükselişi + Hürmüz'de kalıcı ateşkes ikisi birden gelirse çift motor söner.</div>
+        <div class="meta">1 · Türk Hava Yolları (THYAO)</div>
+        <h4>Neden: bilanço sonrası hedef güncellemeleri fiyatın üstünde</h4>
+        <p>THY 5 Ağustos'ta ikinci çeyrek finansallarını açıkladı; ardından dokuz aracı kurum hedef fiyatını güncelledi. Deniz Yatırım 404,90 TL, Garanti BBVA Yatırım "endeks üstü getiri" tavsiyesiyle 456,00 TL hedef verdi; hisse 6 Ağustos'ta 311,25 TL dolayındaydı — yani kurum hedefleri fiyatın belirgin üzerinde. Değerleme argümanı, THY'nin emsallerine göre düşük fiyat/kazanç ile işlem görmesi ve geniş uçuş ağının döviz geliri üretmesi. Somut araç: doğrudan THYAO hissesi.</p>
+        <div class="asym"><b>Risk asimetrisi (öznel):</b> 6–12 ay ufkunda yukarı ~%20–30 (kurum hedeflerine yakınsama). Aşağı ~%15. <b>Neyin çevireceği:</b> Petrol/yakıt maliyetinin H2'deki gibi yükselmesi ya da küresel talep zayıflığı doluluk oranını düşürürse tez bozulur. Kurum hedefleri bir vaat değil, senaryodur.</div>
       </div>
 
       <div class="card">
-        <div class="meta">2 · Volatilite / kuyruk koruması (karşı-akım)</div>
-        <h4>Neden: bastırılmış VIX ucuz sigorta demek</h4>
-        <p>VIX Ocak'tan bu yana en düşük, BTC oynaklığı 2026 dibinde — oysa H2'nin 40 dolarlık petrol bandı ve H1'in çözülmemiş Fed denklemi yerinde duruyor. Volatilite ucuzken koruma satın almak, geç-döngü konumlanması (H4: nakit tükendi) ile birleşince asimetrik bir bahis. Somut araç: uzun vadeli S&amp;P put opsiyonları ya da ABD'de <b>VIXY</b> türü araçlar — <em>taşıma maliyeti (carry) yüksektir</em>, uzun tutuşta erir.</p>
-        <div class="asym"><b>Risk asimetrisi (öznel):</b> Yukarı, bir şok gelirse çok yüksek (birkaç kat); aşağı, şok gelmezse yavaş ve kesin erime (yıllık −%30/−%50 taşıma). Bu bir portföy sigortası, ana pozisyon değil. <b>Neyin çevireceği:</b> Hürmüz'de kalıcı çözüm + Fed'in netleşmesi, primi haklı çıkarır ve koruma gereksizleşir.</div>
+        <div class="meta">2 · Akbank (AKBNK) — banka, rotasyon adayı</div>
+        <h4>Neden: geride kalan sektör + indirim döngüsü kaldıracı</h4>
+        <p>Bankacılık endeksi son dönemde geri kaldı (11 Ağustos'ta −%1,28) ve satış baskısı endeksin önündeki başlıca yük. Ancak TCMB'nin Eylül'de indirime dönmesi beklentisi (H6) doğrularsa, faiz indirim döngüsü tipik olarak banka net faiz marjını ve kredi talebini destekler. Akbank yabancının en sevdiği banka (yabancı payı %44,36), yani dönüş gelirse ilk alınacaklardan. Değerleme: bankalar defter değerine göre tarihsel iskontoda. Somut araç: AKBNK hissesi ya da BIST banka temalı fon.</p>
+        <div class="asym"><b>Risk asimetrisi (öznel):</b> 6–12 ay ufkunda yukarı ~%25–35 (indirim + çarpan toparlanması). Aşağı ~%15–20. <b>Neyin çevireceği:</b> Enerji şokunun (H2) enflasyonu kışkırtıp indirimi ertelemesi ya da regülasyon/vergi sürprizi bankaları yeniden baskılar.</div>
       </div>
 
       <div class="card">
-        <div class="meta">3 · Euro cinsi varlıklar (faiz makası)</div>
-        <h4>Neden: ECB sıkılaştırırken Fed duraksıyor</h4>
-        <p>ECB Haziran'da faizi %2,25'e çıkardı, Eylül'de %79 ihtimalle yeni artırım fiyatlanıyor; Fed ise indirim–artırım arasında sıkışmış. Bu makas euroyu sekiz hafta zirvesine taşıdı. Ucuzluk argümanı değerlemeden çok göreli momentum ve faiz farkına dayanıyor. Somut araç: EUR/USD'ye doğrudan maruziyet ya da kur riski açık Avrupa hisse fonları; DAX'ın "dar liderliği" nedeniyle geniş tabanlı bir Euro Stoxx tercih edilebilir.</p>
-        <div class="asym"><b>Risk asimetrisi (öznel):</b> Yukarı ~%6–10 (makas açılmaya devam ederse). Aşağı ~%8 (Fed sürpriz artırım yaparsa dolar geri döner). <b>Neyin çevireceği:</b> ECB'nin Eylül'de artırımı ertelemesi ya da Fed'in Eylül'de artırıma gitmesi, tezin iki ayağını da kırar.</div>
+        <div class="meta">3 · ASELSAN (ASELS) — savunma momentumu</div>
+        <h4>Neden: yapısal yeniden silahlanma + yaklaşan bilanço</h4>
+        <p>ASELSAN 12 Ağustos'ta %6,95 yükselişle 381,00 TL'den kapandı ve 21,30 milyar TL hacimle günün en aktif hisselerindendi; ikinci çeyrek bilançosu da Ağustos takviminde. Tez, H9'daki savunma ihracatı rekoru ve Ukrayna/Ortadoğu kaynaklı küresel yeniden silahlanma talebiyle aynı damardan besleniyor; sipariş birikimi (backlog) görünürlük sağlıyor. Somut araç: ASELS hissesi. Uyarı: momentum hissesi, giriş zamanlaması riski yüksek.</p>
+        <div class="asym"><b>Risk asimetrisi (öznel):</b> 6–12 ay ufkunda yukarı ~%20–30 (sipariş + ihracat ivmesi). Aşağı ~%20 (sert momentum düzeltmesi). <b>Neyin çevireceği:</b> Bilanço guidance'ı hayal kırıklığı yaratırsa ya da jeopolitik gerilim beklenmedik biçimde yumuşarsa savunma primi geri gelir.</div>
+      </div>
+
+      <div class="card">
+        <div class="meta">4 · Takip emtiaları köşesi (ikincil)</div>
+        <h4>Altın · bakır · kahve — hisse dışı denge</h4>
+        <p>Portföyün BIST tarafına karşı bir denge arıyorsanız: <b>altın</b> rekor bölgesinde, hem enflasyona hem işgücü zayıflığına aynı anda tepki veren çift motorlu sigorta (araç: fiziki altın / BIST altın fonları / GLD). <b>Bakır</b> rekor sonrası Doğu-Batı bölünmesinde — yapısal elektrifikasyon talebi güçlü ama kısa vadede arz-stres ve Çin talebi belirleyici, dolayısıyla oynak (araç: COPX/CPER türü ETF'ler). <b>Kahve</b> arz normalleşmesiyle 2,50–3 dolar bandına oturma eğiliminde; trend aşağı-yatay, agresif long için erken.</p>
+        <div class="asym"><b>Not:</b> Bu köşe tek tek derinlemesine değil, bağlam düzeyindedir; üçü aynı yönde hareket etmediği için portföy çeşitlendiricisi olarak düşünülebilir. Öznel yüzdeler bu köşede kasıtlı olarak verilmemiştir.</div>
       </div>
 
       <div class="disc">Bu bölümdeki hiçbir ifade alım-satım emri, tahsis önerisi veya kişiselleştirilmiş finansal tavsiye değildir. Rakamlar ve olasılıklar öznel senaryolardır; yatırım kararlarınızı kendi araştırmanız ve gerekiyorsa lisanslı bir danışmanla vermelisiniz.</div>
