@@ -1,377 +1,484 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SABAH — Günlük Finans Gazetesi · 17 Ağustos 2026</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SABAH — 18 Ağustos 2026</title>
 <style>
-  :root{
-    --bg:#f7f5ef; --panel:#fffdf8; --ink:#1a1a1a; --soft:#4a4a44; --line:#e2ddd0;
-    --accent:#7a1f1f; --accent2:#123a5e; --gold:#8a6d1f; --green:#1f6b3a; --red:#8a2020;
-    --tag:#efe9db; color-scheme:light;
-  }
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);
-    font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-    line-height:1.62;font-size:17px;-webkit-text-size-adjust:100%}
-  .wrap{max-width:860px;margin:0 auto;padding:18px 18px 80px}
-  h1,h2,h3,.serif{font-family:Georgia,"Times New Roman",serif}
-  a{color:var(--accent2)}
-  .ctrl{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
-  details.bar{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px 14px}
-  details.bar>summary{cursor:pointer;font-weight:600;font-size:15px;list-style:none}
-  details.bar>summary::-webkit-details-marker{display:none}
-  details.bar[open]>summary{margin-bottom:8px;border-bottom:1px solid var(--line);padding-bottom:8px}
-  .rule{margin:6px 0;font-size:14.5px;color:var(--soft)}
-  .rule b{color:var(--ink)}
-  .badge{display:inline-block;background:var(--tag);border:1px solid var(--line);
-    border-radius:20px;padding:1px 10px;font-size:12.5px;font-weight:600;color:var(--soft)}
-  .chg{font-size:13px;color:var(--soft);margin-top:8px;border-top:1px dashed var(--line);padding-top:8px}
-  .mast{text-align:center;border-top:3px solid var(--ink);border-bottom:3px double var(--ink);
-    padding:14px 0;margin-bottom:6px}
-  .mast .name{font-size:52px;font-weight:700;letter-spacing:6px;margin:0;font-family:Georgia,serif}
-  .mast .sub{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--soft);margin-top:4px}
-  .thesis{font-family:Georgia,serif;font-style:italic;font-size:18px;text-align:center;
-    color:var(--accent);margin:14px auto 24px;max-width:700px;line-height:1.5}
-  .toc{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px 18px;margin-bottom:28px}
-  .toc h3{margin:0 0 10px;font-size:16px}
-  .toc ol{margin:0;padding-left:22px}
-  .toc li{margin:4px 0;font-size:15px}
-  .toc a{text-decoration:none;color:var(--ink)}
-  .toc a:hover{color:var(--accent)}
-  .toc .cat{color:var(--soft);font-size:12.5px}
-  .sec-label{font-family:Georgia,serif;font-variant:small-caps;letter-spacing:1px;
-    font-size:14px;color:var(--accent);border-bottom:2px solid var(--accent);
-    padding-bottom:3px;margin:34px 0 16px;text-transform:lowercase}
-  article{margin:0 0 26px;padding-bottom:8px;border-bottom:1px solid var(--line)}
-  article h2{font-size:24px;line-height:1.25;margin:6px 0 4px}
-  .hb{font-size:12px;font-weight:700;color:#fff;background:var(--accent);
-    border-radius:4px;padding:1px 7px;margin-right:6px;vertical-align:middle}
-  .dek{color:var(--soft);font-size:15px;font-style:italic;margin:0 0 10px;font-family:Georgia,serif}
-  article p{margin:10px 0}
-  details.deep{margin:10px 0 4px;background:var(--panel);border:1px solid var(--line);
-    border-left:3px solid var(--accent2);border-radius:6px;padding:8px 14px}
-  details.deep>summary{cursor:pointer;font-weight:600;font-size:14px;color:var(--accent2);list-style:none}
-  details.deep>summary::-webkit-details-marker{display:none}
-  details.deep>summary::before{content:"▸ ";}
-  details.deep[open]>summary::before{content:"▾ ";}
-  details.deep p{font-size:15px}
-  .conf{font-size:13px;color:var(--soft);margin-top:6px}
-  table{width:100%;border-collapse:collapse;font-size:14.5px;margin:8px 0 4px}
-  th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line)}
-  th{background:var(--tag);font-weight:600;font-size:13px}
-  td.n{text-align:right;font-variant-numeric:tabular-nums}
-  .up{color:var(--green)} .dn{color:var(--red)}
-  caption{caption-side:bottom;font-size:12px;color:var(--soft);text-align:left;padding-top:6px}
-  .inv{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px 16px;margin:10px 0}
-  .inv h3{margin:0 0 4px;font-size:18px}
-  .inv .meta{font-size:13px;color:var(--soft);margin-bottom:6px}
-  .disc{font-size:13px;color:var(--soft);font-style:italic;border:1px dashed var(--line);
-    border-radius:6px;padding:10px 12px;margin:14px 0}
-  .short li{margin:8px 0}
-  .src{font-size:12.5px;color:var(--soft)}
-  svg{max-width:100%;height:auto}
-  .foot{margin-top:36px;border-top:2px solid var(--ink);padding-top:12px;font-size:12.5px;color:var(--soft)}
-  input,select,textarea{font:inherit;width:100%;padding:6px 8px;margin:3px 0 10px;
-    border:1px solid var(--line);border-radius:5px;background:#fff}
-  button{font:inherit;background:var(--accent2);color:#fff;border:0;border-radius:5px;
-    padding:8px 14px;cursor:pointer;margin-right:8px}
-  label{font-size:14px;font-weight:600}
-  .note{font-size:12.5px;color:var(--soft);margin-top:8px}
+:root{
+  color-scheme: light;
+  --bg:#f7f5f0; --paper:#fffdf8; --ink:#1a1a17; --muted:#5c584f;
+  --line:#e2ddd2; --line2:#cfc8b8; --accent:#7a2318; --accent2:#164a4a;
+  --up:#166534; --down:#9a1b1b; --chip:#efe9dc; --link:#7a2318;
+  --serif:Georgia,'Times New Roman',serif;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.62;font-size:16.5px}
+.wrap{max-width:880px;margin:0 auto;padding:18px 18px 80px}
+a{color:var(--link)}
+h1,h2,h3,.masthead-title{font-family:var(--serif)}
+/* control bar */
+.ctrl details{background:var(--paper);border:1px solid var(--line2);border-radius:8px;margin:8px 0;overflow:hidden}
+.ctrl summary{cursor:pointer;padding:11px 14px;font-weight:600;font-size:14.5px;list-style:none;user-select:none}
+.ctrl summary::-webkit-details-marker{display:none}
+.ctrl summary::before{content:"▸ ";color:var(--accent)}
+.ctrl details[open] summary::before{content:"▾ "}
+.ctrl .body{padding:4px 16px 16px;font-size:14.5px;border-top:1px solid var(--line)}
+.rulelist{margin:10px 0}
+.rulelist b{font-family:var(--serif)}
+.badge-ver{display:inline-block;background:var(--accent2);color:#fff;border-radius:20px;padding:2px 11px;font-size:12.5px;font-weight:600;margin:2px 0}
+.chg{font-size:13px;color:var(--muted);border-left:3px solid var(--line2);padding-left:10px;margin:8px 0}
+form label{display:block;margin:10px 0 4px;font-weight:600;font-size:13.5px}
+form select,form textarea,form input[type=text]{width:100%;padding:8px;border:1px solid var(--line2);border-radius:6px;font-family:var(--sans);font-size:14px;background:#fff}
+form textarea{min-height:80px;resize:vertical}
+.fbtn{background:var(--accent);color:#fff;border:none;border-radius:6px;padding:9px 15px;font-weight:600;cursor:pointer;margin:12px 8px 0 0;font-size:14px}
+.fbtn.alt{background:var(--accent2)}
+#fbout{width:100%;margin-top:12px;font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:#fbf9f3}
+.note{font-size:12.5px;color:var(--muted);margin-top:8px}
+/* masthead */
+.masthead{text-align:center;border-top:3px solid var(--ink);border-bottom:1px solid var(--ink);margin:16px 0 6px;padding:14px 0 10px}
+.masthead-title{font-size:56px;letter-spacing:5px;font-weight:700;margin:0;line-height:1}
+.masthead-sub{display:flex;justify-content:space-between;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);border-top:1px solid var(--line2);margin-top:10px;padding-top:7px}
+.thesis{font-family:var(--serif);font-size:19px;font-style:italic;text-align:center;margin:16px auto;max-width:760px;color:#2a2620;line-height:1.5}
+/* toc */
+.toc{background:var(--paper);border:1px solid var(--line2);border-radius:8px;padding:12px 16px;margin:14px 0}
+.toc h3{margin:0 0 8px;font-size:15px;text-transform:uppercase;letter-spacing:1px;color:var(--accent)}
+.toc ol{margin:0;padding-left:20px;columns:2;column-gap:26px}
+.toc li{margin:3px 0;font-size:14px;break-inside:avoid}
+@media(max-width:560px){.toc ol{columns:1}.masthead-title{font-size:40px;letter-spacing:3px}}
+.toc a{text-decoration:none;color:var(--ink)}
+.toc a:hover{color:var(--accent)}
+/* sections */
+.sec{margin:34px 0 8px}
+.sec-h{font-size:13px;text-transform:uppercase;letter-spacing:2.5px;color:var(--accent);border-bottom:2px solid var(--ink);padding-bottom:5px;margin-bottom:4px;font-weight:700}
+.art{border-bottom:1px solid var(--line);padding:16px 0}
+.art:last-child{border-bottom:none}
+.art h2{font-size:24px;line-height:1.22;margin:2px 0 8px}
+.hb{display:inline-block;background:var(--ink);color:#fff;font-family:var(--sans);font-size:11.5px;font-weight:700;border-radius:4px;padding:1px 7px;margin-right:8px;vertical-align:middle;letter-spacing:.5px}
+.art p{margin:10px 0}
+.kicker{font-size:12.5px;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted);font-weight:600}
+/* detail panels inside article */
+details.pan{margin:10px 0 2px;border:1px solid var(--line);border-radius:7px;background:#fbf9f3}
+details.pan>summary{cursor:pointer;padding:8px 12px;font-size:13px;font-weight:600;color:var(--accent2);list-style:none}
+details.pan>summary::-webkit-details-marker{display:none}
+details.pan>summary::before{content:"＋ "}
+details.pan[open]>summary::before{content:"– "}
+details.pan .pb{padding:2px 14px 12px;font-size:14.5px;border-top:1px solid var(--line)}
+.arc{display:grid;grid-template-columns:1fr;gap:6px;margin:6px 0}
+.arc .row{display:grid;grid-template-columns:78px 1fr;gap:8px;font-size:14px}
+.arc .row b{color:var(--accent2)}
+.gauge{font-size:13px;margin-top:6px}
+.gauge .g{display:inline-block;padding:1px 8px;border-radius:12px;font-weight:600;font-size:12.5px}
+.g.high{background:#dcefe0;color:var(--up)} .g.mid{background:#f4ecd4;color:#8a6d1a} .g.low{background:#f3dcdc;color:var(--down)}
+.fals{font-size:13.5px;color:#43607a;border-left:3px solid #9fb8cf;padding-left:10px;margin-top:8px}
+.mine{font-size:14.5px;background:#f2ede2;border-left:3px solid var(--accent);padding:9px 12px;border-radius:0 6px 6px 0;margin:8px 0}
+/* table */
+table{width:100%;border-collapse:collapse;margin:8px 0;font-size:13.5px;background:var(--paper)}
+th,td{padding:7px 8px;text-align:right;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}
+thead th{border-bottom:2px solid var(--line2);font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted)}
+.up{color:var(--up)} .down{color:var(--down)}
+.tblnote{font-size:12px;color:var(--muted);margin-top:4px}
+/* network */
+.net-wrap{background:var(--paper);border:1px solid var(--line2);border-radius:8px;padding:8px;overflow-x:auto}
+.leg{font-size:12.5px;color:var(--muted);margin-top:6px;display:flex;gap:18px;flex-wrap:wrap}
+.short li{margin:7px 0;font-size:15px}
+.disc{font-size:12.5px;color:var(--muted);background:#f2ede2;border-radius:8px;padding:12px 14px;margin:10px 0}
+.src{font-size:12px;color:var(--muted);margin-top:6px}
+.src a{color:var(--muted)}
+footer{margin-top:40px;border-top:2px solid var(--ink);padding-top:12px;font-size:12.5px;color:var(--muted);text-align:center}
 </style>
 </head>
 <body>
 <div class="wrap">
 
-  <!-- ===== KONTROL BARI ===== -->
-  <div class="ctrl">
-    <details class="bar">
-      <summary>⚙ Künye ve Kurallar <span class="badge">sürüm 1.0</span></summary>
-      <div class="rule"><b>K1 — Kapsam.</b> Her sayıda 8–10 birbirinden farklı haber; hiçbiri diğerinin tekrarı değil. Tek tema tüm gazeteye hâkim olamaz. Çoktan fiyatlanmış olanı değil öncü gelişmeyi kovala; sinyal yoksa "net sinyal yok" de.</div>
-      <div class="rule"><b>K2 — Üslup.</b> Tam ve akıcı cümleler (FT/Adam Tooze analiz nesri). Parça parça, jargon kokan anlatım ve etiket rozeti yok; atıf cümlenin içine dokunur, jargonun sade karşılığı aynı cümlede verilir. Tablo yalnızca sayısal pano için.</div>
-      <div class="rule"><b>K3 — Atıf.</b> Dayanağı olmayan cümle girmez. Ölçülen veri, başkasının görüşü ve kendi çıkarımım (argüman + çürütme koşulu) dille ayrılır. Rakamlar sıfır-yanlış; farklı zaman pencereleri eşitmiş gibi sunulmaz; veri yoksa "bu veri elimde yok" denir.</div>
-      <div class="rule"><b>K4 — Yapı.</b> Jeopolitik + piyasa + Türkiye eşit ağırlıkta. Yüzey kısa, derinlik açılır panellerde: anlatı seyri, perspektifler, sayısal çıpa, karşı-tez, varlık rotasyonu, ağ — yalnızca güçlü sinyalde açılır.</div>
-      <div class="rule"><b>K5 — Kaynaklar.</b> Yerel ölçüm katmanı (bu makinede doğrulanmış), bültenler (Tooze, Doomberg, Net Interest…), küresel medya (Reuters/CNBC/FT/Bloomberg), jeopolitik analiz, TÜİK/TCMB ve aracı kurum bültenleri. Ölçüm dosyası web'den önce gelir.</div>
-      <div class="rule"><b>K6 — Yatırım.</b> 2–3 enstrüman: ucuzluk/değerleme, neden, yukarı potansiyel, risk asimetrisi (öznel %), somut araç. "Yatırım danışmanı değilim, tavsiye değildir" çerçevesi zorunlu; olasılıklar özneldir.</div>
-      <div class="chg"><b>Değişiklik günlüğü.</b> v1.0 (17.08.2026) — Hafta sonu jeopolitik tırmanışı (İsrail–Lübnan, İran ateşkes bitişi) manşete taşındı; bakır/altın/kahve emtia bloğu yerel ölçümle çapraz doğrulandı. Künye hafıza MCP'si bu oturumda da bağlı değildi; gazete ölçüm dosyası + doğrulanmış web kaynaklarıyla üretildi (bkz. Kurulum notları). · v1.0 (16.08.2026) — Yerel ölçüm katmanı entegre edildi.</div>
-    </details>
-
-    <details class="bar">
-      <summary>✎ Geri Bildirim</summary>
-      <div style="margin-top:6px">
-        <label>Hangi bölüm?</label>
+<!-- ================= KONTROL BARI ================= -->
+<div class="ctrl">
+  <details>
+    <summary>⚙ Künye ve Kurallar</summary>
+    <div class="body">
+      <span class="badge-ver">Sürüm: künye okunamadı — bu oturumda hafıza (memory) sunucusu bağlı değil</span>
+      <p class="note">Not: Gazetenin resmî künyesi <code>/areas/sabah-finans-gazetesi.md</code> hafıza sunucusunda tutuluyor; bu otomatik oturumda o sunucu bağlı olmadığı için künye okunamadı. Aşağıdaki kurallar, görev dosyasına gömülü özet kural setinden yeniden derlendi. Sürüm numarası ve tam değişiklik günlüğü bir sonraki elle çalışan oturumda künyeden geri yüklenmeli.</p>
+      <div class="rulelist">
+        <p><b>K1 — Kapsam.</b> 8–10 birbirinden farklı haber; hiçbiri diğerinin tekrarı değil. Tek tema tüm gazeteyi ele geçirmez. Çoktan fiyatlanmış olan değil öncü gelişme kovalanır; sinyal yoksa "net sinyal yok" denir.</p>
+        <p><b>K2 — Üslup.</b> Tam ve akıcı cümleler (FT/Adam Tooze analiz nesri). Etiket rozeti yok; atıf cümlenin içine dokunur. Jargonun sade Türkçe karşılığı aynı cümlede verilir. Tablo yalnızca sayısal pano için.</p>
+        <p><b>K3 — Atıf.</b> Dayanağı olmayan cümle girmez. Ölçülen veri, başkasının görüşü ve kendi çıkarım dille ayrılır. Rakamlar sıfır-yanlış; farklı zaman pencereleri eşitlenmez; veri yoksa "elimde yok" denir.</p>
+        <p><b>K4 — Yapı.</b> Eşit ağırlıklı karma (jeopolitik + piyasa + Türkiye). Yüzey kısa, derinlik açılır panellerde; paneller yalnızca güçlü sinyalde açılır. Her habere H-rozeti.</p>
+        <p><b>K5 — Kaynaklar.</b> Yerel ölçüm katmanı her şeyden önce gelir. Sonra bültenler, küresel medya, jeopolitik analiz, Türkiye kaynakları, piyasa/akış, sosyal sinyal.</p>
+        <p><b>K6 — Yatırım.</b> 2–3 enstrüman; ucuzluk, neden, yukarı potansiyel, risk asimetrisi (öznel yüzde + neyin çevireceği), somut araç. "Yatırım danışmanı değilim" çerçevesi zorunlu; olasılıklar özneldir.</p>
+      </div>
+      <div class="chg"><b>Değişiklik günlüğü (bu sayı):</b><br>
+      • Hafıza sunucusu bağlı olmadığı için künye/preferences/topics dosyaları okunamadı; kurallar görev dosyasındaki özetten uygulandı.<br>
+      • Yerel ölçüm dosyası (<code>sabah_olcum.md</code>, 18 Ağu 07:22) taze; emtia mikro yapısı ve takip listesi buradan alındı.<br>
+      • Dolar/TL yakın vade primi ölçüm dosyasında hesaplanamadı ("eksik girdi"); VIOP taşıma maliyeti bu sayıda verilemedi.</div>
+    </div>
+  </details>
+  <details>
+    <summary>✎ Geri Bildirim</summary>
+    <div class="body">
+      <form onsubmit="return false">
+        <label for="fb-sec">Hangi bölüm / haber</label>
         <select id="fb-sec">
-          <option>H1 — Orta Doğu tırmanışı / petrol</option>
-          <option>H2 — Uzun uç / Warsh Fed / Jackson Hole</option>
-          <option>H3 — Bakır / LME sıkışıklığı</option>
-          <option>H4 — Altın / merkez bankası alımı</option>
-          <option>H5 — Kahve / Brezilya hasadı</option>
-          <option>H6 — TCMB / enflasyon raporu</option>
-          <option>H7 — BIST / VIOP taşıma / akım</option>
-          <option>H8 — Bilanço sezonu / şirket olayları</option>
-          <option>H9 — Risk iştahı ayrışması / Bitcoin</option>
-          <option>H10 — Çin sıkıştırması / Tooze</option>
-          <option>Piyasa panosu</option>
+          <option>H1 — Kızıldeniz ve petrol risk primi</option>
+          <option>H2 — Ukrayna-Rusya ve Avrupa'nın masadaki yeri</option>
+          <option>H3 — Fed / Warsh: Eylül'de artırım riski</option>
+          <option>H4 — BoJ ve yen taşıması</option>
+          <option>H5 — Uzun uç: 30 yıllık 2007'den beri en yüksek</option>
+          <option>H6 — Hisseler: yapay zekâ iyimserliği vs faiz</option>
+          <option>H7 — TCMB %37'de sabit, rezerv ve lira taşıması</option>
+          <option>H8 — Bilanço haftası ve savunma / Romanya bağı</option>
+          <option>H9 — Bakır: LME sıkışması vs COMEX contango</option>
+          <option>H10 — Altın ve gümüş: merkez bankası alımı</option>
+          <option>Piyasa panosu (tablo)</option>
           <option>Günün ağı</option>
+          <option>Kısa kısa</option>
           <option>Bülten radarı</option>
           <option>Yatırım değerlendirmesi</option>
-          <option>Genel</option>
+          <option>Genel / biçim / künye</option>
         </select>
-        <label>Konu</label>
+        <label for="fb-topic">Konu</label>
         <select id="fb-topic">
-          <option>şekil</option><option>içerik</option><option>dayanak</option>
-          <option>doğruluk</option><option>eksik özellik</option>
-          <option>derinlik az</option><option>fazla uzun</option>
+          <option>şekil / tasarım</option>
+          <option>içerik</option>
+          <option>dayanak / atıf</option>
+          <option>doğruluk</option>
+          <option>eksik özellik</option>
+          <option>derinlik az</option>
+          <option>fazla uzun</option>
         </select>
-        <label>Açıklama</label>
-        <textarea id="fb-text" rows="3" placeholder="Serbest metin…"></textarea>
-        <label><input type="checkbox" id="fb-rule" style="width:auto;display:inline"> Bu kalıcı bir kural olsun</label>
-        <div style="margin-top:10px">
-          <button onclick="fbBuild()">Metni oluştur</button>
-          <button onclick="fbCopy()">Kopyala</button>
-        </div>
-        <textarea id="fb-out" rows="4" style="margin-top:10px" readonly placeholder="Oluşturulan metin burada belirir…"></textarea>
-        <div class="note">Bu form mesaj gönderemez. Çıkan metni kopyalayıp sohbete yapıştırın; künyeye işlenecektir.</div>
+        <label for="fb-perm">Kalıcı kural olsun mu?</label>
+        <select id="fb-perm"><option>Hayır, tek seferlik</option><option>Evet, künyeye kalıcı kural olarak ekle</option></select>
+        <label for="fb-text">Serbest metin</label>
+        <textarea id="fb-text" placeholder="Ne değişsin? Örn: 'Emtia masasında COT dilimini yön sinyali gibi sunma.'"></textarea>
+        <button class="fbtn" onclick="mkFb()">Metni oluştur</button>
+        <button class="fbtn alt" onclick="cpFb()">Kopyala</button>
+        <textarea id="fbout" readonly placeholder="Oluşturulan geri bildirim metni burada belirecek…"></textarea>
+        <p class="note">Bu form mesaj gönderemez. Oluşan metni kopyalayıp sohbete yapıştırın; bir sonraki oturumda künyeye işlenir.</p>
+      </form>
+    </div>
+  </details>
+</div>
+
+<!-- ================= MANŞET KÜNYESİ ================= -->
+<div class="masthead">
+  <div class="masthead-title">SABAH</div>
+  <div class="masthead-sub">
+    <span>Günlük Finans Gazetesi</span>
+    <span>Salı, 18 Ağustos 2026 · 08:0x TSİ</span>
+    <span>Hüseyin için hazırlandı</span>
+  </div>
+</div>
+
+<p class="thesis">Piyasanın yüzeyi sakin — enflasyon serinledi, hisseler zirvenin bir adım altında — ama zeminde ABD 30 yıllık tahvili 2007'den beri en yüksek getiride, LME'de bakır fiziksel olarak boğuluyor ve yen taşıması çatırdıyor; günün asıl sorusu bu sükûnetin yapısal mı yoksa geçici mi olduğu.</p>
+
+<!-- ================= BU SAYIDA ================= -->
+<div class="toc">
+  <h3>Bu Sayıda</h3>
+  <ol>
+    <li><a href="#h1">Kızıldeniz'de ölümlü saldırı petrol risk primini geri getirdi</a></li>
+    <li><a href="#h2">Avrupa, Trump'ın masasında bir sandalye arıyor</a></li>
+    <li><a href="#h3">Warsh'ın Fed'i: Eylül'de indirim değil artırım tartışılıyor</a></li>
+    <li><a href="#h4">Japonya faizi 1996'dan beri en yüksekte, taşıma köprüsü sallanıyor</a></li>
+    <li><a href="#h5">Uzun uç: 30 yıllık %5,31 ile 19 yılın zirvesinde</a></li>
+    <li><a href="#h6">Hisseler yapay zekâ ile faiz arasında sıkıştı</a></li>
+    <li><a href="#h7">TCMB %37'de bekledi, rezerv toparlanıyor</a></li>
+    <li><a href="#h8">Bilanço haftası savunma hisselerini Romanya'ya bağlıyor</a></li>
+    <li><a href="#h9">Bakırda LME sıkışması COMEX'in tersini söylüyor</a></li>
+    <li><a href="#h10">Altın rekora yakın: merkez bankaları alıyor, ETF'ler satıyor</a></li>
+  </ol>
+</div>
+
+<!-- ================= DÜNYA ================= -->
+<div class="sec" id="dunya">
+  <div class="sec-h">Dünya</div>
+
+  <div class="art" id="h1">
+    <span class="kicker">Enerji · Jeopolitik</span>
+    <h2><span class="hb">H1</span>Kızıldeniz'de ölümlü saldırı petrol risk primini geri getirdi</h2>
+    <p>Brent petrolü, bir yılı aşkın süredir görülmeyen bir gelişmeyle yeniden varil başına 88 doların üzerine çıktı; CNBC ve bölgesel enerji kaynaklarının aktardığına göre yükselişin doğrudan tetikleyicisi, İran destekli Husilerin Bab-el-Mendeb Boğazı'nda bir kargo gemisine düzenlediği ve altı kişinin öldüğü saldırı oldu — Kızıldeniz'deki gemi saldırılarında bir yılı aşkın sürenin ilk ölümleri. Piyasanın buradan okuduğu şey fiyatın kendisi değil, bir çerçevenin değişmesi: son aylarda petrolü talep beklentileri yönetiyordu, şimdi arz güvenliği yeniden birinci sıraya oturdu. Reuters ve Forbes'un derlediği fiyatlarda ABD tipi WTI 82,5 dolar dolayında işlem görürken, Hürmüz Boğazı geçişlerindeki kısıtların Orta Doğu'da fiziksel üretimi de daralttığı belirtiliyor.</p>
+    <p>Bu haberin gazetenin geri kalanına dokunan yanı şu: yükselen enerji fiyatı, aşağıda anlatacağımız Fed hikâyesinin tam kalbine oturuyor. Enerji şoku, tarife kaynaklı fiyat baskısıyla birleşince, ABD'de faiz indirimi beklentisini bir artırım tartışmasına çeviren ikinci itici güç haline geldi.</p>
+    <details class="pan"><summary>Anlatı seyri (dün → bugün → yarın)</summary><div class="pb">
+      <div class="arc">
+        <div class="row"><b>Dün</b><span>Petrol talep temasıyla nispeten sakindi; Kızıldeniz saldırıları maddi hasarla sınırlıydı.</span></div>
+        <div class="row"><b>Bugün</b><span>Ölümlü saldırı ile arz güvenliği primi geri döndü; Brent 88 doların, teknik olarak önemli bir eşiğin üzerine çıktı.</span></div>
+        <div class="row"><b>Yarın</b><span>Hürmüz ve Bab-el-Mendeb'de tırmanma sürerse prim kalıcılaşır ve enflasyon-faiz kanalını besler; ateşkes/caydırma haberi gelirse prim hızla erir.</span></div>
       </div>
-    </details>
+      <div class="gauge">Güven düzeyi: <span class="g high">Yüksek</span> — olay ve fiyat tepkisi çoklu kaynakta doğrulanıyor.</div>
+      <div class="fals">Çürütme koşulu: Brent birkaç gün içinde saldırı öncesi seviyeye (≈85 doların altına) dönerse, bunun kalıcı bir risk primi değil tek seferlik bir tepki olduğu ortaya çıkar.</div>
+    </div></details>
+    <p class="src">Kaynaklar: <a href="https://www.cnbc.com/2026/08/12/oil-prices-today-wti-brent-red-sea.html">CNBC</a>, <a href="https://www.profilenews.com/en/oil-prices-brent/">Profile News</a>, <a href="https://www.forbes.com/advisor/investing/oil-prices-today/">Forbes</a></p>
   </div>
 
-  <!-- ===== MANŞET KÜNYESİ ===== -->
-  <div class="mast">
-    <p class="name">SABAH</p>
-    <p class="sub">Günlük Finans Gazetesi · Pazartesi, 17 Ağustos 2026 · Referans: 14 Ağustos Cuma kapanışı + hafta sonu haberleri</p>
+  <div class="art" id="h2">
+    <span class="kicker">Diplomasi · Güvenlik</span>
+    <h2><span class="hb">H2</span>Avrupa, Trump'ın masasında bir sandalye arıyor</h2>
+    <p>Ukrayna-Rusya cephesinde sıcak çatışma sürerken — hafta sonu Rusya'nın bir çelik tesisini vuran hava saldırısında iki kişi öldü, Ukrayna'nın Moskova bölgesine yönelik yoğun insansız hava aracı saldırısı bir can aldı ve bir NATO F-18'i Romanya hava sahasını ihlal eden, Rus yapımı olduğu değerlendirilen bir drone'u düşürdü — asıl stratejik hareket masanın etrafında yaşanıyor. Just Security ve FDD'nin derlediği diplomatik trafiğe göre Fransa, Almanya ve İngiltere, savaşı bitirecek görüşmelerde Avrupa'nın dışlanmaması için ortak bir format üzerinde çalışıyor; endişe, Başkan Trump'ın süreci Avrupa'nın başının üstünden yürütmesi.</p>
+    <p>Benim okumam şu: bu haber salt diplomasi değil, doğrudan Türkiye piyasasına bir kanal açıyor. Romanya hava sahasındaki drone olayı ve NATO'nun doğu kanadındaki tırmanma, aşağıda H8'de ele aldığımız savunma hisselerinin — özellikle Romanya'da açık davası bulunan OTKAR'ın — haber akışını canlı tutuyor. Çürütme koşulu: ABD-Rusya doğrudan bir ateşkes çerçevesi açıklarsa, savunma temasının kısa vadeli ivmesi zayıflar.</p>
+    <p class="src">Kaynaklar: <a href="https://www.justsecurity.org/154305/early-edition-august-17-2026/">Just Security</a>, <a href="https://www.fdd.org/overnight-brief/august-17-2026/">FDD Overnight Brief</a></p>
   </div>
-  <p class="thesis">Hafta sonu Lübnan'da yeniden ateş açıldı, İran ateşkesi sona ererken petrol risk primi geri döndü; ama asıl fiziksel sıkışıklık bakırda ve altını rekora taşıyan merkez bankalarında. Yerel ölçüm aynı ayrışmayı işaret ediyor: piyasa günlük olarak sakin (0,22), zemin değil (0,64) — ve Türkiye'nin hikâyesi bu kez dışarıdan değil içeriden yürüyor.</p>
+</div>
 
-  <!-- ===== BU SAYIDA ===== -->
-  <div class="toc">
-    <h3>Bu sayıda</h3>
-    <ol>
-      <li><a href="#h1">İsrail Lübnan'ı vurdu, İran ateşkesi biterken petrol primi geri döndü</a> <span class="cat">· jeopolitik · emtia</span></li>
-      <li><a href="#h2">Serin TÜFE'ye rağmen uzun uç sattı: Warsh'ın Fed'i "rehavet" mi fiyatlanıyor?</a> <span class="cat">· merkez bankaları</span></li>
-      <li><a href="#h3">Asıl kıtlık bakırda: LME nakit primi 2021'den beri en yüksek, stoklar 42 gündür eriyor</a> <span class="cat">· emtia</span></li>
-      <li><a href="#h4">Altın rekora yakın — ama alıcı merkez bankaları, satıcı ABD borsa fonları</a> <span class="cat">· emtia</span></li>
-      <li><a href="#h5">Kahve 1,5 yılın dibinde: Brezilya rekor hasat topluyor, kısa taraf kalabalık</a> <span class="cat">· emtia</span></li>
-      <li><a href="#h6">TCMB faizi 37'de tuttu ama 2026 enflasyon tahminini yüzde 28'e çekti</a> <span class="cat">· Türkiye</span></li>
-      <li><a href="#h7">BIST'i yabancı değil faiz umudu taşıyor; vadeli taşıma yıllık %31,8'i fiyatlıyor</a> <span class="cat">· Türkiye · piyasa</span></li>
-      <li><a href="#h8">Bilanço haftası: 18–19 Ağustos'ta yoğun takvim, yabancı hisse tarafında yeniden satıcı</a> <span class="cat">· Türkiye · sektör</span></li>
-      <li><a href="#h9">Hisse ve altın rekor kırarken Bitcoin geriliyor: risk iştahı seçici</a> <span class="cat">· piyasa · çerçeve</span></li>
-      <li><a href="#h10">Tooze'un "Çin sıkıştırması" tezi olgunlaşıyor: ihracat fazlası sistemik bir soruya dönüşüyor</a> <span class="cat">· çerçeve</span></li>
-    </ol>
+<!-- ================= MERKEZ BANKALARI ================= -->
+<div class="sec" id="mb">
+  <div class="sec-h">Merkez Bankaları</div>
+
+  <div class="art" id="h3">
+    <span class="kicker">Fed · Para politikası</span>
+    <h2><span class="hb">H3</span>Warsh'ın Fed'i: Eylül'de indirim değil artırım tartışılıyor</h2>
+    <p>Bir yıl önce piyasanın konuştuğu şey Fed'in ne zaman indirime başlayacağıydı; bugün soru tersine döndü. Mayıs 2026'da göreve gelen yeni Fed Başkanı Kevin Warsh yönetimindeki komite, Temmuz toplantısında politika faizini %3,50–3,75 bandında tuttu; Charles Schwab'ın aktardığı tutanaklara göre oylama 9'a 3 çıktı ve üç üye faiz <em>artırımı</em> yönünde muhalefet şerhi düştü. Chase'in derlediği piyasa fiyatlamasında Eylül'de bir çeyrek puanlık artırım ihtimali, Warsh'ın basın toplantısının ardından bir ara %60 dolayına yükseldi. İki güç bu barajı düşürdü: İran/Kızıldeniz kaynaklı enerji şokunun tedarik zincirini sıkıştırması ve yatırımcının, Temmuz'da faizi sabit tutan bir Fed'in enflasyonu dizginleme kararlılığına dair kuşkusu.</p>
+    <p>Öte yandan tablo tek yönlü değil. Ağustos ortasında beklenenden serin gelen TÜFE verisi artırım beklentilerini bir miktar yumuşattı ve altını rekor bölgeye taşıdı. Yani kısa vadeli veri (serinleyen enflasyon) ile yapısal baskı (enerji şoku, tarife, mali açık) birbirini çekiştiriyor — bu, ölçüm dosyasındaki "küresel kısa vade sakin, uzun vade gergin" ayrışmasının tam da para politikası tarafındaki yansıması.</p>
+    <details class="pan"><summary>Perspektifler ve karşı-tez</summary><div class="pb">
+      <p><b>Şahin cephe:</b> Enerji + tarife enflasyonu kalıcıysa ve Warsh kredibilite tesis etmek istiyorsa, sembolik bir artırım masada kalır.</p>
+      <p><b>Güvercin/bekle cephesi:</b> İşgücü piyasası soğuyor, TÜFE serinledi; Warsh basın toplantısında bilinçli olarak belirsizlik bıraktı, bu da elini bağlamak istemediğini gösteriyor.</p>
+      <p class="fals" style="border-color:#c9a86a;color:#8a6d1a">Karşı-tez: Piyasanın "Eylül artırımı" fiyatlaması bir tehdit değil, Warsh'ın opsiyonlarını açık tutma taktiğinin yan ürünü olabilir; toplantıya kadar gelecek istihdam ve TÜFE verisi bu ihtimali hızla eritebilir.</p>
+      <div class="gauge">Güven düzeyi: <span class="g mid">Orta</span> — yön tartışması canlı; kaynaklar Eylül olasılığında dağınık.</div>
+    </div></details>
+    <p class="src">Kaynaklar: <a href="https://www.schwab.com/learn/story/fomc-meeting">Charles Schwab</a>, <a href="https://www.chase.com/personal/investments/learning-and-insights/article/september-2026-rate-hike-now-expected-amid-energy-shocks">Chase</a>, <a href="https://www.cnbc.com/2026/08/17/treasury-yields-federal-reserve-fomc-minutes.html">CNBC (FOMC tutanakları)</a></p>
   </div>
 
-  <!-- ===== DÜNYA / JEOPOLİTİK ===== -->
-  <div class="sec-label">dünya</div>
+  <div class="art" id="h4">
+    <span class="kicker">BoJ · Küresel likidite</span>
+    <h2><span class="hb">H4</span>Japonya faizi 1996'dan beri en yüksekte, taşıma köprüsü sallanıyor</h2>
+    <p>Adam Tooze'un son "Top Links" bülteninde Japonya Merkez Bankası'nı "tüm zamanların en büyük taşıma yatırımcısı" diye anması boşuna değil. Japonya'nın 10 yıllık devlet tahvili getirisi, ticaret platformu verilerine göre 18 Ağustos'ta %2,9'un üzerine, 1996'dan bu yana en yüksek seviyeye çıktı. BoJ aylık tahvil alımlarını 2024 Ağustos'undaki 5,7 trilyon yenden 2026'nın ilk çeyreğinde 2,9 trilyon yene indirdi; yani yılları suni biçimde bastırılmış getirileri ayakta tutan destek çekiliyor. Morgan Stanley'in tahminine göre Ağustos'taki kısmi çözülmeye rağmen hâlâ yaklaşık 500 milyar dolarlık yen ile finanse edilmiş taşıma pozisyonu açık duruyor.</p>
+    <p>Bunun önemi Japonya'yla sınırlı değil: yen taşıması, düşük faizli yenle borçlanıp dünyanın dört bir yanında yüksek getirili varlık alan küresel bir kaldıraç köprüsü. BoJ Eylül'de faiz artırırsa bu köprünün maliyeti yükselir ve 2024 Ağustos'unda yaşanan ani çözülme türü bir stresi yeniden gündeme getirebilir. Bu, gazetenin "zemin gergin" temasının üçüncü ayağı.</p>
+    <p class="src">Kaynaklar: <a href="https://tradingeconomics.com/japan/government-bond-yield">Trading Economics</a>, <a href="https://www.stonex.com/en-us/insights/japan-yield-curve-pressure-threatens-global-carry-trades/">StoneX</a>, <a href="https://adamtooze.substack.com/p/top-links-1196-disapproving-of-the">Adam Tooze / Chartbook</a></p>
+  </div>
+</div>
 
-  <article id="h1">
-    <h2><span class="hb">H1</span>İsrail Lübnan'ı vurdu, İran ateşkesi biterken petrol primi geri döndü</h2>
-    <p class="dek">Cephe hattı Şubat'taki İran savaşından bu yana ilk kez aynı anda üç noktada gerildi; piyasa bunu "risk primi" olarak fiyatlıyor, "arz kaybı" olarak değil.</p>
-    <p>Bloomberg'in 16 Ağustos'taki aktarımına göre İsrail, güney Lübnan'da bir gün önce üst düzey bir Hizbullah komutanını (Abu Hassan Alaa) öldürdüğünü açıkladı; Lübnan aylardır görülen en ölümlü günü yaşadı. Aynı hafta sonu Washington'un İran'a yönelik yeni bir yaptırım paketine hazırlandığı ve Şubat 2026'da başlayan çatışmanın ardından ilan edilen ateşkesin sonuna yaklaşıldığı haberleri geldi. CNN'in 15 Ağustos aktarımı, Hürmüz Boğazı'nda bir dökme yük gemisinin gövdesine "kimliği belirsiz bir merminin" isabet ettiğini, mürettebatın güvende olduğunu bildirdi — dünyanın deniz yoluyla taşınan petrolünün yaklaşık dörtte birinin, sıvılaştırılmış doğalgazının beşte birinin geçtiği bir su yolunda bu tür olaylar fiyatı doğrudan hareket ettiriyor.</p>
-    <p>Benim okumam şu: petrolün 82 dolar dolayında ve son bir ayın dar bandında kalması, piyasanın olayı "olası bir kesinti primi" olarak fiyatladığını, henüz gerçekleşmiş bir arz kaybı olarak görmediğini gösteriyor. Çürütme koşulu net: Hürmüz'de fiili bir kapanma ya da bir tankerin batması olursa bu "prim" bir günde "şok"a döner ve enflasyon kanalını yeniden açar — ki bu, aşağıdaki Fed tartışmasının (H2) da zeminidir. Doomberg'in aylardır savunduğu "manşetlerin altında bol hidrokarbon" tezi bugüne kadar doğru çıktı; ama bu tez, boğazın açık kalmasına bağlı bir bahis.</p>
-    <details class="deep">
-      <summary>Başat aktörler — motivasyon ve kırmızı çizgi</summary>
-      <p><b>ABD:</b> Yaptırım + baskı kampanyasıyla İran'ı masaya çekmek istiyor; kırmızı çizgisi boğazın kapanması ve petrol fiyatının seçim-öncesi enflasyonu azdırması. <b>İran:</b> Hürmüz'ü kapatma tehdidini bir pazarlık kozu olarak elde tutuyor; fiili kapanış hem gelirini hem Çin müşterisini vurur, o yüzden "kapatırım" demek "kapatmak"tan daha değerli. <b>İsrail:</b> Hizbullah'ın yeniden silahlanmasını erkenden kırma doktrini; Lübnan devletiyle değil örgütle savaşıyor. Üç aktörün de tırmanışı <i>kontrollü</i> tutma çıkarı var — asıl risk, kaza eseri bir tırmanma.</p>
-      <p class="conf">Güven düzeyi: orta-yüksek. Olaylar doğrulanmış haber; "prim vs şok" ayrımı benim çıkarımım.</p>
-    </details>
-  </article>
+<!-- ================= PİYASALAR ================= -->
+<div class="sec" id="piyasalar">
+  <div class="sec-h">Piyasalar</div>
 
-  <!-- ===== MERKEZ BANKALARI ===== -->
-  <div class="sec-label">merkez bankaları</div>
+  <div class="art" id="h5">
+    <span class="kicker">Tahvil · Mali görünüm</span>
+    <h2><span class="hb">H5</span>Uzun uç: 30 yıllık %5,31 ile 19 yılın zirvesinde</h2>
+    <p>Günün en anlamlı sinyali kısa vadeli faizde değil, eğrinin uzun ucunda. CNBC ve Bloomberg'in aktardığına göre ABD 30 yıllık Hazine tahvili getirisi 17 Ağustos'ta %5,31'e, Temmuz 2007'den bu yana en yüksek seviyeye çıktı; 10 yıllık ise %4,7'nin hemen altında. Dikkat çeken şey zamanlaması: getiriler, enflasyonun serinlediği bir haftada yükseldi — oysa uzun vadeli faizler normalde enflasyon endişesi azalınca <em>düşer</em>. Bu tersine hareket, hikâyenin enflasyondan çok arz ve güven olduğunu söylüyor. Spokesman ve Yahoo Finance'in derlediği açıklamalarda üç güç sıralanıyor: bütçe açığını finanse eden ağır tahvil ihracı (Hazine, aylık açığın beş yılın en yükseğine çıktığını bildirdi), tarife ve enerji kaynaklı inatçı enflasyon, ve yeni Başkan Warsh'ın sinyallerine dair belirsizlik.</p>
+    <p>Benim okumam şu: dolar endeksinin (DXY) Haziran başından beri en düşük seviyeye, 99 dolayına gerilerken uzun vadeli getirilerin yükselmesi, klasik "büyüme güçlü, faiz artıyor" hikâyesine uymuyor. Getiri yukarı + para birimi aşağı bileşimi, tipik olarak büyümeyi değil mali güveni sorgulayan bir örüntüdür. Bu, ölçüm dosyasındaki bağlam küpünün "küresel uzun vade: gerilim 0,59, gerilim üstü" okumasıyla birebir örtüşüyor.</p>
+    <details class="pan" open><summary>Sayısal çıpa ve varlık rotasyonu</summary><div class="pb">
+      <p>30Y %5,31 (17 Ağu, 2007'den beri zirve) · 10Y ≈%4,7 · DXY ≈99,3 (5 Haziran'dan beri en düşük). Ölçüm dosyası: küresel uzun vade gerilim 0,59 (gerilim üstü), kısa vade 0,22 (gevşek) — bu ikisinin ayrışması gazetenin çerçevesi.</p>
+      <p><b>Rotasyon iması:</b> Uzun vadeli getiri yukarı + zayıf dolar bileşimi, mali endişe döneminde tarihsel olarak altın ve reel varlıkları (H10) besler, uzun vadeli tahvile "bıçağı yakalama" riski yükler.</p>
+      <div class="gauge">Güven düzeyi: <span class="g high">Yüksek</span> — seviyeler ve tarihsel bağlam çoklu kaynakta net.</div>
+      <div class="fals">Çürütme koşulu: 30 yıllık getiri, güçlü bir talep açık artırması ya da net güvercin bir Warsh mesajıyla %5'in belirgin altına dönerse, "yapısal mali baskı" tezi zayıflar.</div>
+    </div></details>
+    <p class="src">Kaynaklar: <a href="https://www.cnbc.com/2026/08/17/treasury-yields-federal-reserve-fomc-minutes.html">CNBC</a>, <a href="https://www.spokesman.com/stories/2026/aug/17/us-bond-selloff-drives-30-year-yields-to-highest-s/">Spokesman</a>, <a href="https://finance.yahoo.com/economy/policy/articles/30-treasury-yield-hits-highest-190343085.html">Yahoo Finance</a></p>
+  </div>
 
-  <article id="h2">
-    <h2><span class="hb">H2</span>Serin TÜFE'ye rağmen uzun uç sattı: Warsh'ın Fed'i "rehavet" mi fiyatlanıyor?</h2>
-    <p class="dek">Kısa vade indirim beklerken uzun vade tam tersini yapıyor; bu, tahvil piyasasının Fed'in enflasyona karşı fazla rahat olabileceğinden kuşkulandığını söylüyor.</p>
-    <p>Hafta cool bir tüketici enflasyonu raporuyla açıldı, ama on yıllık ABD tahvil faizi Cuma günü yükselerek yüzde 4,70 dolayına çıktı. CNBC ve piyasa aktarımlarının çerçevesi açık: uzun vadeli faizler, "Fed'in daha yüksek bir enflasyona karşı fazla rehavete kapılabileceği" endişesiyle yukarı gitti. Yani serin veri kısa vadeyi rahatlatırken, uzun uç bunu bir gevşeme daveti değil, yapışkan enflasyon ve mali arz riski olarak okudu. Bu, Mayıs 2026'da göreve gelen Başkan Kevin Warsh'ın şahin çizgisiyle de tutarlı: Temmuz sonu toplantısında üç üye faizin sabit tutulmasına değil <i>artırılmasına</i> oy vermişti.</p>
-    <p>Yerel ölçüm bu tabloyu bağımsız biçimde doğruluyor: bağlam küpünde küresel kısa vadeli gerilim düşük (0,22) ama uzun vadeli gerilim belirgin yüksek (0,64) ve iki bölme ayrışıyor. Benim okumam, bu ayrışmanın tam da yüzeydeki sükûnetin altındaki gerilimi ölçtüğü. Çürütme koşulu: 27–29 Ağustos'taki Jackson Hole'da (Warsh'ın başkan olarak ilk açılışı, 28 Ağustos) net bir gevşeme dili gelir ya da uzun uç yeniden aşağı dönerse bu okuma zayıflar.</p>
-    <details class="deep">
-      <summary>Sayısal çıpa</summary>
-      <p>ABD 10Y ≈ %4,70 (Cuma +artı); 2Y ile birlikte eğri dikleşme eğiliminde. Piyasa "kısa vadede indirim, uzun vadede yapışkan enflasyon" fiyatlıyor — klasik "bear steepening". Bu, aynı anda hem hisseyi (kısa vade rahat) hem altını (reel faiz belirsizliği) besleyebilir; kaybeden uzun vadeli tahvil ve faize duyarlı büyüme hisseleridir.</p>
-      <p class="conf">Güven düzeyi: orta. 10Y seviyesi ve Warsh muhalefeti doğrulanmış; "rehavet fiyatlanıyor" tahvil piyasasının okuması, benim değil — ben yalnızca aktarıyorum.</p>
-    </details>
-  </article>
+  <div class="art" id="h6">
+    <span class="kicker">Hisse senetleri</span>
+    <h2><span class="hb">H6</span>Hisseler yapay zekâ ile faiz arasında sıkıştı</h2>
+    <p>Wall Street, 17 Ağustos'u hafif ekside kapadı: Bloomberg ve Edward Jones derlemelerine göre S&P 500 %0,5 gerileyerek 7.745 puana, Dow %0,5 düşüşle 53.460'a, teknoloji ağırlıklı Nasdaq %0,3 kayıpla 26.645'e indi. Gerileme, yapay zekâ etrafındaki iyimserliğe rağmen yükselen petrol ve uzun vadeli tahvil getirilerinin yatırımcıyı temkinli kılmasından ve perakende bilançoları öncesi beklemeden kaynaklandı. Yani endeksler rekorun bir adım altında dururken, altta faiz kanalı hisselere karşı çalışıyor.</p>
+    <p>Gözlem şu: Bitcoin de bu dar bant hikâyesine ortak — CoinDesk'e göre 63.500 dolar civarında sıkışmış işlem görüyor; büyük yapay zekâ hesaplama anlaşmaları akışı canlı tutsa da yön açığa çıkmıyor. Bu, "yüzeyde sükûnet" temasını doğruluyor: oynaklık endeksi VIX 14,25 gibi düşük bir seviyede, ölçüm dosyasındaki açık iddiaya göre (4 Eylül'de VIX'in 18,49'u aşma olasılığı yalnızca %24) piyasa yakın vadede belirgin bir stres fiyatlamıyor.</p>
+    <p class="src">Kaynaklar: <a href="https://www.bloomberg.com/news/articles/2026-08-17/stock-market-today-dow-s-p-live-updates">Bloomberg</a>, <a href="https://www.edwardjones.com/us-en/market-news-insights/stock-market-news/daily-market-recap">Edward Jones</a>, <a href="https://www.coindesk.com/markets/2026/08/17/live-updates-bitcoin-flat-near-usd63-500-but-the-flows-have-quietly-turned">CoinDesk</a></p>
+  </div>
+</div>
 
-  <!-- ===== EMTİA ===== -->
-  <div class="sec-label">emtia</div>
+<!-- ================= TÜRKİYE ================= -->
+<div class="sec" id="turkiye">
+  <div class="sec-h">Türkiye</div>
 
-  <article id="h3">
-    <h2><span class="hb">H3</span>Asıl kıtlık bakırda: LME nakit primi 2021'den beri en yüksek, stoklar 42 gündür eriyor</h2>
-    <p class="dek">COMEX vadeli eğrisi ileriye dönük "bolluk" derken, LME nakit tarafı tam tersini bağırıyor — fiziksel sıkışıklığın gerçek ölçüsü LME'de.</p>
-    <p>Bu ayrımı kaçırmamak gerekir çünkü iki borsa iki farklı şey söylüyor. Bu makinedeki ölçüme göre COMEX bakır vadeli eğrisi <i>contango</i>da, yani gelecekteki fiyat bugünkünden yüksek (yıllık +%3,68) — kâğıt üstünde rahat bir tablo. Oysa LME tarafı <i>backwardation</i>da: nakit fiyat üç ay vadeliden yüzde 2,91 pahalı ve stoklar yirmi günde yüzde 30,9 eridi, 204.975 tona indi. MiningFeeds ve Finimize'ın aktardığı canlı veriler bunu doğruluyor: LME nakit primi 434 dolar/tona çıkarak 2021'den bu yana en yüksek seviyeye ulaştı, stoklar 42 gündür kesintisiz düşüyor (2014'ten beri en uzun seri) ve kalan metalin neredeyse yarısı çekilmek üzere işaretlenmiş.</p>
-    <p>Benim okumam şu: ABD'nin gümrük-kaynaklı arbitrajı metali CME deposuna çekerken Çin stokları da düşük kaldığından, LME iki bölgesel çekiş arasında "dengeleyici havuz" hâline geldi ve fiziksel gerginliğin tamamını üstleniyor. Yani "bakır bol" diyen COMEX eğrisine değil, "hemen teslim metal yok" diyen LME primine bakmak gerekir. Çürütme koşulu: LME stokları yeniden 300 bin tonun üzerine çıkar ya da nakit primi 100 doların altına gerilerse sıkışıklık tezi zayıflar. Not: ölçüm dosyasındaki açık iddia da (28 Ağustos'ta LME nakit-üç ay farkının sıfırın üzerinde kalacağı, olasılık 0,72) bu yönü destekliyor.</p>
-  </article>
+  <div class="art" id="h7">
+    <span class="kicker">TCMB · Makro</span>
+    <h2><span class="hb">H7</span>TCMB %37'de bekledi, rezerv toparlanıyor</h2>
+    <p>Merkez Bankası Para Politikası Kurulu, bir hafta vadeli repo faizini %37'de sabit tuttu; gecelik borç verme faizi %40, gecelik borçlanma %35,5'te kaldı. Kurun ağustos ortasında 47,70–48,20 bandında, kontrollü ve sınırlı bir nominal değer kaybıyla seyrettiği görülüyor. Rezerv tarafında toparlanma sürüyor: 31 Temmuz haftasında 164,4 milyar dolar olan brüt rezervler, 7 Ağustos haftasında 178,4 milyar dolara yükseldi. Enflasyon Raporu 2026-III de 13 Ağustos Perşembe yayımlandı — dezenflasyon patikasının kredibilitesi bu raporun ayrıntılarında.</p>
+    <p>Burada dürüst olmak gerekiyor: ölçüm dosyasında Dolar/TL yakın vade kontratının spota göre primi "eksik girdi" nedeniyle hesaplanamadı, dolayısıyla TL'nin ima edilen taşıma maliyetindeki <em>değişimi</em> bu sayıda veremiyorum — bu veri elimde yok. Yabancı takas tarafında ise sinyal zayıf: son gözlem (14 Ağustos) genel ortalamada yirmi günlük değişim yalnızca −0,04 puan; künyenin eşiği olan 0,1 puanın altında olduğu için akım sinyali yok, hikâye uydurmuyorum. TCMB haftalık yabancı akım verisi (hisse/DİBS net alış) bugün ölçüm dosyasında güncel değildi.</p>
+    <p class="src">Kaynaklar: <a href="https://www.tcmb.gov.tr/">TCMB</a>, <a href="https://bigpara.hurriyet.com.tr/doviz/merkez-bankasi-doviz-kurlari/">Bigpara</a>, yerel ölçüm dosyası (18 Ağu 2026)</p>
+  </div>
 
-  <article id="h4">
-    <h2><span class="hb">H4</span>Altın rekora yakın — ama alıcı merkez bankaları, satıcı ABD borsa fonları</h2>
-    <p class="dek">Aynı fiyatın iki farklı tarafında iki farklı kalabalık var; bu ayrışma, ralinin ne kadar sağlam olduğunu belirleyecek.</p>
-    <p>Altın 14 Ağustos'ta 4.380 dolar dolayında kapandı ve hafta sonuna doğru 4.428 dolara, iki ayın zirvesine yaklaştı; ay içinde yaklaşık yüzde 10 kazandı. IndexBox ve goldsilver'ın aktardığı tabloya göre yükselişin motoru fiziksel talep değil, iki güçlü akımın çekişmesi: merkez bankaları ikinci çeyrekte net 289 ton aldı (yıllık +%62, seri tarihindeki en güçlü ikinci çeyrek) ve Çin beşinci ay üst üste rezerv biriktirdi; buna karşılık ABD'de borsa yatırım fonları altından çıkış yaşadı. Yani asıl alıcı devlet kasaları, satıcı ise Batılı finansal yatırımcı.</p>
-    <p>Yerel ölçüm burada bir uyarı ekliyor: altının vadeli konumlanma yüzdelik dilimi tüm geçmişte 0,848, yani spekülatif alıcı tarafı kalabalık. Künyenin kuralı gereği bunu yön sinyali gibi okumam — yüksek dilim, ters bir haberin (örneğin reel faizlerde ani bir sıçrama) etkisinin büyüdüğü anlamına gelir. Benim okumam: merkez bankası alımı ralinin tabanını sağlamlaştırıyor ama kısa vadeli yükünü finansal konumlanma taşıyor; çürütme koşulu, reel faizlerin belirgin yükselmesi ya da Çin alımının durmasıdır.</p>
-  </article>
+  <div class="art" id="h8">
+    <span class="kicker">Borsa İstanbul · Bilanço · Savunma</span>
+    <h2><span class="hb">H8</span>Bilanço haftası savunma hisselerini Romanya'ya bağlıyor</h2>
+    <p>Bu hafta BIST'te takvim yoğun: ölçüm dosyasındaki takip listesinde TAVHL, FROTO, THYAO ve GLRMK için 2Ç26 konsolide bilanço son tarihi 19 Ağustos; EKGYO'nun 2Ç26 bilançosu ise bugün, 18 Ağustos. En dikkat çekici hareket OTKAR'da: hisse beş günde %14,2 yükseldi, ölçüm dosyasının "piyasadan arındırılmış" göstergesine göre bu yükselişin +11,7 puanı endeksten bağımsız, hisseye özgü; yabancı takas oranı da beş gözlükte +0,59 puan arttı ve fiyat 20 günlük ortalamanın üzerine çıktı. Bunun arkasındaki olay riski çift taraflı: Romanya'daki davada esas kararın yaklaşması ve 19 Ağustos'a kadar açıklanacak bilanço.</p>
+    <p>Benim okumam şu: H2'de anlattığımız NATO doğu kanadı gerilimi ve Romanya hava sahasındaki drone olayı, savunma temasının haber zeminini besliyor; ancak OTKAR'da beş günde biriken hisseye özgü prim, iyi haberin bir kısmının çoktan fiyatlandığını düşündürüyor. Aynı sektörde GLRMK, yabancı takasın beş gözlükte −2,07 puan azalmasına rağmen 200 günlük ortalamanın üzerine çıkmış durumda — yani fiyat gücü var ama yabancı çıkışıyla birlikte; bu ikisinin çelişkisi, teyit beklemeyi gerektiriyor. HALKB ise ters yönde: beş günde %7,7 düştü, arındırılmış olarak −10,7 puan; kamu bankalarının haber akışında TCMB'nin 10 Eylül toplantısı öne çıkıyor.</p>
+    <details class="pan"><summary>Türkiye/sektör derinliği (takip listesi ölçümleri)</summary><div class="pb">
+      <div class="arc">
+        <div class="row"><b>OTKAR</b><span>311,75 · 5g +%14,2 · RSI 47,6 · arındırılmış +11,7p · takas +0,59 · Romanya kararı + bilanço riski</span></div>
+        <div class="row"><b>GLRMK</b><span>179,0 · 5g +%5,5 · RSI 61,7 · SMA200 üzerine çıktı · takas −2,07 (çıkış) · 19 Ağu bilanço</span></div>
+        <div class="row"><b>HALKB</b><span>34,18 · 5g −%7,7 · RSI 35,8 · arındırılmış −10,7p · olay: TCMB 10 Eylül</span></div>
+        <div class="row"><b>EKGYO</b><span>18,30 · 5g +%2,0 · takas +1,43 · 2Ç26 bilançosu bugün (18 Ağu)</span></div>
+      </div>
+      <p class="fals">Not: Bu işaretler dikkat çağrısıdır, işlem sinyali değil. Takas oranı T+1'dir ve seviye değil değişim okunur.</p>
+    </div></details>
+    <p class="src">Kaynak: yerel ölçüm dosyası — takip listesi ve veri denetimi (18 Ağu 2026)</p>
+  </div>
+</div>
 
-  <article id="h5">
-    <h2><span class="hb">H5</span>Kahve 1,5 yılın dibinde: Brezilya rekor hasat topluyor, kısa taraf kalabalık</h2>
-    <p class="dek">Arz iyileşince fiyat düştü; ama pozisyonlanma o kadar tek yönlü ki, bir hava sürprizi asimetriyi hızla ters çevirebilir.</p>
-    <p>Arabika kahve, en yakın vadeli sözleşmede 1,5 yılın en düşük seviyesine geriledi; StoneX ve Barchart aktarımlarına göre Brezilya'nın 2026/27 hasadı 12 Ağustos itibarıyla yüzde 90 tamamlandı ve USDA rekor bir mahsul (71,9 milyon çuval, +%14; arabika 47,5 milyona, +%25) öngörüyor. Küresel üretimin de rekor 189,7 milyon çuvala çıkması bekleniyor. Yerel ölçüm bunu doğruluyor: kahve eğrisi geriye dönük (yıllık −%14,43), yani yakın vade hâlâ sıkı, ama vadeli konumlanma yüzdelik dilimi son üç yılda yalnızca 0,325 — spekülatif taraf büyük ölçüde kısa/boşaltılmış.</p>
-    <p>Benim okumam: fiyatı aşağı taşıyan hikâye (bol hasat) gerçek, ama düşük konumlanma dilimi asimetriyi ilginç kılıyor. Kalabalığın zaten sattığı bir piyasada, Brezilya'da beklenmedik bir kuraklık ya da don haberi orantısız bir sıçrama üretebilir. Ölçümdeki açık iddia (28 Ağustos'ta KC=F'in 14 Ağustos kapanışı 338,10 sentin altında kalacağı, olasılık 0,55) mevcut aşağı yönü hafifçe destekliyor; ben bu olasılığı bir yön kesinliği değil, dengeye yakın bir bahis olarak okuyorum.</p>
-  </article>
+<!-- ================= EMTİA ================= -->
+<div class="sec" id="emtia">
+  <div class="sec-h">Emtia</div>
 
-  <!-- ===== TÜRKİYE ===== -->
-  <div class="sec-label">türkiye</div>
+  <div class="art" id="h9">
+    <span class="kicker">Bakır · Fiziksel piyasa</span>
+    <h2><span class="hb">H9</span>Bakırda LME sıkışması COMEX'in tersini söylüyor</h2>
+    <p>Günün emtia masasında asıl mesele fiyat seviyesi değil, eğrinin ne söylediği. Bloomberg'e göre Londra Metal Borsası'nda (LME) nakit bakır fiyatı, üç ay vadeli kontrattan ton başına 545 dolara kadar yukarıda işlem gördü — bu "backwardation" (nakdin vadeliye prim yapması) 2021'deki tarihi sıkışmadan bu yana en geniş seviye ve Temmuz sonundaki ~34 dolardan sert biçimde açıldı. LME stokları 42 gün üst üste düşerek 2014'ten beri en uzun seriyi oluşturdu; kalan metalin neredeyse yarısı çekilmek üzere işaretlenmiş durumda. LME 14 Ağustos'ta nakit fiyattaki sıçramaları sınırlamak için acil önlem devreye aldı. Buna karşılık COMEX'te vadeli bakır 12 Ağustos'ta 6,714 dolar/libre ile rekor kırdı.</p>
+    <p>Künyenin özellikle uyardığı ayrım tam burada devreye giriyor: yerel ölçüm dosyasına göre <em>COMEX eğrisi contango'da</em> (yıllık %6,86 — yani vadeli, nakitten pahalı, bolluk iması), oysa <em>LME nakit-üç ay farkı backwardation'da</em> (%3,74, tarihsel dilimde tam 1,0 ile uç noktada). Bu ikisi ters yönde ve küresel fiziksel sıkışıklığın gerçek ölçüsü LME tarafı. Sıkışmayı besleyen şey de fiziksel: ABD'de rafine bakıra tarife beklentisi bir arbitraj yaratıp metali LME sisteminden ABD'ye çekiyor ve anlık arzı daha da daraltıyor. Ölçüm dosyasındaki açık iddia (28 Ağustos'ta LME nakit fiyatının üç ay fiyatının üzerinde kalması, olasılık 0,72) bu tabloyla uyumlu; ben de çelişmiyorum — fiziksel sıkışma gerçek, ancak fiyatın rekor seviyede ve LME'nin acil önlem alacak kadar gergin olması, girişte asimetriyi bozuyor.</p>
+    <details class="pan" open><summary>Sayısal çıpa (ölçüm + piyasa)</summary><div class="pb">
+      <p>LME backwardation: piyasada ≤545 $/ton (2021'den beri en geniş) · ölçüm dosyasında %3,74, dilim 1,0. Stok: ~205 bin ton, 42 gün düşüş; ölçüm dosyası 207.825 ton, yirmi günde −%29,6. COMEX eğrisi: contango, yıllık %6,86. COT yönetilen para dilimi: tüm geçmiş 0,912.</p>
+      <p class="fals">COT dilimi yön sinyali değildir; yüksek dilim, ters bir haberin (örn. tarife iptali veya stok girişi) etkisinin büyüyeceği anlamına gelir. Çürütme: LME stoklarına belirgin giriş başlar ya da tarife arbitrajı kapanırsa backwardation hızla daralır.</p>
+    </div></details>
+    <p class="src">Kaynaklar: <a href="https://www.bloomberg.com/news/articles/2026-08-17/copper-heads-toward-record-high-on-lme-as-supply-tensions-build">Bloomberg</a>, <a href="https://www.mining.com/copper-price-sets-fresh-us-record-as-tariff-driven-hoarding-meets-shrinking-supply/">MINING.COM</a>, yerel ölçüm dosyası</p>
+  </div>
 
-  <article id="h6">
-    <h2><span class="hb">H6</span>TCMB faizi 37'de tuttu ama 2026 enflasyon tahminini yüzde 28'e çekti</h2>
-    <p class="dek">Bankanın kendi tahminini yukarı revize etmesi, "yakında indirim" beklentisini takvime değil koşula bağlıyor.</p>
-    <p>TCMB, yılın üçüncü Enflasyon Raporu'nda 2026 yıl sonu enflasyon tahminini yüzde 26'dan yüzde 28'e yükseltti; ara hedefleri 2026 için yüzde 24, 2027 için yüzde 15 olarak verdi. Ekonomim ve paraanaliz'in aktardığına göre banka, yukarı revizyonun gerekçesi olarak başta gıda ve enerji olmak üzere jeopolitik gelişmeleri gösterdi — ki bu, H1'deki petrol primini doğrudan Türkiye kanalına bağlıyor. Politika faizi yüzde 37'de sabit, gecelik borç verme yüzde 40, borçlanma yüzde 35,5. Şeker Yatırım'ın 14 Ağustos günlük bülteni de aynı revizyonu (2026 için %28) öne çıkarıyor.</p>
-    <p>Ekonomistlerin ortak beklentisi, TCMB'nin doğrudan politika faizini indirmek yerine önce haftalık repo ihalelerini yeniden başlatarak efektif fonlama maliyetini düşürmesi, ardından enflasyon görünümü izin verirse yılın son çeyreğinde sınırlı indirimlere başlaması. Benim okumam: bankanın kendi tahminini yükseltmesi, Eylül'de (10 Eylül toplantısı) sert bir indirim ihtimalini zayıflatıyor; asıl gevşeme aracı faiz kararı değil, fonlama kompozisyonu olabilir. Çürütme koşulu: petrol geri çekilir ve Ağustos enflasyonu beklenenden iyi gelirse takvim öne çekilebilir.</p>
-  </article>
+  <div class="art" id="h10">
+    <span class="kicker">Altın · Gümüş</span>
+    <h2><span class="hb">H10</span>Altın rekora yakın: merkez bankaları alıyor, ETF'ler satıyor</h2>
+    <p>Altın, serin gelen TÜFE verisinin faiz artırım beklentilerini yumuşatmasıyla 12 Ağustos'ta 4.419 dolara kadar çıkıp rekor bölgeye yerleşti; 17 Ağustos itibarıyla 4.388 dolar dolayında, zayıf dolar ve düşen artırım beklentisiyle destekli. Gümüş yüzde bazında altını geçerek 66 dolar sınırına dayandı. IndexBox ve BullionVault'un derlediği tabloda ilginç bir ayrışma var: ABD'de altın ETF'lerinden çıkış yaşanırken, resmî sektör alımı rekor seviyede — Çin Merkez Bankası Temmuz'da yaklaşık 19,9 ton ekledi (Ekim 2023'ten beri en büyük aylık alım, üst üste 21. ay), küresel merkez bankaları Haziran'da net 51 ton aldı.</p>
+    <p>Bunun anlamı şu: altını yukarı taşıyan güç Batılı perakende/ETF talebi değil, Doğu'nun ve merkez bankalarının yapısal alımı — yani H5'te anlattığımız mali güven sorununun ve dolar zayıflığının somut karşılığı. Yerel ölçüm dosyasına göre altının COMEX eğrisi contango'da (yıllık %4,62) ve COT yönetilen para dilimi 0,80 civarında; açık iddia 28 Ağustos kapanışının 14 Ağustos'un 4.380 dolarını aşması için olasılığı 0,50 (yani nötr) koymuş — rekor bölgede yön konusunda dürüst bir kararsızlık.</p>
+    <p class="src">Kaynaklar: <a href="https://www.indexbox.io/blog/gold-holds-near-4400-as-us-demand-weakens-but-central-banks-buy-record-tonnes/">IndexBox</a>, <a href="https://www.bullionvault.com/gold-news/gold-price-news/gold-4400-china-investment-081120261">BullionVault</a>, yerel ölçüm dosyası</p>
+  </div>
+</div>
 
-  <article id="h7">
-    <h2><span class="hb">H7</span>BIST'i yabancı değil faiz umudu taşıyor; vadeli taşıma yıllık %31,8'i fiyatlıyor</h2>
-    <p class="dek">Yerel ölçüm, bu kez yükselişin dışarıdan gelen bir akımdan değil, içerideki faiz-indirimi beklentisinden beslendiğini söylüyor.</p>
-    <p>BIST 100, 14 bin seviyesinin üzerinde tutunuyor (14 Ağustos dolayında ~14.130); Marbaş'ın teknik değerlendirmesi 14 bin üzerindeki kalıcılığı olumlu buluyor. Ancak yükselişin kaynağı önemli: piyasa aktarımları içerideki çıkışın yabancı girişinden çok faiz-indirimi beklentisi, gerileyen petrol ve bilanço sonuçlarından beslendiğini belirtiyor. Yerel ölçüm bunu niceliğe döküyor: yabancı takas oranındaki yirmi gözlük değişim −0,04 (0,1 puan eşiğinin altında), yani <b>net bir yabancı akım sinyali yok</b>. TCMB haftalık verisinde ise hisse tarafında yalnızca +1,5 milyon dolar, DİBS tarafında +545,8 milyon dolar giriş var — yani yabancı parası tahvile geliyor, hisseye gelmiyor. Akım (haftalık) ile stok (takas oranı) burada aynı yönü gösteriyor: hisse tarafı sinyalsiz.</p>
-    <p>Vadeli tarafta Dolar/TL yakın vade kontratı 48,403, spot 47,8931; vadeye 14 gün kala prim yüzde 1,065, yıllıklandırılmış yüzde 31,8 — bu, TL'nin ima edilen taşıma maliyeti. Künyenin uyarısıyla: seviye değil değişim okunur ve az gün kaldığında yıllık çevrim küçük farkları büyütür; bu yüzden yüzde 31,8'i mutlak bir "getiri vaadi" değil, yalnızca 14 günlük primin yıllığa çevrilmiş hâli olarak okumak gerekir. Endeks kontratında ise ölçüm yalnızca destek (16.080 / 15.970 / 15.850) ve direnç (16.310 / 16.435 / 16.550) veriyor; kapanış bültende olmadığından baz hesaplanmadı, bu seviyelerden baz uydurmuyorum.</p>
-  </article>
-
-  <article id="h8">
-    <h2><span class="hb">H8</span>Bilanço haftası: 18–19 Ağustos'ta yoğun takvim, yabancı hisse tarafında yeniden satıcı</h2>
-    <p class="dek">Takip listesindeki adların çoğunda olay riski aynı iki güne yığılmış; bu, endeks-üstü oynaklığın kaynağı olabilir.</p>
-    <p>Yerel takip listesine göre konsolide 2. çeyrek bilançolarının son tarihi 19 Ağustos ve yük ağır: TAVHL, FROTO, THYAO ve GLRMK bu tarihe kadar; EKGYO 18 Ağustos'ta açıklıyor. OTKAR'da ikili risk var — Romanya davasında esas karar ve bilanço aynı pencerede; hisse son beş günde piyasadan arındırılmış +11,7 puanla ayrıştı ve SMA20'nin üzerine çıktı, yabancı takası beş gözlükte +0,59 puan arttı (listedeki tek belirgin pozitif takas hareketi). GLRMK'de ise takas beş gözlükte −2,07 puan geriledi, yani yükseliş yabancı alımıyla değil. HALKB için asıl olay 10 Eylül TCMB toplantısı; hisse beş günde arındırılmış −10,7 puanla listenin en zayıfı.</p>
-    <p>Şirket haberlerinde Şeker Yatırım, 2. çeyrek sonuçları beklentinin bir miktar altında kaldığı için Aksa Enerji'de piyasa tepkisinin "hafif negatif" olmasını beklerken 'AL' tavsiyesini ve 110,0 TL hedef fiyatını (cari fiyata göre +%31 potansiyel) korudu — bu bir aracı kurum görüşüdür, doğrulanmış bir sonuç değil. Benim okumam: olay riskinin 18–19 Ağustos'a bu kadar yığılması, tekil hisse oynaklığını endeksten koparabilir; yabancının hisse tarafında girişsiz kalması da (H7) bu iki günde alıcı tabanını inceltiyor.</p>
-  </article>
-
-  <!-- ===== ÇERÇEVE ===== -->
-  <div class="sec-label">çerçeve</div>
-
-  <article id="h9">
-    <h2><span class="hb">H9</span>Hisse ve altın rekor kırarken Bitcoin geriliyor: risk iştahı seçici</h2>
-    <p class="dek">"Her şey ralisi" değil bu; para belirli varlıklara akıyor, hepsine değil — ki bu ayrım likidite hakkında bir şey söylüyor.</p>
-    <p>Tabloda ilginç bir ayrışma var: S&amp;P 500 ve altın rekor bölgesindeyken Bitcoin 63 bin dolar dolayında, yıla 93 binin üzerinde başlamışken yaklaşık yüzde 32 aşağıda. Piyasa aktarımlarına göre yılın gidişatı güçlenen dolar dönemleri, temkinli merkez bankası duruşu ve kâr realizasyonunun bileşimiyle "aşağı doğru bir öğütme" oldu. Yani risk iştahı topyekûn değil seçici: yatırımcı hisseyi ve altını (kazanç + güvenli liman) tutarken, kaldıraçlı/spekülatif ucu (kripto) tırpanlıyor.</p>
-    <p>Benim okumam: bu seçicilik, H2'deki "geç-döngü" ve H4'teki "merkez bankası tabanı" temalarıyla uyumlu — likidite bol değil, yönlendirilmiş akıyor. Çürütme koşulu: Bitcoin belirgin biçimde toparlar ya da hisse-altın ayrışması kapanırsa, "seçici iştah" tezi yerini yeniden geniş bir risk iştahına bırakır. Bu bir öncü değil teyit edici gözlemdir; tek başına işlem sinyali taşımaz.</p>
-  </article>
-
-  <article id="h10">
-    <h2><span class="hb">H10</span>Tooze'un "Çin sıkıştırması" tezi olgunlaşıyor: ihracat fazlası sistemik bir soruya dönüşüyor</h2>
-    <p class="dek">Bir muhasebe kalemi olan dış ticaret fazlası, giderek bir jeopolitik ve sanayi politikası sorununa dönüşüyor.</p>
-    <p>Adam Tooze, 5 Ağustos tarihli Chartbook'unda "Çin sıkıştırması"nı (China squeeze) işledi: Hint iktisatçılar Chatterjee ve Subramanian'ın Foreign Affairs'te dile getirdiği tez, Çin'in devasa üretim fazlasının özellikle Avrupa'nın hastalıklı otomotiv sanayisi üzerine yansıtılan bir "ikinci Çin şoku" alarmına dönüştüğünü anlatıyor. Bu, birkaç haftadır bu gazetenin izlediği tema; bugün Tooze'un çerçevesiyle daha da somutlaştı.</p>
-    <p>Türkiye kanalı ihmal edilmemeli: aynı ihracat baskısı, gümrük duvarları ve yönlendirilmiş sanayi rekabeti, Türk imalatını hem tehdit (ucuz ithalat) hem fırsat (Avrupa'ya "yakın kıyı" tedarik ve savunma sanayii ihracatı) olarak etkiliyor. Benim okumam: "Çin sıkıştırması", 2026'nın ikinci yarısında ticaret politikası başlıklarının (gümrük, teşvik, yerlileştirme) piyasa fiyatlamasına daha sık girmesini gerektiren bir çerçeve — henüz fiyatlanmış bir olay değil, izlenmesi gereken bir yapısal akım. Bu bir bülten görüşünün aktarımıdır; ben tezi kabul etmiyor, izlenmeye değer buluyorum.</p>
-  </article>
-
-  <!-- ===== PİYASA PANOSU ===== -->
-  <div class="sec-label">piyasa panosu</div>
+<!-- ================= PİYASA PANOSU ================= -->
+<div class="sec" id="pano">
+  <div class="sec-h">Piyasa Panosu</div>
   <table>
-    <thead><tr><th>Varlık</th><th class="n">Son / referans</th><th>Not (kaynak katmanı)</th></tr></thead>
+    <thead><tr><th>Gösterge</th><th>Seviye</th><th>Not</th></tr></thead>
     <tbody>
-      <tr><td>S&amp;P 500</td><td class="n">≈ 7.800</td><td>Cuma rekordan −%0,2 (web)</td></tr>
-      <tr><td>Nasdaq 100</td><td class="n">≈ 30.130</td><td>hafif zayıf (web)</td></tr>
-      <tr><td>Dow Jones</td><td class="n">≈ 53.790</td><td>−%0,3 (web)</td></tr>
-      <tr><td>ABD 10Y faiz</td><td class="n">%4,70</td><td class="dn">Cuma yükseldi, uzun uç sattı (web)</td></tr>
-      <tr><td>DXY (dolar endeksi)</td><td class="n">99,65</td><td>hafif zayıf (web)</td></tr>
-      <tr><td>Petrol (WTI)</td><td class="n">82,4 $</td><td class="up">Hürmüz risk primi (web)</td></tr>
-      <tr><td>Altın</td><td class="n">4.380 → ~4.428 $</td><td>14 Ağu kapanış → spot; rekora yakın (ölçüm+web)</td></tr>
-      <tr><td>Bakır — LME nakit primi</td><td class="n">+434 $/t</td><td class="up">2021'den beri en yüksek; stok 204.975 t (ölçüm+web)</td></tr>
-      <tr><td>Bitcoin</td><td class="n">≈ 63.000 $</td><td class="dn">yıl başı 93 binden −%32 (web)</td></tr>
-      <tr><td>VIX</td><td class="n">~15,4</td><td>6 Ağu kapanış referansı; taze güncel elimde yok (ölçüm-iddia)</td></tr>
-      <tr><td>USD/TRY</td><td class="n">47,89 spot / 48,40 vadeli</td><td>14 gün, prim %1,07 → yıllık %31,8 (ölçüm)</td></tr>
-      <tr><td>BIST 100</td><td class="n">≈ 14.130</td><td>faiz-indirimi umudu taşıyor (web)</td></tr>
-      <tr><td>TR 5Y CDS</td><td class="n">~227 (15 Ağu)</td><td>taze 17 Ağu güncellemesi elimde yok</td></tr>
+      <tr><td>S&P 500</td><td>7.745</td><td class="down">−%0,5 (17 Ağu)</td></tr>
+      <tr><td>Nasdaq Comp.</td><td>26.645</td><td class="down">−%0,3</td></tr>
+      <tr><td>Dow Jones</td><td>53.460</td><td class="down">−%0,5</td></tr>
+      <tr><td>ABD 10Y</td><td>≈%4,70</td><td>yükseliş</td></tr>
+      <tr><td>ABD 30Y</td><td>%5,31</td><td class="down">2007'den beri zirve</td></tr>
+      <tr><td>DXY (dolar)</td><td>≈99,3</td><td class="down">5 Haz'dan beri en düşük</td></tr>
+      <tr><td>Brent</td><td>&gt;88 $</td><td class="up">risk primi</td></tr>
+      <tr><td>WTI</td><td>≈82,5 $</td><td class="up">—</td></tr>
+      <tr><td>Altın (spot)</td><td>≈4.388 $</td><td class="up">rekora yakın</td></tr>
+      <tr><td>Gümüş</td><td>≈65–66 $</td><td class="up">altını geçti</td></tr>
+      <tr><td>Bakır (COMEX)</td><td>≈6,71 $/lb</td><td class="up">rekor (12 Ağu)</td></tr>
+      <tr><td>Bitcoin</td><td>≈63.500 $</td><td>dar bant</td></tr>
+      <tr><td>VIX</td><td>14,25</td><td>düşük oynaklık</td></tr>
+      <tr><td>Japonya 10Y</td><td>&gt;%2,9</td><td class="down">1996'dan beri zirve</td></tr>
+      <tr><td>USD/TRY</td><td>47,7–48,2</td><td>kontrollü</td></tr>
+      <tr><td>BIST 100</td><td>≈14.100–14.200*</td><td>*son işlem günü civarı</td></tr>
+      <tr><td>Türkiye 5Y CDS</td><td>≈220</td><td>—</td></tr>
     </tbody>
-    <caption>Kaynak katmanı etiketli: "ölçüm" = bu makinede doğrulanmış yerel ölçüm dosyası; "web" = doğrulanmış web kaynakları. Farklı zaman pencereleri (Cuma kapanışı vs canlı spot) ayrı gösterilmiştir; eşitlenmemiştir.</caption>
   </table>
+  <p class="tblnote">Seviyeler 17 Ağustos kapanışı / 18 Ağustos sabahı derlemeleridir; yuvarlanmıştır. BIST 100 spot seviyesi için kaynaklar arasında tutarsızlık vardı (Investing/Mynet ≈14.100–14.200, bir ajans 9 Ağu için 13.779); bu yüzden bant olarak verildi. Ölçüm dosyasındaki VIOP endeks kontratı destek/direnç seviyeleri (16.100–16.500 bandı) ayrı bir kontrat ölçeğidir, spot XU100 ile karıştırılmamıştır.</p>
+</div>
 
-  <!-- ===== GÜNÜN AĞI ===== -->
-  <div class="sec-label">günün ağı</div>
-  <p class="src">Bugünkü güçlü bağ, petrol priminden enflasyon ve faiz kanalına, oradan altın ve TL'ye uzanan zincir. Düz çizgi doğrudan/güçlü, kesik çizgi dolaylı/koşullu ilişkiyi gösterir; oklar yön, +/− işaretleri etkinin yönünü verir.</p>
-  <svg viewBox="0 0 820 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Günün ağ grafiği">
-    <defs>
-      <marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#4a4a44"/></marker>
-    </defs>
-    <!-- nodes -->
-    <g font-family="Georgia,serif" font-size="13" text-anchor="middle">
-      <circle cx="120" cy="60" r="42" fill="#fffdf8" stroke="#7a1f1f" stroke-width="1.5"/><text x="120" y="56">Hürmüz /</text><text x="120" y="72">İran</text>
-      <circle cx="120" cy="220" r="42" fill="#fffdf8" stroke="#8a6d1f" stroke-width="1.5"/><text x="120" y="216">Petrol</text><text x="120" y="232">82 $</text>
-      <circle cx="400" cy="140" r="46" fill="#fffdf8" stroke="#123a5e" stroke-width="1.5"/><text x="400" y="136">Enflasyon /</text><text x="400" y="152">uzun uç %4,70</text>
-      <circle cx="660" cy="60" r="42" fill="#fffdf8" stroke="#8a6d1f" stroke-width="1.5"/><text x="660" y="56">Altın</text><text x="660" y="72">rekora yakın</text>
-      <circle cx="660" cy="220" r="44" fill="#fffdf8" stroke="#7a1f1f" stroke-width="1.5"/><text x="660" y="216">TCMB 37% /</text><text x="660" y="232">TL 47,89</text>
-      <circle cx="400" cy="275" r="30" fill="#fffdf8" stroke="#1f6b3a" stroke-width="1.5"/><text x="400" y="279">Bakır ↑</text>
-    </g>
-    <!-- edges -->
-    <g stroke="#4a4a44" fill="none" stroke-width="1.6">
-      <line x1="120" y1="102" x2="120" y2="178" marker-end="url(#ar)"/>
-      <line x1="162" y1="210" x2="356" y2="150" marker-end="url(#ar)"/>
-      <line x1="446" y1="132" x2="618" y2="70" marker-end="url(#ar)"/>
-      <line x1="446" y1="150" x2="618" y2="212" stroke-dasharray="6 5" marker-end="url(#ar)"/>
-      <line x1="162" y1="70" x2="618" y2="66" stroke-dasharray="6 5" marker-end="url(#ar)"/>
-    </g>
-    <g font-family="-apple-system,Arial" font-size="12" fill="#4a4a44">
-      <text x="128" y="145">+</text>
-      <text x="250" y="176">+ prim</text>
-      <text x="520" y="92">+ (güvenli liman)</text>
-      <text x="520" y="196">− (ithal enerji)</text>
-      <text x="380" y="40">koşullu: kapanma → şok</text>
-    </g>
-  </svg>
+<!-- ================= GÜNÜN AĞI ================= -->
+<div class="sec" id="ag">
+  <div class="sec-h">Günün Ağı</div>
+  <div class="net-wrap">
+    <svg viewBox="0 0 860 380" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
+      <defs>
+        <marker id="arrP" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#166534"/></marker>
+        <marker id="arrN" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#9a1b1b"/></marker>
+        <marker id="arrG" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#7a7468"/></marker>
+      </defs>
+      <!-- edges: solid = doğrudan/güçlü, dashed = dolaylı/koşullu -->
+      <!-- Kızıldeniz -> Petrol (+) -->
+      <line x1="140" y1="60" x2="140" y2="112" stroke="#166534" stroke-width="2.5" marker-end="url(#arrP)"/>
+      <text x="150" y="92" font-size="12" fill="#166534">+</text>
+      <!-- Petrol -> Enflasyon/Artırım riski (+) -->
+      <line x1="180" y1="140" x2="300" y2="180" stroke="#166534" stroke-width="2.5" marker-end="url(#arrP)"/>
+      <text x="235" y="155" font-size="12" fill="#166534">+</text>
+      <!-- Mali açık -> Uzun uç getiri (+) -->
+      <line x1="150" y1="250" x2="300" y2="235" stroke="#166534" stroke-width="2.5" marker-end="url(#arrP)"/>
+      <text x="215" y="235" font-size="12" fill="#166534">+</text>
+      <!-- Artırım riski -> Uzun uç getiri (+) -->
+      <line x1="380" y1="200" x2="430" y2="215" stroke="#166534" stroke-width="2.5" marker-end="url(#arrP)"/>
+      <!-- Warsh belirsizlik -> Uzun uç (dashed +) -->
+      <line x1="380" y1="120" x2="440" y2="200" stroke="#7a7468" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#arrG)"/>
+      <text x="405" y="150" font-size="12" fill="#7a7468">?</text>
+      <!-- Uzun uç -> Hisseler (-) -->
+      <line x1="520" y1="235" x2="620" y2="290" stroke="#9a1b1b" stroke-width="2.5" marker-end="url(#arrN)"/>
+      <text x="565" y="275" font-size="12" fill="#9a1b1b">−</text>
+      <!-- Uzun uç / mali güven -> Altın (+) via dashed (zayıf dolar) -->
+      <line x1="520" y1="220" x2="640" y2="150" stroke="#7a7468" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#arrG)"/>
+      <text x="590" y="180" font-size="12" fill="#7a7468">+</text>
+      <!-- MB alımı -> Altın (+) -->
+      <line x1="700" y1="70" x2="700" y2="112" stroke="#166534" stroke-width="2.5" marker-end="url(#arrP)"/>
+      <text x="710" y="98" font-size="12" fill="#166534">+</text>
+      <!-- BoJ artırım -> Yen taşıması -> risk (dashed -) -->
+      <line x1="120" y1="330" x2="600" y2="320" stroke="#9a1b1b" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#arrN)"/>
+      <text x="350" y="345" font-size="12" fill="#9a1b1b">− (koşullu: yen taşıması çözülürse)</text>
+      <!-- nodes -->
+      <g font-size="13" fill="#1a1a17">
+        <rect x="78" y="38" width="124" height="24" rx="5" fill="#f3dcdc" stroke="#cfc8b8"/><text x="140" y="54" text-anchor="middle">Kızıldeniz saldırısı</text>
+        <rect x="92" y="114" width="96" height="26" rx="5" fill="#efe9dc" stroke="#cfc8b8"/><text x="140" y="131" text-anchor="middle">Petrol ↑</text>
+        <rect x="300" y="182" width="120" height="30" rx="5" fill="#efe9dc" stroke="#cfc8b8"/><text x="360" y="201" text-anchor="middle">Enflasyon/artırım</text>
+        <rect x="300" y="96" width="110" height="26" rx="5" fill="#f4ecd4" stroke="#cfc8b8"/><text x="355" y="113" text-anchor="middle">Warsh belirsizlik</text>
+        <rect x="60" y="238" width="110" height="26" rx="5" fill="#efe9dc" stroke="#cfc8b8"/><text x="115" y="255" text-anchor="middle">ABD mali açık</text>
+        <rect x="430" y="206" width="120" height="30" rx="5" fill="#f3dcdc" stroke="#cfc8b8"/><text x="490" y="225" text-anchor="middle">Uzun uç getiri ↑</text>
+        <rect x="614" y="292" width="96" height="26" rx="5" fill="#efe9dc" stroke="#cfc8b8"/><text x="662" y="309" text-anchor="middle">Hisseler ↓</text>
+        <rect x="648" y="114" width="104" height="26" rx="5" fill="#dcefe0" stroke="#cfc8b8"/><text x="700" y="131" text-anchor="middle">Altın ↑</text>
+        <rect x="636" y="44" width="128" height="26" rx="5" fill="#efe9dc" stroke="#cfc8b8"/><text x="700" y="61" text-anchor="middle">MB altın alımı</text>
+        <rect x="60" y="316" width="118" height="26" rx="5" fill="#f4ecd4" stroke="#cfc8b8"/><text x="119" y="333" text-anchor="middle">BoJ artırım riski</text>
+      </g>
+    </svg>
+  </div>
+  <div class="leg">
+    <span>— düz çizgi: doğrudan/güçlü ilişki</span>
+    <span>- - kesik çizgi: dolaylı/koşullu ilişki</span>
+    <span><b style="color:#166534">+</b> aynı yön</span>
+    <span><b style="color:#9a1b1b">−</b> ters yön</span>
+  </div>
+  <p class="tblnote">Ağın okuması: Enerji şoku ve mali açık uzun ucu yukarı iterken (güçlü, +), yükselen getiri hisseleri baskılıyor (güçlü, −); altını ise iki ayrı güç besliyor — merkez bankası alımı (güçlü, +) ve zayıf dolar/mali güven kanalı (koşullu, +). Yen taşımasının çözülmesi tüm riskli varlıklara koşullu bir negatif kanal açıyor.</p>
+</div>
 
-  <!-- ===== KISA KISA ===== -->
-  <div class="sec-label">kısa kısa</div>
+<!-- ================= KISA KISA ================= -->
+<div class="sec" id="kisa">
+  <div class="sec-h">Kısa Kısa</div>
   <ul class="short">
-    <li><b>Konumlanma.</b> BofA'nın son yayımlanan Temmuz Fon Yöneticisi Anketi'nde nakit yüzde 3,6'ya inip "sat" eşiğinin (yüzde 4) altına düşmüştü; Ağustos anketi bu hafta (18–19 Ağustos dolayı) açıklanacak — yeni veri geldiğinde konumlanma bölmesi güncellenecek.</li>
-    <li><b>Bant uçları.</b> Yerel taramada TCELL (0,27) ve BIMAS (0,00) bandın alt ucunda, GARAN (0,91) ve OYAKC (1,0) üst ucunda; iki günlük tur eşiği yüzde 0,273 (fon + komisyon), bunu aşmayan kısa vadeli tur maliyeti çıkarmaz.</li>
-    <li><b>Savunma sanayii.</b> Önceki sayılarda izlenen tema sürüyor; Ocak–Temmuz ihracatı 5,79 milyar dolar (+%26,2) düzeyindeydi — Türkiye kanalında "Çin sıkıştırması"nın (H10) fırsat yüzü burada.</li>
-    <li><b>Yabancı takas.</b> Genel ortalama 9,519 (yirmi gözlük değişim −0,04), büyük on 37,356 (−0,019): değişim eşiğin altında, akım sinyali yok — hikâye uydurulmadı.</li>
+    <li><b>Kahve.</b> Yerel ölçüm dosyasına göre kahve eğrisi belirgin backwardation'da (yıllık −%15,98), ancak COT yönetilen para dilimi son üç yılda yalnızca 0,325 — yani yatırımcılar kalabalık değil; bu, ters bir haberin fiyata etkisinin görece sınırlı olacağını düşündürüyor. Açık iddia 28 Ağustos'ta fiyatın 338,10 sentin altına inmesine 0,55 olasılık veriyor.</li>
+    <li><b>Japonya politikası.</b> Piyasa, artan enflasyon baskısı karşısında BoJ'un Eylül'de faiz artırabileceğini fiyatlıyor; yen zayıflığı bu baskıyı besliyor (Investing.com).</li>
+    <li><b>Bitcoin akımları.</b> CoinDesk, fiyat 63.500 dolarda yatay dururken "akımların sessizce döndüğünü" not ediyor — büyük yapay zekâ hesaplama anlaşmaları kurumsal ilgiyi canlı tutuyor.</li>
+    <li><b>Türkiye rezervi.</b> Brüt rezervlerin iki haftada 164,4'ten 178,4 milyar dolara çıkması, kur istikrarı anlatısının somut destek ayağı.</li>
   </ul>
+</div>
 
-  <!-- ===== BÜLTEN RADARI ===== -->
-  <div class="sec-label">bülten radarı</div>
-  <ul class="short">
-    <li><b>Adam Tooze — Chartbook (5 Ağustos).</b> "Çin sıkıştırması": ihracat fazlasının Avrupa otomotivi üzerinden sistemik bir şoka dönüşmesi tezi (H10).</li>
-    <li><b>Doomberg.</b> "Manşetlerdeki Orta Doğu çatışmasının altında dirençli enerji piyasaları ve bol hidrokarbon" tezi; petrolün 82 dolarda dar bantta kalması bugüne dek bu görüşü destekledi (H1).</li>
-    <li><b>Not.</b> Substack arşiv akışları (Overshoot, Net Interest, The Diff, Capital Flows) bu oturumda tek tek çekilemedi; radar, doğrulanmış ikincil aktarımlarla sınırlı tutuldu. Sessizleşen sesler kenarda; teze katkı veren aktif sesler öne alındı.</li>
-  </ul>
+<!-- ================= BÜLTEN RADARI ================= -->
+<div class="sec" id="bulten">
+  <div class="sec-h">Bülten Radarı</div>
+  <p style="font-size:14.5px">Adam Tooze'un son <a href="https://adamtooze.substack.com/p/top-links-1196-disapproving-of-the">Top Links 1196</a> sayısı iki başlığı öne çıkarıyor: "MAGA ekonomisine" yönelik onaylamama eğilimi ve BoJ'un tarihin en büyük taşıma yatırımcısı olarak konumu — ikincisi bu sayının H4 hikâyesinin doğrudan ilham kaynağı. Tooze'un 5 Ağustos tarihli <a href="https://adamtooze.substack.com/p/chartbook-464-thechina-squeeze-the">Chartbook 464</a>'ü ise "Çin sıkışması" ve kalkınma karşı-olguları üzerine; Hintli iktisatçılar Chatterjee ve Subramanian'ın Foreign Affairs makalesine dayanıyor.</p>
+  <p class="note">Not: Bu oturumda newsletter API uç noktalarına doğrudan erişim (provenance) kısıtı nedeniyle fedguy.com, netinterest.co, thediff.co ve capitalflows gibi kaynakların ham arşivleri çekilemedi; yalnızca arama üzerinden yüzeye çıkan içerik kullanıldı. Bir sonraki sayıda bu kaynaklar için doğrudan çekim denenmeli.</p>
+</div>
 
-  <!-- ===== YATIRIM DEĞERLENDİRMESİ ===== -->
-  <div class="sec-label">yatırım değerlendirmesi</div>
-  <div class="disc">Yatırım danışmanı değilim; aşağıdakiler tavsiye değildir. Yüzdeler ve olasılıklar özneldir, benim çıkarımımdır; kişisel bir portföy önerisi taşımaz. Kayıtlı pozisyon dosyası boş olduğundan değerlendirme kişiselleştirilememiştir — bu, giderilmesi gereken bir eksiktir.</div>
+<!-- ================= YATIRIM DEĞERLENDİRMESİ ================= -->
+<div class="sec" id="yatirim">
+  <div class="sec-h">Yatırım Değerlendirmesi</div>
+  <div class="disc"><b>Çerçeve:</b> Yatırım danışmanı değilim ve bunların hiçbiri yatırım tavsiyesi değildir. Aşağıdaki yukarı/aşağı yüzdeler ve olasılıklar tamamen özneldir; amaç karar vermek değil, kendi kararını verebilmen için asimetriyi görünür kılmak. Ölçüm dosyasında kayıtlı açık pozisyon yok, bu nedenle değerlendirme portföye kişiselleştirilemedi (bu bir eksiklik olarak not edilir, her sayıda tekrarlanmaz).</p></div>
 
-  <div class="inv">
-    <h3>1) Bakır — fiziksel sıkışıklık teması</h3>
-    <div class="meta">Neden · LME backwardation + 42 günlük stok erimesi + nakit primi 2021 zirvesi; ölçümdeki açık iddia (p=0,72) aynı yönde.</div>
-    <p>COMEX contango'suna değil LME primine bakan bir okuma, yakın vadede fiziksel metalin kıt olduğunu söylüyor. Somut araç: bakır madencisi ETF'leri (ör. COPX) ya da doğrudan bakır vadeli. <b>Risk asimetrisi (öznel):</b> yukarı ~%15–20 (sıkışıklık sürer/derinleşirse), aşağı ~%10–12 (Çin talebi zayıflar ya da LME stokları yeniden dolarsa). Çeviren olay: küresel büyüme korkusuyla talep beklentisinin kırılması ya da gümrük arbitrajının kapanması.</p>
-  </div>
+  <div class="mine">
+    <b>1) Bakır (fiziksel tez güçlü, giriş pahalı).</b> Neden: LME'de 2021'den beri en geniş backwardation ve 42 günlük stok erimesi, gerçek bir fiziksel sıkışmayı gösteriyor ve ölçüm dosyasındaki açık iddiayla (LME nakit priminin devamı, olasılık 0,72) uyumlu. Ama fiyat COMEX'te rekorda ve LME acil önlem alacak kadar gergin. Risk asimetrisi (öznel): yukarı ~%8–12 (sıkışma birkaç hafta daha sürerse), aşağı ~%15–20 (tarife arbitrajı kapanır ya da stok girişi başlarsa keskin geri dönüş). Bu asimetri şu an <b>aleyhte</b>; tezi seviyorsam bile backwardation'ın normalleşmesini beklemek daha sağlıklı. Somut araç: COMEX/LME vadeli yerine bakır madencisi ETF'i (ör. COPX) dolaylı ve daha az "squeeze" riski taşır. Çevirecek şey: LME stoklarına net giriş.</div>
 
-  <div class="inv">
-    <h3>2) Altın — dengeye yakın, taban sağlam</h3>
-    <div class="meta">Neden · merkez bankası alımı yapısal taban; ama konumlanma dilimi yüksek (0,848) ve ölçüm iddiası dengede (p=0,50).</div>
-    <p>Burada dürüst olmak gerekir: alıcı (merkez bankaları) ile satıcı (ABD ETF'leri) çekişiyor ve rekor bölgede risk-getiri simetrik. Somut araç: fiziki altın ya da düşük maliyetli altın ETF'i. <b>Risk asimetrisi (öznel):</b> yukarı ~%8–10 (reel faizler düşer / CB alımı sürer), aşağı ~%8–10 (reel faiz sıçraması / Çin alımının durması). Çeviren olay: H2'deki uzun uç hareketinin yönü. Bu bir "kesin al" değil, tabanı sağlam ama üstü kalabalık bir denge.</p>
-  </div>
+  <div class="mine">
+    <b>2) Altın / gümüş (yapısal destek, rekorda mütevazı yukarı).</b> Neden: Yükselişi merkez bankası ve Doğu talebi taşıyor (Çin 21. ay üst üste alım), Batılı ETF çıkışına rağmen; bu, mali güven ve zayıf dolar temasının en temiz ifadesi. Ama fiyat rekor bölgede ve ölçüm dosyasının açık iddiası yön için 0,50 (nötr) diyor. Risk asimetrisi (öznel): altında yukarı ~%6–10 / aşağı ~%8; gümüşte beta daha yüksek, yukarı ~%12–18 / aşağı ~%15. Reel getiri (H5'teki uzun uç) sert yükselirse ikisi de baskılanır — bu ana çürütme koşulu. Somut araç: fiziksel altın/gümüş ya da düşük maliyetli ETF; gümüş, riski göze alana daha yüksek asimetri sunar.</div>
 
-  <div class="inv">
-    <h3>3) Türk bankaları / bandın alt ucu — koşullu değer</h3>
-    <div class="meta">Neden · TCMB'nin fonlama kompozisyonunu gevşetme ihtimali + BIST'te yabancı girişinin henüz başlamamış olması (girişsiz taban = düşük beklenti).</div>
-    <p>Değerleme ucuz ama katalizör henüz zayıf: yabancı hisse tarafında girişsiz (H7), enflasyon tahmini yukarı revize (H6). Yerel bant taramasında TCELL ve BIMAS alt uçta; bankalarda GARAN üst uçta, dolayısıyla "ucuzluk" bankada değil bant-altı sanayi/telekomda daha belirgin. <b>Risk asimetrisi (öznel):</b> yukarı ~%15 (fonlama gevşer + yabancı döner), aşağı ~%12 (petrol primi enflasyonu azdırır, indirim ertelenir). Çeviren olay: 10 Eylül TCMB ve 18–19 Ağustos bilançoları. Tez, faiz patikasına ve yabancı akımın dönmesine bağlı — ikisi de henüz gerçekleşmedi.</p>
-  </div>
+  <div class="mine">
+    <b>3) BIMAS (savunmacı, bandının tabanında — kalabalık savunma temasına alternatif).</b> Neden: Ölçüm dosyasının bant taramasına göre BİM 374,75 TL ile bandının tam tabanında (konum 0,0, ALT UÇ), yıllık trend +%9,8 pozitif ve ATR %2,63 ile görece sakin. H8'deki savunma hisseleri (OTKAR beş günde +%14) iyi haberi kısmen fiyatlarken, defansif bir isim bandının dibinde daha iyi risk/getiri sunabilir. Risk asimetrisi (öznel): yukarı ~%10–15 (banda geri dönüş), aşağı ~%6–8 (taban kırılırsa). Çevirecek şey: 2Ç bilanço marjları ve enflasyon patikası. Not: Bu bir teknik bant gözlemidir, temel değerleme değil; künye gereği işlem sinyali değil dikkat çağrısıdır.</div>
+</div>
 
-  <div class="foot">
-    <p><b>SABAH</b> · Günlük Finans Gazetesi · 17 Ağustos 2026, Pazartesi (Türkiye saati). Referans: 14 Ağustos Cuma kapanışı + hafta sonu haber akışı. Bu sayı, bu makinedeki yerel ölçüm katmanı ile doğrulanmış web kaynaklarından üretildi; künye hafıza sistemi bu oturumda erişilebilir değildi (bkz. Kurulum notları). Rakamlar farklı zaman pencerelerinden gelir ve eşitlenmemiştir; veri bulunmayan yerlerde "elimde yok" denmiştir.</p>
-  </div>
+<footer>
+  SABAH — Günlük Finans Gazetesi · 18 Ağustos 2026 · Hüseyin için otomatik hazırlandı.<br>
+  Yerel ölçüm katmanı + küresel arama sentezi. Rakamlar yuvarlanmıştır; farklı zaman pencereleri eşitlenmemiştir.
+</footer>
 
 </div>
+
 <script>
-function fbBuild(){
+function mkFb(){
   var s=document.getElementById('fb-sec').value;
   var t=document.getElementById('fb-topic').value;
+  var p=document.getElementById('fb-perm').value;
   var x=document.getElementById('fb-text').value.trim();
-  var r=document.getElementById('fb-rule').checked?'EVET':'hayır';
-  var out='[SABAH GERİ BİLDİRİM — 17.08.2026]\n'
-    +'Bölüm: '+s+'\n'
-    +'Konu: '+t+'\n'
-    +'Açıklama: '+(x||'(boş)')+'\n'
-    +'Kalıcı kural olsun mu: '+r;
-  document.getElementById('fb-out').value=out;
+  var d=new Date();
+  var out="=== SABAH GERİ BİLDİRİM ===\n"
+    +"Tarih: "+d.toLocaleDateString('tr-TR')+"\n"
+    +"Bölüm/Haber: "+s+"\n"
+    +"Konu: "+t+"\n"
+    +"Kalıcı kural: "+p+"\n"
+    +"Açıklama: "+(x||"(boş)")+"\n"
+    +"=== Not: Bu metni sohbete yapıştır; künyeye işlenecek. ===";
+  document.getElementById('fbout').value=out;
 }
-function fbCopy(){
-  var o=document.getElementById('fb-out');
-  if(!o.value){fbBuild();}
-  o.select();
+function cpFb(){
+  var el=document.getElementById('fbout');
+  if(!el.value){mkFb();}
+  el.select();
   try{document.execCommand('copy');}catch(e){}
+  if(navigator.clipboard){navigator.clipboard.writeText(el.value).catch(function(){});}
 }
 </script>
 </body>
